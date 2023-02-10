@@ -19,3 +19,23 @@ Here is an example of a zig-zag simulation:
 
 <img width="1354" alt="image" src="https://user-images.githubusercontent.com/93596576/218189709-293a5fc4-c258-4db5-b252-487faa901283.png">
 
+# License
+
+ShipSIM package
+
+Licensed by Basilio Puente and M Dolores Fernandez under the Modelica License 2 with additional clause 16
+Copyright © 2020-2023, Basilio Puente, M Dolores Fernandez and contributors.
+
+ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the Modelica License 2 with additional clause 16. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
+
+# Contact
+
+Basilio Puente Varela
+email: basiliopuentevarela@gmail.com
+web: http://www.ShipTwin.com
+LinkedIn: https://es.linkedin.com/in/basiliopuentevarela
+
+Maria Dolores Fernandez Ballesteros
+email: lolifernandezballesteros@gmail.com
+web: http://www.ShipTwin.com
+LinkedIn: https://es.linkedin.com/in/maría-dolores-fernández-ballesteros-22815443
