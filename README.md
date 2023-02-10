@@ -29,13 +29,12 @@ Copyright © 2020-2023, Basilio Puente, M Dolores Fernandez and contributors.
 ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the Modelica License 2 with additional clause 16. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
 
 # Contact
+web: http://www.ShipTwin.com
 
 Basilio Puente Varela
 email: basiliopuentevarela@gmail.com
-web: http://www.ShipTwin.com
 LinkedIn: https://es.linkedin.com/in/basiliopuentevarela
 
 Maria Dolores Fernandez Ballesteros
 email: lolifernandezballesteros@gmail.com
-web: http://www.ShipTwin.com
 LinkedIn: https://es.linkedin.com/in/maría-dolores-fernández-ballesteros-22815443
