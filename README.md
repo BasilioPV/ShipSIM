@@ -8,3 +8,14 @@ Through decades of investigation, naval architecture knowledge was documented in
 Mature acausal simulation languages, such as Modelica, enables the use of all this knowledge in a practical way to develop an trusted, easy to maintain and reusable simulation library.
 
 This library remains under heavy development and exhaustive validation is needed to gain confidence on the results. Nevertheless, the library is based on state-of-the art publications coded by Naval Architects that ensure a correct implementations of the background physics.
+
+# Current Content
+
+The following image shows the library contents:
+
+<img width="191" alt="image" src="https://user-images.githubusercontent.com/93596576/218189445-892cd888-ade9-41ff-bcc1-4c8ee194dca8.png">
+
+Here is an example of a zig-zag simulation:
+
+<img width="1354" alt="image" src="https://user-images.githubusercontent.com/93596576/218189709-293a5fc4-c258-4db5-b252-487faa901283.png">
+
