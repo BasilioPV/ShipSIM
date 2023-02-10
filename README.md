@@ -32,9 +32,7 @@ ShipSIM Modelica package is free software and the use is completely at your own 
 web: http://www.ShipTwin.com
 
 Basilio Puente Varela
-email: basiliopuentevarela@gmail.com
 LinkedIn: https://es.linkedin.com/in/basiliopuentevarela
 
 Maria Dolores Fernandez Ballesteros
-email: lolifernandezballesteros@gmail.com
 LinkedIn: https://es.linkedin.com/in/maría-dolores-fernández-ballesteros-22815443
