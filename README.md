@@ -1,3 +1,6 @@
+![ShipSIM](https://user-images.githubusercontent.com/93596576/218254019-a370b3a5-83ff-4ef4-99bd-9fbb6c6912ed.png)
+
+
 # ShipSIM
 Modelica library for Naval Architecture simulations.
 
