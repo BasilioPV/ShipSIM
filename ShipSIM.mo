@@ -2253,7 +2253,7 @@ MSc Thesis 2022<br></td>
   end Outdated;
   annotation(
     preferredView = "info",
-    version = "1.0",
+    version = "1.0.0",
     versionBuild = 0,
     versionDate = "2023-02-14",
     dateModified = "2023-02-14",
