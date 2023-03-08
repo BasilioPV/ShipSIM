@@ -16,7 +16,8 @@ This library remains under heavy development and exhaustive validation is needed
 
 The following image shows the library contents:
 
-<img width="191" alt="image" src="https://user-images.githubusercontent.com/93596576/218189445-892cd888-ade9-41ff-bcc1-4c8ee194dca8.png">
+<img width="209" alt="image" src="https://user-images.githubusercontent.com/93596576/223804344-4c1d46ad-d03e-4043-b70c-ad3ffef0ef08.png">
+
 
 Here is an example of a zig-zag simulation:
 
@@ -26,10 +27,10 @@ Here is an example of a zig-zag simulation:
 
 ShipSIM package
 
-Licensed by Basilio Puente and M Dolores Fernandez under the Modelica License 2 with additional clause 16
-Copyright © 2020-2023, Basilio Puente, M Dolores Fernandez and contributors.
+Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
+Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
 
-ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the Modelica License 2 with additional clause 16. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
+ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
 
 # Contact
 web: http://www.ShipTwin.com
