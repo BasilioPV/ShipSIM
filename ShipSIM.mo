@@ -982,7 +982,7 @@ end ShipWind;
     extends Modelica.Icons.FunctionsPackage;
 
     function WageningenB_Kt_Kq "Wageningen B series Kt & Kq"
-      extends Modelica.Icons.FunctionsPackage;
+      extends Modelica.Icons.Function;
       input Real J "Advance ratio";
       input Real P_D "Pitch-diameter ratio";
       input Real Ae_Ao "Blade area ratio";
@@ -1441,7 +1441,7 @@ end ShipWind;
     end WageningenB_Kt_Kq;
 
     function NACA0018
-      extends Modelica.Icons.FunctionsPackage;
+      extends Modelica.Icons.Function;
       input Real BetaRad "Attack angle";
       input Real Re "Reynolds number";
       input Real Asp "Aspect Ratio";
