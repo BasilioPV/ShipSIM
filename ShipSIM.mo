@@ -30,7 +30,7 @@ package ShipSIM "Ship simulation library"
       extends Modelica.Icons.ReleaseNotes;
       annotation(
         DocumentationClass = true,
-        Documentation(info = "<html><head></head><body><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
+        Documentation(info = "<html><head></head><body><div><b>Version 1.4.0 (xx-xx-2023):</b></div><div><b><br></b></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
     end ReleaseNotes;
 
     package References "References"
@@ -170,7 +170,7 @@ MSc Thesis 2022<br></td>
 
       model Test_ZigZag_1Q
         extends Modelica.Icons.Example;
-        ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}, ini_Vel = {3.7, 0, 0}) annotation(
+        ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}, ini_Vel = {2, 0, 0}) annotation(
           Placement(visible = true, transformation(origin = {62, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY annotation(
           Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -202,11 +202,11 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {-3, 3}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
         Modelica.Mechanics.Rotational.Sources.Speed speed(phi(displayUnit = "rad")) annotation(
           Placement(visible = true, transformation(origin = {27, -15}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
-        Modelica.Blocks.Sources.RealExpression ShaftSpeed(y = 135*(2*3.141592/60)) annotation(
+        Modelica.Blocks.Sources.RealExpression ShaftSpeed(y = 105*(2*3.141592/60)) annotation(
           Placement(visible = true, transformation(origin = {-8, -28}, extent = {{-22, -8}, {22, 8}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedShape buoy(animation = false, color = {255, 0, 0}, height = 10, length = 10, r_shape = {300, 0, 0}, shapeType = "sphere", width = 10) annotation(
           Placement(visible = true, transformation(origin = {-62.5, 42.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
-        inner ShipSIM.Components.Environment environment(WindDirection = 0, WindSpeed = 20) annotation(
+        inner ShipSIM.Components.Environment environment annotation(
           Placement(visible = true, transformation(origin = {-26.5, 44.5}, extent = {{-10.5, -10.5}, {10.5, 10.5}}, rotation = 0)));
         ShipSIM.Components.Ship.ShipWind shipWind annotation(
           Placement(visible = true, transformation(origin = {62, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -252,7 +252,7 @@ MSc Thesis 2022<br></td>
         connect(shipModelTh.frame_a, shipWind.frame_a) annotation(
           Line(points = {{52, 18}, {50, 18}, {50, -30}, {52, -30}}, color = {95, 95, 95}));
         connect(switch1.y, rudder.Rudder_Order) annotation(
-          Line(points = {{-39, 3}, {-34, 3}, {-34, 10}, {-31, 10}}, color = {0, 0, 127}));
+          Line(points = {{-39, 3}, {-35, 3}, {-35, 10}, {-31, 10}}, color = {0, 0, 127}));
       protected
         annotation(
           experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
@@ -338,6 +338,136 @@ MSc Thesis 2022<br></td>
           Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {4, -9}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {23, -35}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
           Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
       end Test_CrashStop_4Q;
+
+      model Test_CrashAvoidance
+        extends Modelica.Icons.Example;
+        ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}, ini_Vel = {7, 0, 0}) annotation(
+          Placement(visible = true, transformation(origin = {73, 71}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY annotation(
+          Placement(visible = true, transformation(origin = {73, 47}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Sources.RealExpression Water_Depth annotation(
+          Placement(visible = true, transformation(origin = {100, 76}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
+          Placement(visible = true, transformation(origin = {19, 84}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+          Placement(visible = true, transformation(origin = {18, 71}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
+          Placement(visible = true, transformation(origin = {-19, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+        inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 20000, defaultNm_to_m = 200000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
+          Placement(visible = true, transformation(origin = {-92, 83}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        ShipSIM.Components.Propulsion.Rudder rudder(C = 1.5, InitialRudderAngle = 0, s = 3) annotation(
+          Placement(visible = true, transformation(origin = {-71, 3}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_pos(animation = false, r = {-2, 0, 4.5}) annotation(
+          Placement(visible = true, transformation(origin = {-26, 17}, extent = {{5, 5}, {-5, -5}}, rotation = 0)));
+        Modelica.Mechanics.Rotational.Sources.Speed speed(phi(displayUnit = "rad")) annotation(
+          Placement(visible = true, transformation(origin = {-22, -6}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
+        Modelica.Blocks.Sources.RealExpression Rudder_order(y = 35) annotation(
+          Placement(visible = true, transformation(origin = {-108.5, 11.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape buoy(animation = true, color = {255, 0, 0}, height = 20, length = 20, r_shape = {350, 0, 0}, shapeType = "sphere", width = 20) annotation(
+          Placement(visible = true, transformation(origin = {-64.5, 82.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
+        inner ShipSIM.Components.Environment environment annotation(
+          Placement(visible = true, transformation(origin = {-22, 88}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        ShipSIM.Components.Ship.ShipWind shipWind annotation(
+          Placement(visible = true, transformation(origin = {73, 23}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        ShipSIM.Components.Propulsion.Propeller4Q propeller4Q(Diameter = 2.5, PropModel = ShipSIM.Types.Propeller4Q.B4_100_1, h_prop = 2) annotation(
+          Placement(visible = true, transformation(origin = {-51, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Math.Gain Convert_to_rad(k = 2*Modelica.Constants.pi/60) annotation(
+          Placement(visible = true, transformation(origin = {3.5, -6.5}, extent = {{5.5, -5.5}, {-5.5, 5.5}}, rotation = 0)));
+        Modelica.Blocks.Sources.TimeTable Propeller_timeTable(table = [0, 155; 60, 0]) annotation(
+          Placement(visible = true, transformation(origin = {49, -5}, extent = {{8, -8}, {-8, 8}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation1(animation = false, r = {5, -5, 2}) annotation(
+          Placement(visible = true, transformation(origin = {-33, 49}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+  Modelica.Blocks.Math.Gain gain(k = 2*Modelica.Constants.pi/60) annotation(
+          Placement(visible = true, transformation(origin = {-10.5, 36.5}, extent = {{5.5, -5.5}, {-5.5, 5.5}}, rotation = 0)));
+  Modelica.Mechanics.Rotational.Sources.Speed speed1(phi(displayUnit = "rad")) annotation(
+          Placement(visible = true, transformation(origin = {-36, 37}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
+  ShipSIM.Components.Propulsion.Propeller4Q propeller4Q1(Diameter = 2.5, PropModel = ShipSIM.Types.Propeller4Q.B4_100_1, h_prop = 2) annotation(
+          Placement(visible = true, transformation(origin = {-65, 45}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Mechanics.Rotational.Sources.Speed speed2(phi(displayUnit = "rad")) annotation(
+          Placement(visible = true, transformation(origin = {-35, -70}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
+  Modelica.Blocks.Math.Gain gain1(k = 2*Modelica.Constants.pi/60) annotation(
+          Placement(visible = true, transformation(origin = {-9.5, -70.5}, extent = {{5.5, -5.5}, {-5.5, 5.5}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation2(animation = false, r = {5, 5, 2}) annotation(
+          Placement(visible = true, transformation(origin = {-32, -58}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+  ShipSIM.Components.Propulsion.Propeller4Q propeller4Q2(Diameter = 2.5, PropModel = ShipSIM.Types.Propeller4Q.B4_100_1, h_prop = 2) annotation(
+          Placement(visible = true, transformation(origin = {-64, -62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.TimeTable Port_timeTable(table = [0, 155; 60, 0; 100, -100]) annotation(
+          Placement(visible = true, transformation(origin = {36, 37}, extent = {{8, -8}, {-8, 8}}, rotation = 0)));
+  Modelica.Blocks.Sources.TimeTable Stbd_timeTable(table = [0, 155; 60, 0; 100, -100]) annotation(
+          Placement(visible = true, transformation(origin = {40, -70}, extent = {{8, -8}, {-8, 8}}, rotation = 0)));
+  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter(Rising = 2.25)  annotation(
+          Placement(visible = true, transformation(origin = {10, 37}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter1(Rising = 2.25) annotation(
+          Placement(visible = true, transformation(origin = {25, -7}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter2(Rising = 2.25) annotation(
+          Placement(visible = true, transformation(origin = {11, -70}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+      equation
+        connect(Water_Depth.y, shipModelTh.Water_depth) annotation(
+          Line(points = {{94.5, 76}, {91, 76}, {91, 71}, {83, 71}}, color = {0, 0, 127}));
+        connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{63, 47}, {57, 47}, {57, 71}, {63, 71}}, color = {95, 95, 95}));
+        connect(ShipAxis.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{24, 84}, {38, 84}, {38, 71}, {63, 71}}, color = {95, 95, 95}));
+        connect(fixedShape.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{24, 71}, {63, 71}}, color = {95, 95, 95}));
+        connect(fixedTranslation.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{-13, 6}, {38, 6}, {38, 71}, {63, 71}}, color = {95, 95, 95}));
+        connect(Rudder_pos.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{-21, 17}, {32, 17}, {32, 71}, {63, 71}}, color = {95, 95, 95}));
+        connect(Rudder_pos.frame_b, rudder.frame_a) annotation(
+          Line(points = {{-31, 17}, {-69, 17}, {-69, 10}}, color = {95, 95, 95}));
+        connect(shipModelTh.shipData, hidrodynamicXYY.shipData) annotation(
+          Line(points = {{83.4, 64.4}, {89.4, 64.4}, {89.4, 54.4}, {83.4, 54.4}}));
+        connect(world.frame_b, buoy.frame_a) annotation(
+          Line(points = {{-86, 83}, {-81, 83}, {-81, 82.5}, {-70, 82.5}}));
+        connect(shipModelTh.frame_a, shipWind.frame_a) annotation(
+          Line(points = {{63, 71}, {61, 71}, {61, 23}, {63, 23}}, color = {95, 95, 95}));
+        connect(fixedTranslation.frame_b, propeller4Q.frame_a) annotation(
+          Line(points = {{-25, 6}, {-41, 6}}, color = {95, 95, 95}));
+        connect(propeller4Q.flange, speed.flange) annotation(
+          Line(points = {{-41, 2}, {-37, 2}, {-37, -6}, {-29, -6}}));
+        connect(propeller4Q.Propeller_flow_diameter, rudder.Propeller_flow_diameter) annotation(
+          Line(points = {{-61.1, 6}, {-64.1, 6}}, color = {0, 0, 127}));
+        connect(propeller4Q.Propeller_speed, rudder.Propeller_speed) annotation(
+          Line(points = {{-61.1, 2}, {-64.1, 2}, {-64.1, 3}}, color = {0, 0, 127}));
+        connect(Rudder_order.y, rudder.Rudder_Order) annotation(
+          Line(points = {{-99.15, 11.5}, {-78.15, 11.5}, {-78.15, 9.5}}, color = {0, 0, 127}));
+        connect(Convert_to_rad.y, speed.w_ref) annotation(
+          Line(points = {{-2.55, -6.5}, {-7, -6.5}, {-7, -6}, {-14, -6}}, color = {0, 0, 127}));
+  connect(shipModelTh.frame_a, fixedTranslation1.frame_a) annotation(
+          Line(points = {{63, 71}, {32, 71}, {32, 49}, {-27, 49}}, color = {95, 95, 95}));
+  connect(fixedTranslation1.frame_b, propeller4Q1.frame_a) annotation(
+          Line(points = {{-39, 49}, {-55, 49}}));
+  connect(speed1.flange, propeller4Q1.flange) annotation(
+          Line(points = {{-43, 37}, {-55, 37}, {-55, 45}}));
+  connect(gain.y, speed1.w_ref) annotation(
+          Line(points = {{-17, 37}, {-28, 37}}, color = {0, 0, 127}));
+  connect(gain1.y, speed2.w_ref) annotation(
+          Line(points = {{-16, -70}, {-27, -70}}, color = {0, 0, 127}));
+  connect(fixedTranslation2.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{-26, -58}, {51, -58}, {51, 71}, {63, 71}}, color = {95, 95, 95}));
+  connect(fixedTranslation2.frame_b, propeller4Q2.frame_a) annotation(
+          Line(points = {{-38, -58}, {-54, -58}}, color = {95, 95, 95}));
+  connect(speed2.flange, propeller4Q2.flange) annotation(
+          Line(points = {{-42, -70}, {-54, -70}, {-54, -62}}));
+  connect(Port_timeTable.y, slewRateLimiter.u) annotation(
+          Line(points = {{27, 37}, {16, 37}}, color = {0, 0, 127}));
+  connect(slewRateLimiter.y, gain.u) annotation(
+          Line(points = {{5, 37}, {-4, 37}}, color = {0, 0, 127}));
+  connect(Propeller_timeTable.y, slewRateLimiter1.u) annotation(
+          Line(points = {{40, -5}, {31, -5}, {31, -7}}, color = {0, 0, 127}));
+  connect(slewRateLimiter1.y, Convert_to_rad.u) annotation(
+          Line(points = {{20, -7}, {10, -7}, {10, -6}}, color = {0, 0, 127}));
+  connect(Stbd_timeTable.y, slewRateLimiter2.u) annotation(
+          Line(points = {{31, -70}, {17, -70}}, color = {0, 0, 127}));
+  connect(slewRateLimiter2.y, gain1.u) annotation(
+          Line(points = {{5.5, -70}, {-3, -70}}, color = {0, 0, 127}));
+        annotation(
+          experiment(StartTime = 0, StopTime = 600, Tolerance = 1e-06, Interval = 0.15),
+          Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulstion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 10º to -10º makes the logic of a zig-zag test</div></body></html>"),
+          Diagram(graphics = {Rectangle(origin = {84, 49}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {96, 34}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-11, -15}, lineColor = {255, 0, 0}, extent = {{-70, 75}, {70, -75}}), Text(origin = {96, 34}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-37.5, -36}, textColor = {255, 0, 0}, extent = {{-25, 2}, {25, -2}}, textString = "Propulsion model"), Rectangle(origin = {14, 79}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {3, 68}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -100}, {125, 100}}, grid = {1, 1})),
+          Icon(coordinateSystem(extent = {{-125, -100}, {125, 100}}, grid = {1, 1})));
+      end Test_CrashAvoidance;
     end Maneuvering;
 
     package Sailing
@@ -4374,14 +4504,13 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
   end Outdated;
   annotation(
     preferredView = "info",
-    version = "1.3.0",
+    version = "1.4.1",
     versionBuild = 0,
-    versionDate = "2023-05-31",
-    dateModified = "2023-05-31",
+    versionDate = "2023-xx-xx",
+    dateModified = "2023-xx-xx",
     revisionId = "$Format:%h %ci$",
     Icon(graphics = {Text(origin = {33, -54}, textColor = {80, 80, 80}, extent = {{-67, 54}, {67, -54}}, textString = "SS", fontName = "Franklin Gothic Demi", textStyle = {TextStyle.Bold}), Line(origin = {0, 20}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-30, 40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-70, 10}, {64, 10}, {50, -10}, {-70, -10}, {-70, 10}}), Line(origin = {10, 15}, points = {{10, 15}, {-11, -15}}), Rectangle(origin = {-16, 65}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-5, 15}, {0, -15}}), Line(origin = {0, 10}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-25, 10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-9.5, 6}, {-9.5, -6}, {9.5, -6}, {9.5, 6}, {3.5, -2}, {1.5, -2}, {1.5, 5}, {-1.5, 5}, {-1.5, -2}, {-3.5, -2}, {-9.5, 6}})}, coordinateSystem(grid = {1, 1})),
     uses(Modelica(version = "3.2.3")),
     Documentation(info = "<html><head></head><body><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\"><b style=\"font-size: 10pt;\">ShipSIM package</b></p><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\">Licensed by&nbsp;Basilio Puente and M Dolores Fernandez&nbsp;under the 3-Clause BSD license.<br style=\"font-size: 10pt;\">Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.</p><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\"><em style=\"font-size: 10pt;\">ShipSIM Modelica package is&nbsp;<u style=\"font-size: 10pt;\">free</u>&nbsp;software and the use is completely at&nbsp;<u style=\"font-size: 10pt;\">your own risk</u>; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License</em></p></body></html>"),
     Diagram(coordinateSystem(grid = {1, 1})));
 end ShipSIM;
-
