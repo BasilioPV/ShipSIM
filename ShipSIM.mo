@@ -30,7 +30,7 @@ package ShipSIM "Ship simulation library"
       extends Modelica.Icons.ReleaseNotes;
       annotation(
         DocumentationClass = true,
-        Documentation(info = "<html><head></head><body><div><b>Version 1.4.0 (xx-xx-2023):</b></div><div><b><br></b></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
+        Documentation(info = "<html><head></head><body><div><b>Version 1.4.1 (14-10-2023):</b></div><div>Added cable and crane model</div><div>GitHub issues #4 solved</div><div>This release correspond to the course \"Inicialización a la simulación con Modelica\" of the authors of this library.</div><div><br></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
     end ReleaseNotes;
 
     package References "References"
@@ -178,7 +178,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {89, 23}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://Y:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {28, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -295,7 +295,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {-4, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Blocks.Math.Gain Convert_to_rad(k = 2*Modelica.Constants.pi/60) annotation(
           Placement(visible = true, transformation(origin = {-16.5, -52.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
-        Modelica.Blocks.Sources.TimeTable Propeller_timeTable(table = [0, 135; 60, -100; 100, -100; 120, 0; 150, 0]) annotation(
+        Modelica.Blocks.Sources.TimeTable Propeller_timeTable(table = [0, 135; 60, -100; 100, -100; 120, -100; 150, -10; 10000, -10]) annotation(
           Placement(visible = true, transformation(origin = {-52, -53}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       equation
         connect(Water_Depth.y, shipModelTh.Water_depth) annotation(
@@ -642,6 +642,79 @@ MSc Thesis 2022<br></td>
           experiment(StartTime = 0, StopTime = 400, Tolerance = 1e-6, Interval = 0.01));
       end SimpleDieselEngineTest;
     end Engines;
+    
+    package Operations
+      extends Modelica.Icons.Example;
+      model CraneOperation
+       extends Modelica.Icons.Example;
+        ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}) annotation(
+          Placement(visible = true, transformation(origin = {62, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY annotation(
+          Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Sources.RealExpression Water_Depth annotation(
+          Placement(visible = true, transformation(origin = {89, 23}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
+          Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+          Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+        inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 2000, defaultNm_to_m = 20000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
+          Placement(visible = true, transformation(origin = {-84, 42}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape buoy(animation = false, color = {255, 0, 0}, height = 10, length = 10, r_shape = {300, 0, 0}, shapeType = "sphere", width = 10) annotation(
+          Placement(visible = true, transformation(origin = {-62.5, 42.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
+        inner ShipSIM.Components.Environment environment(WindDirection = 0, WindSpeed = 5)  annotation(
+          Placement(visible = true, transformation(origin = {-26.5, 44.5}, extent = {{-10.5, -10.5}, {10.5, 10.5}}, rotation = 0)));
+        ShipSIM.Components.Ship.ShipWind shipWind annotation(
+          Placement(visible = true, transformation(origin = {62, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  ShipSIM.Components.Machines.Crane crane(BoomInitialAngle = 90, BoomLength = 6,CableRotureStrenght = 500000, Cable_k = 200000, PedestalHeight = 2)  annotation(
+          Placement(visible = true, transformation(origin = {-41, -12}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation CranePos(animation = false, r = {50, 7, 15})  annotation(
+          Placement(visible = true, transformation(origin = {19, -50}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Parts.Body Weight(m = 2000, r_0(each fixed = true, start = {56, 7, 10.9019}), r_CM = {0, 0, 0}, sphereDiameter = 1)  annotation(
+          Placement(visible = true, transformation(origin = {-86.5, -14.5}, extent = {{6.5, -6.5}, {-6.5, 6.5}}, rotation = 0)));
+  Modelica.Blocks.Sources.TimeTable timeTable_BOOM(table = [0, 90; 20, 90; 40, 45; 300, 45])  annotation(
+          Placement(visible = true, transformation(origin = {-3, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.TimeTable timeTable_PEDESTAL(table = [0, 0; 45, 0; 100, 90; 300, 90])  annotation(
+          Placement(visible = true, transformation(origin = {-3, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.TimeTable timeTable_CABLE(table = [0, 2; 5, 2; 20, 1; 100, 1; 200, 10; 300, 20])  annotation(
+          Placement(visible = true, transformation(origin = {-69, 11}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      equation
+        connect(Water_Depth.y, shipModelTh.Water_depth) annotation(
+          Line(points = {{83.5, 23}, {80, 23}, {80, 18}, {72, 18}}, color = {0, 0, 127}));
+        connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{52, -6}, {46, -6}, {46, 18}, {52, 18}}, color = {95, 95, 95}));
+        connect(ShipAxis.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{32, 43}, {46, 43}, {46, 18}, {52, 18}}, color = {95, 95, 95}));
+        connect(fixedShape.frame_a, shipModelTh.frame_a) annotation(
+          Line(points = {{32, 30}, {46, 30}, {46, 18}, {52, 18}}, color = {95, 95, 95}));
+        connect(shipModelTh.shipData, hidrodynamicXYY.shipData) annotation(
+          Line(points = {{72, 11}, {78, 11}, {78, 1}, {72, 1}}));
+        connect(world.frame_b, buoy.frame_a) annotation(
+          Line(points = {{-78, 42}, {-73, 42}, {-73, 42.5}, {-68, 42.5}}));
+        connect(shipModelTh.frame_a, shipWind.frame_a) annotation(
+          Line(points = {{52, 18}, {50, 18}, {50, -30}, {52, -30}}, color = {95, 95, 95}));
+  connect(shipModelTh.frame_a, CranePos.frame_a) annotation(
+          Line(points = {{52, 18}, {37, 18}, {37, -50}, {29, -50}}));
+  connect(CranePos.frame_b, crane.frame_a) annotation(
+          Line(points = {{9, -50}, {-41, -50}, {-41, -22}}, color = {95, 95, 95}));
+  connect(crane.frame_b, Weight.frame_a) annotation(
+          Line(points = {{-51, -14}, {-51, -14.5}, {-80, -14.5}}, color = {95, 95, 95}));
+  connect(timeTable_CABLE.y, crane.CableLenght) annotation(
+          Line(points = {{-58, 11}, {-51, 11}, {-51, -10}}, color = {0, 0, 127}));
+  connect(timeTable_BOOM.y, crane.BoomSetAngle) annotation(
+          Line(points = {{-14, 0}, {-31, 0}, {-31, -6}}, color = {0, 0, 127}));
+  connect(timeTable_PEDESTAL.y, crane.PedestalSetAngle) annotation(
+          Line(points = {{-14, -30}, {-31, -30}, {-31, -18}}, color = {0, 0, 127}));
+      protected
+        annotation(
+          experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-06, Interval = 0.1),
+          Documentation(info = "<html><head></head><body>This example provides a basic operation of crane at sea.<br></body></html>"),
+          Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
+          Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
+      
+      end CraneOperation;
+      
+      
+    end Operations;
   end Examples;
 
   package Validations
@@ -1551,7 +1624,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         n = der(flange.phi)*(1/(2*Modelica.Constants.pi)) "revolutions per second";
         rpm = n*60;
 //Beta calculation
-        if noEvent(n == 0) then
+        if noEvent(abs(n) <= Modelica.Constants.eps) then
 //propeller stopped
           if noEvent(Va >= 0) then
             Beta = Modelica.Constants.pi/2 "Speed ahead with propeller stopped";
@@ -1570,7 +1643,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           end if;
         end if;
 //Ct, Cq, T & Q calculation
-        if noEvent(Vr == 0) then
+        if noEvent(abs(Vr) <= Modelica.Constants.eps) then
 //Trivial solution when speeds are zero!
           Ct = 0;
           Cq = 0;
@@ -1596,7 +1669,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
          Nu_zero=(Va*Ct)/(2*pi*n*D*Cq)
          This avoids and simplify the case where tan(Beta) is +-infinite!
          */
-          if noEvent((n*Cq) == 0) then
+          if noEvent(abs(n*Cq) <= Modelica.Constants.eps) then
             Nu_zero = Modelica.Constants.inf*sign(Va)*sign(n)*sign(Cq) "Avoid division by zero using +- inf";
           else
             Nu_zero = (Va*Ct)/(2*Modelica.Constants.pi*n*Diameter*Cq) "Open water efficiency";
@@ -1615,7 +1688,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         forceAndTorque.force = {Thrust, 0, 0} "force in propeller reference axis";
         forceAndTorque.torque = {torque.tau, 0, 0} "torque in propeller reference axis";
 // Propeller cavitation warning (Burrill chart)
-        if noEvent(Vr == 0) then
+        if noEvent(abs(Vr) <= Modelica.Constants.eps) then
           Thrust_Load = 0;
           Cavitation_Number = 0;
           Cavitation_Warning = 0;
@@ -1665,7 +1738,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         annotation(
           Icon(graphics = {Text(origin = {0, 70}, extent = {{-94, 10}, {94, -10}}, textString = "B-Series"), Polygon(origin = {23, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{15, 12}, {15, 26}, {5, 48}, {-7, 60}, {-13, 58}, {-15, 52}, {-15, 34}, {-1, 12}, {-1, -12}, {-15, -34}, {-15, -52}, {-13, -58}, {-7, -60}, {5, -48}, {15, -26}, {15, 12}}, smooth = Smooth.Bezier), Polygon(origin = {26, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, points = {{16, 12}, {16, -12}, {-6, -12}, {-12, -8}, {-16, -4}, {-16, 4}, {-12, 8}, {-6, 12}, {16, 12}}), Ellipse(origin = {24, 0}, rotation = -45, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{2, 22}, {-2, -22}}), Rectangle(origin = {71, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.CrossDiag, extent = {{29, 6}, {-29, -6}}), Line(origin = {-30, 40}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-29.9957, 19.9494}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-30, -0.101291}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-30, -19.8062}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-29.6543, -39.8569}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Rectangle(origin = {-65, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Text(origin = {-65, -68}, extent = {{-17, 14}, {17, -14}}, textString = "4Q")}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
           Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-          Documentation(info = "<html><head></head><body><div>Ship propeller model (4 quadrant) based on Ct, Cq curves according to Wageningen B-Series curves.&nbsp;</div><div>This model has incorporated empirical values of the following parameters:</div><div>- Rotative relative efficiency</div><div>- Thrust deduction coefficient</div><div>- Wake factor coefficient</div><div><br></div><div>Output is the thrust force of the propeller and mechanical torque on the shaft.</div><div><br></div><div><i><b>NOTE</b></i>:</div><div>Torque does not include shaft efficiency.</div><div>Thrust output value is effective thrust to be compared directly to the resistance curve.</div><div><br></div><div><u>Limitations</u>:</div><div><br></div><div>Propeller-rudder interaction only implemented in first quadrant (normal propeller operation).</div><div><br></div><div><u>References</u>:</div><div><br></div><div><font face=\"MS Shell Dlg 2\"><i>See Propeller1Q and POD4Q models.</i></font></div><div><font face=\"MS Shell Dlg 2\"><i><br></i></font></div><div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Roddy]</td><td>Robert F. Roddy, David E. Hess, Will Faller, \"Neural network predictions of the 4-quadrant Wageningen propeller series\", David Taylor Model Basin - April 2006,&nbsp;<a href=\"https://apps.dtic.mil/sti/pdfs/ADA455497.pdf\">NSWCCD-50-TR-2006/004</a><br><br></td></tr></tbody></table></div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Burrill]</td><td>L.C. Burrill, \"The Phenomenon of Cavitation\", Int. Shipbuilding Prog., 1955, Vol.2, No.15</td></tr></tbody></table><p><u>Know issues</u>:</p><div><br></div><div><u>Further development</u>:</div><div><br></div><div>- Propeller rudder interaction on other quadrants</div><div>- Oblique flow forces calculation</div></body></html>", revisions = "<html><head></head><body><div>Rev. 0.2 (06/05/2023): Added animation forces selector.</div><div>Rev. 0.1 (23/04/2023): Cavitation warning and implementation of propeller-rudder interact. on 1st Quadrant</div><div>Rev. 0.0 (22/04/2023): Initial release</div></body></html>"));
+          Documentation(info = "<html><head></head><body><div>Ship propeller model (4 quadrant) based on Ct, Cq curves according to Wageningen B-Series curves.&nbsp;</div><div>This model has incorporated empirical values of the following parameters:</div><div>- Rotative relative efficiency</div><div>- Thrust deduction coefficient</div><div>- Wake factor coefficient</div><div><br></div><div>Output is the thrust force of the propeller and mechanical torque on the shaft.</div><div><br></div><div><i><b>NOTE</b></i>:</div><div>Torque does not include shaft efficiency.</div><div>Thrust output value is effective thrust to be compared directly to the resistance curve.</div><div><br></div><div><u>Limitations</u>:</div><div><br></div><div>Propeller-rudder interaction only implemented in first quadrant (normal propeller operation).</div><div><br></div><div><u>References</u>:</div><div><br></div><div><font face=\"MS Shell Dlg 2\"><i>See Propeller1Q and POD4Q models.</i></font></div><div><font face=\"MS Shell Dlg 2\"><i><br></i></font></div><div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Roddy]</td><td>Robert F. Roddy, David E. Hess, Will Faller, \"Neural network predictions of the 4-quadrant Wageningen propeller series\", David Taylor Model Basin - April 2006,&nbsp;<a href=\"https://apps.dtic.mil/sti/pdfs/ADA455497.pdf\">NSWCCD-50-TR-2006/004</a><br><br></td></tr></tbody></table></div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Burrill]</td><td>L.C. Burrill, \"The Phenomenon of Cavitation\", Int. Shipbuilding Prog., 1955, Vol.2, No.15</td></tr></tbody></table><p><u>Know issues</u>:</p><div><br></div><div><u>Further development</u>:</div><div><br></div><div>- Propeller rudder interaction on other quadrants</div><div>- Oblique flow forces calculation</div></body></html>", revisions = "<html><head></head><body><div>Rev. 0.3 (01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 0.2 (06/05/2023): Added animation forces selector.</div><div>Rev. 0.1 (23/04/2023): Cavitation warning and implementation of propeller-rudder interact. on 1st Quadrant</div><div>Rev. 0.0 (22/04/2023): Initial release</div></body></html>"));
       end Propeller4Q;
 
       model POD4Q "Wageningen B-Series POD model"
@@ -1781,7 +1854,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         n = der(flange.phi)*(1/(2*Modelica.Constants.pi)) "revolutions per second";
         rpm = n*60;
 //Beta calculation
-        if noEvent(n == 0) then
+        if noEvent(abs(n) <= Modelica.Constants.eps) then
 //propeller stopped
           if noEvent(Va >= 0) then
             Beta = Modelica.Constants.pi/2 "Speed ahead with propeller stopped";
@@ -1800,7 +1873,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           end if;
         end if;
 //Ct, Cq, T & Q calculation
-        if noEvent(Vr == 0) then
+        if noEvent(abs(Vr) <= Modelica.Constants.eps) then
 //Trivial solution when speeds are zero!
           Ct = 0;
           Cq = 0;
@@ -1826,7 +1899,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           Nu_zero=(Va*Ct)/(2*pi*n*D*Cq)
           This avoids and simplify the case where tan(Beta) is +-infinite!
           */
-          if noEvent((n*Cq) == 0) then
+          if noEvent(abs(n*Cq) <= Modelica.Constants.eps) then
             Nu_zero = Modelica.Constants.inf*sign(Va)*sign(n)*sign(Cq) "Avoid division by zero using +- inf";
           else
             Nu_zero = (Va*Ct)/(2*Modelica.Constants.pi*n*Diameter*Cq) "Open water efficiency";
@@ -1845,7 +1918,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         forceAndTorque.force = {Thrust, 0, 0} "force in propeller reference axis";
         forceAndTorque.torque = {torque.tau, 0, 0} "torque in propeller reference axis";
 // Propeller cavitation warning (Burrill chart)
-        if noEvent(Vr == 0) then
+        if noEvent(abs(Vr) <= Modelica.Constants.eps) then
           Thrust_Load = 0;
           Cavitation_Number = 0;
           Cavitation_Warning = 0;
@@ -1894,7 +1967,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         annotation(
           Icon(graphics = {Text(origin = {4, -76}, extent = {{-94, 10}, {94, -10}}, textString = "B-Series"), Polygon(origin = {-5, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{15, 12}, {15, 26}, {5, 48}, {-7, 60}, {-13, 58}, {-15, 52}, {-15, 34}, {-1, 12}, {-1, -12}, {-15, -34}, {-15, -52}, {-13, -58}, {-7, -60}, {5, -48}, {15, -26}, {15, 12}}, smooth = Smooth.Bezier), Polygon(origin = {-2, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, points = {{16, 12}, {16, -12}, {-6, -12}, {-12, -8}, {-16, -4}, {-16, 4}, {-12, 8}, {-6, 12}, {16, 12}}), Ellipse(origin = {-4, 0}, rotation = -45, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{2, 22}, {-2, -22}}), Rectangle(origin = {53, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.CrossDiag, borderPattern = BorderPattern.Engraved, extent = {{33, 22}, {-33, -22}}, radius = 10), Line(origin = {-50.8495, 40}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-50.8452, 19.9494}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-50.8495, -0.101291}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-50.8495, -19.8062}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Line(origin = {-50.5038, -39.8569}, points = {{24, 0}, {-30, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 7), Rectangle(origin = {-65, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Text(origin = {-65, -68}, extent = {{-17, 14}, {17, -14}}, textString = "4Q"), Rectangle(origin = {56, 61}, fillColor = {200, 200, 200}, fillPattern = FillPattern.CrossDiag, extent = {{10, 39}, {-10, -39}}), Line(origin = {-42, 93.03}, points = {{-58, 0}, {48, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 14), Line(origin = {-33.74, 75.06}, points = {{-58, 0}, {48, 0}}, color = {200, 200, 200}, arrow = {Arrow.Filled, Arrow.None}, arrowSize = 14)}),
           Diagram,
-          Documentation(info = "<html><head></head><body><div>This POD model takes into account the use of a set of 14 Wageningen B-Series propellers modeled with four quadrant Ct and Cq coefficients. These propeller model is selected by means of a combo box.</div><div>This model only uses the flow perpendicular to the propeller disc to determine Va.</div><div><br></div><div><u>Limitations</u>:</div><div><br></div><div>There is no implemented:</div><div>- Wake fraction, thrust deduction and rotative relative factors (with empirical formulae)</div><div>- Forces due to flow transversal to the propeller</div><div>- POD blind angles due to ship hull interaction</div><div><br></div><div><u>References</u>:</div><div><br></div><div><i>See Propeller1Q for other references</i></div><div><br></div><div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Roddy]</td><td>Robert F. Roddy, David E. Hess, Will Faller, \"Neural network predictions of the 4-quadrant Wageningen propeller series\", David Taylor Model Basin - April 2006,&nbsp;<a href=\"https://apps.dtic.mil/sti/pdfs/ADA455497.pdf\">NSWCCD-50-TR-2006/004</a></td></tr></tbody></table></div><div><br></div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Burrill]</td><td>L.C. Burrill, \"The Phenomenon of Cavitation\", Int. Shipbuilding Prog., 1955, Vol.2, No.15</td></tr></tbody></table><p><u>Know issues</u>:</p><div><br></div><div><br></div><div><u>Further development</u>:</div><div><br></div><div>- Implement POD blind angles</div><div>- Implement Wake fraction, thrust deduction and rotative relative factors (with empirical formulae)</div><div>- Oblique flow forces calculation</div><div><br></div></body></html>", revisions = "<html><head></head><body><div><font face=\"MS Shell Dlg 2\">Rev. 0.2 (06/05/2023): Added animation forces selector.</font></div><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 (23/04/2023): Cavitation warning</span></div><div>Rev. 0.0 (22/04/2023): Initial release</div></body></html>"));
+          Documentation(info = "<html><head></head><body><div>This POD model takes into account the use of a set of 14 Wageningen B-Series propellers modeled with four quadrant Ct and Cq coefficients. These propeller model is selected by means of a combo box.</div><div>This model only uses the flow perpendicular to the propeller disc to determine Va.</div><div><br></div><div><u>Limitations</u>:</div><div><br></div><div>There is no implemented:</div><div>- Wake fraction, thrust deduction and rotative relative factors (with empirical formulae)</div><div>- Forces due to flow transversal to the propeller</div><div>- POD blind angles due to ship hull interaction</div><div><br></div><div><u>References</u>:</div><div><br></div><div><i>See Propeller1Q for other references</i></div><div><br></div><div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Roddy]</td><td>Robert F. Roddy, David E. Hess, Will Faller, \"Neural network predictions of the 4-quadrant Wageningen propeller series\", David Taylor Model Basin - April 2006,&nbsp;<a href=\"https://apps.dtic.mil/sti/pdfs/ADA455497.pdf\">NSWCCD-50-TR-2006/004</a></td></tr></tbody></table></div><div><br></div><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Burrill]</td><td>L.C. Burrill, \"The Phenomenon of Cavitation\", Int. Shipbuilding Prog., 1955, Vol.2, No.15</td></tr></tbody></table><p><u>Know issues</u>:</p><div><br></div><div><br></div><div><u>Further development</u>:</div><div><br></div><div>- Implement POD blind angles</div><div>- Implement Wake fraction, thrust deduction and rotative relative factors (with empirical formulae)</div><div>- Oblique flow forces calculation</div><div><br></div></body></html>", revisions = "<html><head></head><body><div>Rev. 0.3 (01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div><font face=\"MS Shell Dlg 2\">Rev. 0.2 (06/05/2023): Added animation forces selector.</font></div><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 (23/04/2023): Cavitation warning</span></div><div>Rev. 0.0 (22/04/2023): Initial release</div></body></html>"));
       end POD4Q;
 
       model Rudder "Rudder model"
@@ -1965,6 +2038,52 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         parameter Real Asp(unit = "") = Surf/s^2 "Aspect Ratio of the rudder";
         //intermediate variables
         Real Beta_inter;
+      algorithm
+       if noEvent(WaterSpeed > 0) then
+//Determine attack angle
+          Beta_inter := (Water_Speed_XY[1]*(-Modelica.Math.cos(Alpha)) + Water_Speed_XY[2]*(-Modelica.Math.sin(Alpha)))/WaterSpeed;
+// Avoid errors reaching +-1
+          if Beta_inter <= (-0.9999999) then
+            Beta := Modelica.Math.acos(-1);
+          elseif Beta_inter >= 0.9999999 then
+            Beta := Modelica.Math.acos(1);
+          else
+            Beta := Modelica.Math.acos(Beta_inter);
+          end if;
+          if Water_Speed_XY[1]*(-Modelica.Math.sin(Alpha)) - Water_Speed_XY[2]*(-Modelica.Math.cos(Alpha)) >= 0 then
+            Sign := -1;
+          else
+            Sign := 1;
+          end if;
+//Determine Cl, Cd, y Cm
+          (Cl, Cd, Cm) := ShipSIM.Functions.NACA0018(Beta, Re, Asp);
+//Calculate forces and moments
+          Drag := Cd*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
+          Lift := Cl*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
+          Moment := Cm*0.5*environment.SeaDensity*Surf*C*WaterSpeed^2;
+//Translate forces and moments to rudder stock and apply
+          Drag_Vect := Water_Speed_XY/WaterSpeed "Normalized vector with water direction (same direction as drag)";
+          Lift_Vect := {-Drag_Vect[2], Drag_Vect[1]}*Sign "Normalized vector perpendicular to water direction, adjusted with the direction";
+          F_Drag.force := {Drag*Drag_Vect[1], Drag*Drag_Vect[2], 0};
+          F_Lift.force := {Lift*Lift_Vect[1], Lift*Lift_Vect[2], 0};
+          M_Moment.torque := {0, 0, Moment*Sign};
+        else
+//If speed is zero
+          Sign := 1;
+          Beta := 0;
+          Cd := 0;
+          Cl := 0;
+          Cm := 0;
+          Drag := 0;
+          Lift := 0;
+          Moment := 0;
+          Drag_Vect := {0, 0};
+          Lift_Vect := {0, 0};
+          F_Drag.force := {0, 0, 0};
+          F_Lift.force := {0, 0, 0};
+          M_Moment.torque := {0, 0, 0};
+          Beta_inter := 0;
+        end if;
       equation
 // Connect apparent speed (current)
         apparentSpeedXY.WorldSpeed = environment.CurrentVector;
@@ -1978,51 +2097,6 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         Water_Speed_XY[2] = -apparentSpeedXY.SpeedLocal[2];
         WaterSpeed = (Water_Speed_XY[1]^2 + Water_Speed_XY[2]^2)^0.5;
         Re = WaterSpeed*C/environment.SeaKViscosity;
-        if noEvent(WaterSpeed > 0) then
-//Determine attack angle
-          Beta_inter = (Water_Speed_XY[1]*(-Modelica.Math.cos(Alpha)) + Water_Speed_XY[2]*(-Modelica.Math.sin(Alpha)))/WaterSpeed;
-// Avoid errors reaching +-1
-          if Beta_inter <= (-0.9999999) then
-            Beta = Modelica.Math.acos(-1);
-          elseif Beta_inter >= 0.9999999 then
-            Beta = Modelica.Math.acos(1);
-          else
-            Beta = Modelica.Math.acos(Beta_inter);
-          end if;
-          if Water_Speed_XY[1]*(-Modelica.Math.sin(Alpha)) - Water_Speed_XY[2]*(-Modelica.Math.cos(Alpha)) >= 0 then
-            Sign = -1;
-          else
-            Sign = 1;
-          end if;
-//Determine Cl, Cd, y Cm
-          (Cl, Cd, Cm) = ShipSIM.Functions.NACA0018(Beta, Re, Asp);
-//Calculate forces and moments
-          Drag = Cd*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
-          Lift = Cl*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
-          Moment = Cm*0.5*environment.SeaDensity*Surf*C*WaterSpeed^2;
-//Translate forces and moments to rudder stock and apply
-          Drag_Vect = Water_Speed_XY/WaterSpeed "Normalized vector with water direction (same direction as drag)";
-          Lift_Vect = {-Drag_Vect[2], Drag_Vect[1]}*Sign "Normalized vector perpendicular to water direction, adjusted with the direction";
-          F_Drag.force = {Drag*Drag_Vect[1], Drag*Drag_Vect[2], 0};
-          F_Lift.force = {Lift*Lift_Vect[1], Lift*Lift_Vect[2], 0};
-          M_Moment.torque = {0, 0, Moment*Sign};
-        else
-//If speed is zero
-          Sign = 1;
-          Beta = 0;
-          Cd = 0;
-          Cl = 0;
-          Cm = 0;
-          Drag = 0;
-          Lift = 0;
-          Moment = 0;
-          Drag_Vect = {0, 0};
-          Lift_Vect = {0, 0};
-          F_Drag.force = {0, 0, 0};
-          F_Lift.force = {0, 0, 0};
-          M_Moment.torque = {0, 0, 0};
-          Beta_inter = 0;
-        end if;
 //Connections
         connect(Rudder_angle.phi_ref, Deg_to_Rad.y) annotation(
           Line(points = {{30, 76}, {21, 76}}, color = {0, 0, 127}));
@@ -2066,7 +2140,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           uses(Modelica(version = "3.2.3")),
           Diagram,
           Icon(graphics = {Text(origin = {-5, -88}, extent = {{67, 4}, {-67, -4}}, textString = "NACA 0018"), Polygon(origin = {-9, -4}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}}), Polygon(origin = {24, 44}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Line(origin = {-42, 93.03}, points = {{-58, 0}, {48, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 14), Line(origin = {-33.74, 75.06}, points = {{-58, 0}, {48, 0}}, color = {200, 200, 200}, arrow = {Arrow.Filled, Arrow.None}, arrowSize = 14), Line(origin = {61.3685, 19.9921}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6441, -0.142118}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.5786, -20.1318}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 40.05}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {62.0283, -59.9355}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.7244, -40.1816}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 59.804}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8)}),
-          Documentation(revisions = "<html><head></head><body><div>Rev. 1.2 (06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1 (10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0 (06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2 (24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0 (26/09/2022): Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Acorts]</td><td>Antonio Corts, \"Gemelo digital de timón y servo usando Modelica\", MSc Thesis 2022</td></tr></tbody></table></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Correct rudder forces due to open ends of the profile.</div><div><br></div><div><div><u>Copyright:</u></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Rev. 0.0: Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Following revisions released with the same ShipSIM library license.</span></div></div></div></body></html>"));
+          Documentation(revisions = "<html><head></head><body><div>Rev. 1.3 (01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 1.2 (06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1 (10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0 (06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2 (24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0 (26/09/2022): Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Acorts]</td><td>Antonio Corts, \"Gemelo digital de timón y servo usando Modelica\", MSc Thesis 2022</td></tr></tbody></table></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Correct rudder forces due to open ends of the profile.</div><div><br></div><div><div><u>Copyright:</u></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Rev. 0.0: Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Following revisions released with the same ShipSIM library license.</span></div></div></div></body></html>"));
       end Rudder;
       annotation(
         Icon(graphics = {Rectangle(origin = {76, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.CrossDiag, extent = {{12, 6}, {-12, -6}}), Polygon(origin = {45, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{15, 12}, {15, 26}, {5, 48}, {-7, 60}, {-13, 58}, {-15, 52}, {-15, 34}, {-1, 12}, {-1, -12}, {-15, -34}, {-15, -52}, {-13, -58}, {-7, -60}, {5, -48}, {15, -26}, {15, 12}}, smooth = Smooth.Bezier), Polygon(origin = {48, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, points = {{16, 12}, {16, -12}, {-6, -12}, {-12, -8}, {-16, -4}, {-16, 4}, {-12, 8}, {-6, 12}, {16, 12}}), Polygon(origin = {2, 40}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Polygon(origin = {-31, -8}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}})}));
@@ -2191,6 +2265,94 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
     end AlternativePropulsion;
 
     package Machines "Components relative to ship main machinery"
+      model Crane "Crane model"
+      
+      parameter Modelica.SIunits.Length PedestalHeight "Height of pedestal [m]" annotation(Dialog(group = "Crane geometry"));
+      parameter Modelica.SIunits.Length BoomLength "Lenght of boom [m]"annotation(Dialog(group = "Crane geometry"));
+      parameter Real PedestalInitialAngle(unit="deg")=0 "Initial rotation of pedestal from X axis [deg]" annotation(Dialog(tab = "Initialization", group = "Crane initial position"));
+      parameter Real BoomInitialAngle(unit="deg")=90 "Initial angle of boom from vertical [deg]" annotation(Dialog(tab = "Initialization", group = "Crane initial position"));
+      parameter Real PedestalSpeed(unit="deg/s")=2 "Pedestal rotation speed [deg/s]" annotation(Dialog(group = "Crane characteristics"));
+      parameter Real BoomSpeed(unit="deg/s")=4 "Boom inclination speed [deg/s]" annotation(Dialog(group = "Crane characteristics"));
+      parameter Real Cable_k(unit="N/m") "Cable elasticity [N/m]" annotation(Dialog(group = "Cable characteristics"));
+      parameter Modelica.SIunits.Force CableRotureStrenght "Cable roture strenght [N]" annotation(Dialog(group = "Cable characteristics"));
+      
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation(
+          Placement(visible = true, transformation(origin = {0, -100}, extent = {{-16, -16}, {16, 16}}, rotation = -90), iconTransformation(origin = {0, -100}, extent = {{-16, -16}, {16, 16}}, rotation = -90)));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation Pedestal(animation = true, r = {0, 0, PedestalHeight}, width = 1)  annotation(
+          Placement(visible = true, transformation(origin = {0, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation = false,n = {0, 0, 1}, useAxisFlange = true)  annotation(
+          Placement(visible = true, transformation(origin = {0, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute1(animation = false,n = {0, 1, 0}, useAxisFlange = true)  annotation(
+          Placement(visible = true, transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation Boom(animation = true, r = {0, 0, BoomLength}, width = 1)  annotation(
+          Placement(visible = true, transformation(origin = {12, 32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Mechanics.Rotational.Sources.Position PedestalPos(exact = true, useSupport = true)  annotation(
+          Placement(visible = true, transformation(origin = {-32, -70}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
+  Modelica.Mechanics.Rotational.Sources.Position BoomPos(exact = true, useSupport = true)  annotation(
+          Placement(visible = true, transformation(origin = {-32, -10}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
+  Modelica.Blocks.Math.Gain BoomdegRad(k = -Modelica.Constants.pi/180)  annotation(
+          Placement(visible = true, transformation(origin = {-51, 7}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+  Modelica.Blocks.Math.Gain PedestaldegRad(k = -Modelica.Constants.pi/180) annotation(
+          Placement(visible = true, transformation(origin = {-51, -51}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
+  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiterBoom(Rising = BoomSpeed, initType = Modelica.Blocks.Types.Init.InitialState, strict = true, y_start = BoomInitialAngle)  annotation(
+          Placement(visible = true, transformation(origin = {-76, 6}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+  Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiterPedestal(Rising = PedestalSpeed, initType = Modelica.Blocks.Types.Init.InitialState, strict = true, y_start = PedestalInitialAngle)  annotation(
+          Placement(visible = true, transformation(origin = {-75, -49}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput BoomSetAngle "Angle of the boom from vertical Vs time" annotation(
+          Placement(visible = true, transformation(origin = {-120, 6}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-95, 59}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput PedestalSetAngle "Orientation of pedestal from X axis Vs time" annotation(
+          Placement(visible = true, transformation(origin = {-116, -50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-95, -61}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
+  ShipSIM.SubComponents.Cable cable(RotureStrenght = CableRotureStrenght, k = Cable_k)  annotation(
+          Placement(visible = true, transformation(origin = {44, 14}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput CableLenght "Cable lenght from boom extreme to frame_b Vs time" annotation(Placement(visible = true, transformation(origin = {108, 14}, extent = {{20, -20}, {-20, 20}}, rotation = 0), iconTransformation(origin = {103, 21}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(
+          Placement(visible = true, transformation(origin = {100, -14}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {100, -20}, extent = {{-16, -16}, {16, 16}}, rotation = 0)));
+      equation
+  connect(frame_a, revolute.frame_a) annotation(
+          Line(points = {{0, -100}, {0, -80}}));
+  connect(revolute.frame_b, Pedestal.frame_a) annotation(
+          Line(points = {{0, -60}, {0, -48}}, color = {95, 95, 95}));
+  connect(Pedestal.frame_b, revolute1.frame_a) annotation(
+          Line(points = {{0, -28}, {0, -20}}, color = {95, 95, 95}));
+  connect(revolute1.frame_b, Boom.frame_a) annotation(
+          Line(points = {{0, 0}, {0, 32}, {2, 32}}, color = {95, 95, 95}));
+  connect(revolute.axis, PedestalPos.support) annotation(
+          Line(points = {{-10, -70}, {-22, -70}}));
+  connect(PedestalPos.flange, revolute.support) annotation(
+          Line(points = {{-32, -80}, {-10, -80}, {-10, -76}}));
+  connect(BoomPos.support, revolute1.axis) annotation(
+          Line(points = {{-22, -10}, {-10, -10}}));
+  connect(BoomPos.flange, revolute1.support) annotation(
+          Line(points = {{-32, -20}, {-10, -20}, {-10, -16}}));
+  connect(PedestaldegRad.y, PedestalPos.phi_ref) annotation(
+          Line(points = {{-45.5, -51}, {-45.5, -58}, {-32, -58}}, color = {0, 0, 127}));
+  connect(BoomdegRad.y, BoomPos.phi_ref) annotation(
+          Line(points = {{-45.5, 7}, {-45.5, 2}, {-32, 2}}, color = {0, 0, 127}));
+  connect(slewRateLimiterBoom.y, BoomdegRad.u) annotation(
+          Line(points = {{-69, 6}, {-64.5, 6}, {-64.5, 7}, {-57, 7}}, color = {0, 0, 127}));
+  connect(slewRateLimiterPedestal.y, PedestaldegRad.u) annotation(
+          Line(points = {{-68, -48}, {-62, -48}, {-62, -51}, {-57, -51}}, color = {0, 0, 127}));
+  connect(PedestalSetAngle, slewRateLimiterPedestal.u) annotation(
+          Line(points = {{-116, -50}, {-100, -50}, {-100, -48}, {-84, -48}}, color = {0, 0, 127}));
+  connect(BoomSetAngle, slewRateLimiterBoom.u) annotation(
+          Line(points = {{-120, 6}, {-84, 6}}, color = {0, 0, 127}));
+  connect(cable.SetLenght, CableLenght) annotation(
+          Line(points = {{54, 14}, {108, 14}}, color = {0, 0, 127}));
+  connect(Boom.frame_b, cable.frame_a) annotation(
+          Line(points = {{22, 32}, {44, 32}, {44, 24}}, color = {95, 95, 95}));
+  connect(cable.frame_b, frame_b) annotation(
+          Line(points = {{44, 4}, {44, -14}, {100, -14}}));
+      
+      assert(BoomSetAngle>90,"!W0001 [Crane]: Boom angle cannot be greater than 90º deg!",level=AssertionLevel.warning);
+      annotation(
+          Diagram,
+  Icon(graphics = {Rectangle(origin = {0, -69}, extent = {{-10, 27}, {10, -27}}), Rectangle(origin = {0, -38}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-20, 4}, {20, -4}}), Rectangle(origin = {0, -29}, extent = {{-10, 5}, {10, -5}}), Polygon(origin = {25, 27}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-35, -51}, {31, 51}, {35, 49}, {-15, -51}, {-35, -51}}), Line(origin = {60, 22}, points = {{0, 54}, {0, -48}, {4, -48}, {4, -54}, {-4, -54}, {-4, -48}, {0, -48}})}),
+  Documentation(info = "<html><head></head><body><div>Crane model to be used in operation simulations.</div><div><br></div><div><u>Working Principle:</u></div><div><u><br></u></div><div>This crane model has two main movements:</div><div>- Rotation of the base among vertical axis (full -180º/+180º)</div><div>- Inclination of the boom from veritcal line (up to 90º)</div><div><br></div><div>In addition, a cable is modelled between the boom extreme to the frame B.</div><div>This crane is controllable in those three imputs.</div><div><br></div><div><u>Limitations</u>:</div><div><br></div><div>The inclination of the crane is limited to 90º from vertical.</div><div><br></div><div><u>References</u>:</div><div><br></div><div>N/A</div><p><u>Know issues</u>:</p><p>The cable has no damping, for this reason the weight can maintain a continuos oscillation movement among the equilibrium.</p><div><u>Further development</u>:</div><div><br></div><div>Introduce cable damping.</div><div><br></div></body></html>", revisions = "<html><head></head><body>Rev. 0.0 (14/10/2023) [B.Puente]: Initial release.</body></html>"));
+end Crane;
+    
+    
+    
+    
       model SimpleDieselEngine
         Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter annotation(
           Placement(visible = true, transformation(origin = {-126, 60}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
@@ -2505,7 +2667,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       annotation(
         Documentation(info = "<html><head></head><body><p>
   Data connector (surge, sway, heave, roll, pith, yaw, etc...)</p>
-  </body></html>", revisions = "<html><head></head><body><div><span style=\"font-size: 12px;\">Rev. 1.0 (05/04/2023): Duplicated in Output and Input</span></div><span style=\"font-size: 12px;\">Rev. 0.0 (14/02/2023): Initial release</span></body></html>"),
+  </body></html>", revisions = "<html><head></head><body><div><span style=\"font-size: 12px;\">Rev. 1.0 (05/04/2023): Duplicated in Output and Input (GitHub #3)</span></div><span style=\"font-size: 12px;\">Rev. 0.0 (14/02/2023): Initial release</span></body></html>"),
         Icon(graphics = {Rectangle(fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 80}, {100, -80}}), Polygon(origin = {-25, 35}, lineColor = {200, 200, 200}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-15, 10}, {-15, 30}, {-65, 0}, {-15, -30}, {-15, -10}, {65, -10}, {65, 10}, {37, 10}, {-15, 10}}), Polygon(origin = {25, -35}, rotation = 180, fillPattern = FillPattern.Solid, points = {{-15, 10}, {-15, 30}, {-65, 0}, {-15, -30}, {-15, -10}, {65, -10}, {65, 10}, {37, 10}, {-15, 10}})}, coordinateSystem(grid = {1, 1}, extent = {{-100, -80}, {100, 80}})),
         Diagram(coordinateSystem(grid = {1, 1}, extent = {{-100, -80}, {100, 80}})));
     end ShipDataOutput;
@@ -2520,7 +2682,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       annotation(
         Documentation(info = "<html><head></head><body><p>
   Data connector (surge, sway, heave, roll, pith, yaw, etc...)</p>
-  </body></html>", revisions = "<html><head></head><body><div><span style=\"font-size: 12px;\">Rev. 1.0 (05/04/2023): Duplicated in Output and Input</span></div><span style=\"font-size: 12px;\">Rev. 0.0 (14/02/2023): Initial release</span></body></html>"),
+  </body></html>", revisions = "<html><head></head><body><div><span style=\"font-size: 12px;\">Rev. 1.0 (05/04/2023): Duplicated in Output and Input&nbsp;</span><span style=\"font-size: 12px;\">(GitHub #3)<br></span><span style=\"font-size: 12px;\">Rev. 0.0 (14/02/2023): Initial release</span></div></body></html>"),
         Icon(graphics = {Rectangle(fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 80}, {100, -80}}), Polygon(origin = {-25, 35}, fillPattern = FillPattern.Solid, points = {{-15, 10}, {-15, 30}, {-65, 0}, {-15, -30}, {-15, -10}, {65, -10}, {65, 10}, {37, 10}, {-15, 10}}), Polygon(origin = {25, -35}, rotation = 180, lineColor = {200, 200, 200}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-15, 10}, {-15, 30}, {-65, 0}, {-15, -30}, {-15, -10}, {65, -10}, {65, 10}, {37, 10}, {-15, 10}})}, coordinateSystem(grid = {1, 1}, extent = {{-100, -80}, {100, 80}})),
         Diagram(coordinateSystem(grid = {1, 1}, extent = {{-100, -80}, {100, 80}})));
     end ShipDataInput;
@@ -4170,7 +4332,11 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       if Beta <= 35 then
         CN := Cl*Modelica.Math.cos(Modelica.Constants.pi*Beta/180) + Cd*Modelica.Math.sin(Modelica.Constants.pi*Beta/180);
         if CN == 0 then
-          Cl := 0;
+          CLT1 := 0;
+          CDT1 := 0;
+          CNc := CN/(1 + 2.25/Asp);
+          CNLc := 0;
+          CNDc := 0;
         else
           CLT1 := Cl*Modelica.Math.cos(Modelica.Constants.pi*Beta/180)/CN;
           CDT1 := Cd*Modelica.Math.sin(Modelica.Constants.pi*Beta/180)/CN;
@@ -4196,17 +4362,70 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
   package SubComponents "Library SubComponents"
     extends Modelica.Icons.InternalPackage;
 
+  
+    model Cable "Simple cable model"
+  
+    parameter Modelica.SIunits.TranslationalSpringConstant k "Elasticity modulus";
+    parameter Modelica.SIunits.Force RotureStrenght "Break force";
+    
+    Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation(
+        Placement(visible = true,transformation(origin = {0, 98}, extent = {{-16, -16}, {16, 16}}, rotation = -90), iconTransformation(origin = {0, 98}, extent = {{-16, -16}, {16, 16}}, rotation = -90)));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(
+        Placement(visible = true,transformation(origin = {0, -98}, extent = {{-16, -16}, {16, 16}}, rotation = -90), iconTransformation(origin = {0, -98}, extent = {{-16, -16}, {16, 16}}, rotation = -90)));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force_a(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.world)  annotation(
+        Placement(transformation(origin = {0, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force_b(animation = true, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.world)  annotation(
+        Placement(transformation(origin = {0, -58}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+    
+    Modelica.SIunits.Length Lenght "Actual distance between connectors";
+    Modelica.SIunits.Force Force "Force impossed by cable due to elongation";
+    Real Direction[3] "Force direction";
+    Boolean IsBreak(start=false);
+  Modelica.Blocks.Interfaces.RealInput SetLenght "Unstretched length" annotation(
+        Placement(visible = true, transformation(origin = {-98, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-96, 8.88178e-16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    
+    equation
+      
+    connect(frame_a, force_a.frame_b) annotation(
+        Line(points = {{0, 98}, {0, 76}}));
+    connect(force_b.frame_b, frame_b) annotation(
+        Line(points = {{0, -68}, {0, -98}}, color = {95, 95, 95}));
+        
+    Lenght=Modelica.Math.Vectors.length({frame_b.r_0[1]-frame_a.r_0[1],frame_b.r_0[2]-frame_a.r_0[2],frame_b.r_0[3]-frame_a.r_0[3]}) "Current distance between extreme connections";
+    Direction=Modelica.Math.Vectors.normalize({frame_b.r_0[1]-frame_a.r_0[1],frame_b.r_0[2]-frame_a.r_0[2],frame_b.r_0[3]-frame_a.r_0[3]}) "Direction vector that joint extreme connectors";
+    
+    when ((k*(Lenght-SetLenght))>RotureStrenght) then //Verifies if the cable is broken
+       IsBreak=true;
+    end when;
+    
+    if IsBreak then
+     Force=0; //If cable is break, then force =0
+    else
+      if Lenght<SetLenght then //Cable does not provide forces
+        Force=0;
+      else
+        Force=k*(Lenght-SetLenght) "Cable force";
+      end if;
+end if;
+// Translate cable force to connectors
+    force_a.force=Force*Direction;
+    force_b.force=-Force*Direction;
+    
+    annotation(
+        Diagram,
+  Icon(graphics = {Line(points = {{0, 98}, {60, 60}, {-60, -60}, {0, -98}}, smooth = Smooth.Bezier), Text(origin = {-40, 63}, extent = {{-58, 5}, {58, -5}}, textString = "L= %OriginalLenght", horizontalAlignment = TextAlignment.Left), Text(origin = {50, -58}, extent = {{-72, 6}, {72, -6}}, textString = "k = %k", horizontalAlignment = TextAlignment.Left)}),
+  Documentation(revisions = "<html><head></head><body>Rev. 0.0 (14/10/2023) [B.Puente]: Initial release.</body></html>", info = "<html><head></head><body><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Simple cable model.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Working Principle:</u></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">There are modelled two situations:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Cable working (initial situation)</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Cable broken, after reach the roture strenght value</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">When the cable is working, if the distance between the connections is less than the lenght indicated on \"SetLenght\" connection, then the forces are zero.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">If the disctance is greater than the lenght, then a elastic force is applied according their elongation.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Limitations</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Cable damping is not modelled.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>References</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">N/A</div><p style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Know issues</u>:</p><p style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Unstrechted lenght of the cable need to be used in the force calculation!</p><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Further development</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Correct force calculation.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Introduce cable damping.</div></body></html>"));
+end Cable;
+    
+  
     model VariableTranslation "Derivative work of Translation component of MSL"
       import Modelica.Mechanics.MultiBody.Types;
-      import Modelica.SIunits.Conversions.to_unit1;
       Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a "Coordinate system fixed to the component with one cut-force and cut-torque" annotation(
         Placement(transformation(extent = {{-116, -16}, {-84, 16}})));
       Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b "Coordinate system fixed to the component with one cut-force and cut-torque" annotation(
         Placement(transformation(extent = {{84, -16}, {116, 16}})));
       Modelica.Blocks.Interfaces.RealInput r_vect[3] annotation(
         Placement(visible = true, transformation(origin = {-4, -106}, extent = {{-20, -20}, {20, 20}}, rotation = 90), iconTransformation(origin = {-2, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 90)));
-    protected
-      outer Modelica.Mechanics.MultiBody.World world;
     equation
       Connections.branch(frame_a.R, frame_b.R);
       assert(cardinality(frame_a) > 0 or cardinality(frame_b) > 0, "Neither connector frame_a nor frame_b of FixedTranslation object is connected");
@@ -4506,8 +4725,8 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
     preferredView = "info",
     version = "1.4.1",
     versionBuild = 0,
-    versionDate = "2023-xx-xx",
-    dateModified = "2023-xx-xx",
+    versionDate = "2023-10-14",
+    dateModified = "2023-10-14",
     revisionId = "$Format:%h %ci$",
     Icon(graphics = {Text(origin = {33, -54}, textColor = {80, 80, 80}, extent = {{-67, 54}, {67, -54}}, textString = "SS", fontName = "Franklin Gothic Demi", textStyle = {TextStyle.Bold}), Line(origin = {0, 20}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-30, 40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-70, 10}, {64, 10}, {50, -10}, {-70, -10}, {-70, 10}}), Line(origin = {10, 15}, points = {{10, 15}, {-11, -15}}), Rectangle(origin = {-16, 65}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-5, 15}, {0, -15}}), Line(origin = {0, 10}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-25, 10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-9.5, 6}, {-9.5, -6}, {9.5, -6}, {9.5, 6}, {3.5, -2}, {1.5, -2}, {1.5, 5}, {-1.5, 5}, {-1.5, -2}, {-3.5, -2}, {-9.5, 6}})}, coordinateSystem(grid = {1, 1})),
     uses(Modelica(version = "3.2.3")),
