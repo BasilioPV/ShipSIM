@@ -30,7 +30,7 @@ package ShipSIM "Ship simulation library"
       extends Modelica.Icons.ReleaseNotes;
       annotation(
         DocumentationClass = true,
-        Documentation(info = "<html><head></head><body><div><b>Version 1.4.1 (14-10-2023):</b></div><div>Added cable and crane model</div><div>GitHub issues #4 solved</div><div>This release correspond to the course \"Inicialización a la simulación con Modelica\" of the authors of this library.</div><div><br></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
+        Documentation(info = "<html><head></head><body><div><b>Version 1.5.0 (22-10-2023):</b></div><div>Added Antiheeling system</div><div><b><br></b></div><div><b>Version 1.4.1 (14-10-2023):</b></div><div>Added cable and crane model</div><div>GitHub issues #4 solved</div><div>This release correspond to the course \"Inicialización a la simulación con Modelica\" of the authors of this library.</div><div><br></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
     end ReleaseNotes;
 
     package References "References"
@@ -131,8 +131,22 @@ MSc Thesis 2022<br></td>
     <a href=\"https://www.osti.gov/servlets/purl/6548367\">https://doi.org/10.2172/6548367</a></td>
     </td>
     </tr>
+    <tr>
+    <td>[IS2008]</td>
+    <td>International Marine Organization,
+    \"International Code on Intact Stability 2008\",
+    IMO 2020
+    </td>
+    </tr>
+    <tr>
+    <td>[NCarnerero]</td>
+    <td>Noé Carnerero Durán,
+    \"Simulación del comportamiento de tanques anti-escora a partir de herramientas de modelado acausal\",
+    Proyecto Fin de Carrera, Grado en Arquitectura Naval, July 2023, 
+    <a href=\"https://oa.upm.es/75126/\">https://oa.upm.es/75126/</a></td>
+    </td>
+    </tr>
 </tbody></table>
-
 </body></html>"));
     end References;
 
@@ -151,7 +165,7 @@ MSc Thesis 2022<br></td>
     <h4>Contributors to this library:</h4><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span><b>Individuals (in chronological order):</b></div>
     
     <ul>
-    <li>Antonio Corts de la Peña (Rudder component)</li>
+    <li>Antonio Corts de la Peña (Rudder component)</li><li>Noé Carnerero Durán (Anti-heeling system)</li>
     </ul>
     
     <h4><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>Institutions:</h4><div><ul><li><a href=\"http://www.tphispania.com/\">Techno Pro Hispania S.L.</a></li></ul></div><h4>Acknowledgements:</h4>
@@ -588,10 +602,148 @@ MSc Thesis 2022<br></td>
           Line(points = {{22, -20}, {33, -20}, {33, -13}, {59, -13}, {59, -20}, {56, -20}}));
         annotation(
           experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
-          Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulstion system model</div><div>- Wingsails</div><div><br></div></body></html>"),
+          Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulstion system model</div><div>- Wingsails</div><div>- Antiheeling tank system</div><div><br></div></body></html>"),
           Diagram(graphics = {Rectangle(origin = {33, -34}, lineColor = {0, 255, 0}, extent = {{-35, 39}, {35, -39}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-46, -40}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-27, -66}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-28, 7}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {-39, -4}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
           Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
       end FourWingSails;
+      
+      model FourWingSailsAH
+      extends Modelica.Icons.Example;
+      ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}, ini_Vel = {7, 0, 0}) annotation(
+        Placement(visible = true, transformation(origin = {10, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY annotation(
+        Placement(visible = true, transformation(origin = {10, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Sources.RealExpression Water_Depth annotation(
+        Placement(visible = true, transformation(origin = {37, -7}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
+        Placement(visible = true, transformation(origin = {-25, 13}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Placement(visible = true, transformation(origin = {-26, 0}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
+        Placement(visible = true, transformation(origin = {-24, -24}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+      inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 20000, defaultNm_to_m = 200000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
+        Placement(visible = true, transformation(origin = {-83, 53}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      ShipSIM.Components.Propulsion.Rudder rudder(C = 2.5, InitialRudderAngle = 0, s = 4) annotation(
+        Placement(visible = true, transformation(origin = {-74, -28}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_pos(animation = false, r = {-2, 0, 4.5}) annotation(
+        Placement(visible = true, transformation(origin = {-31, -13}, extent = {{5, 5}, {-5, -5}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Sources.Speed speed(phi(displayUnit = "rad")) annotation(
+        Placement(visible = true, transformation(origin = {-25, -45}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
+      Modelica.Blocks.Sources.RealExpression Rudder_order(y = 0) annotation(
+        Placement(visible = true, transformation(origin = {-101.5, -19.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}}, rotation = 0)));
+      inner ShipSIM.Components.Environment environment(WindDirection = 0, WindSpeed = 15) annotation(
+        Placement(visible = true, transformation(origin = {-105.5, 54.5}, extent = {{-11.5, -11.5}, {11.5, 11.5}}, rotation = 0)));
+      ShipSIM.Components.Ship.ShipWind shipWind annotation(
+        Placement(visible = true, transformation(origin = {10, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.Propulsion.Propeller4Q propeller4Q(PropModel = ShipSIM.Types.Propeller4Q.B4_100_1) annotation(
+        Placement(visible = true, transformation(origin = {-56, -28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Sources.RealExpression ShaftSpeed(y = 100 * (2 * 3.141592 / 60)) annotation(
+        Placement(visible = true, transformation(origin = {-63, -59}, extent = {{-22, -8}, {22, 8}}, rotation = 0)));
+      parameter ShipSIM.Records.WingProfile.NACA0015 wingData annotation(
+        Placement(visible = true, transformation(origin = {-4.5, 63.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
+      ShipSIM.Components.AlternativePropulsion.WingSail wingSail2(InitialSailAngle = 40, wingData = wingData) annotation(
+        Placement(visible = true, transformation(origin = {46, 37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos3(animation = false, r = {60, 0, 18}) annotation(
+        Placement(visible = true, transformation(origin = {62, 22}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos4(animation = false, r = {80, 0, 18}) annotation(
+        Placement(visible = true, transformation(origin = {92, 22}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      ShipSIM.Components.AlternativePropulsion.WingSail wingSail1(InitialSailAngle = 40, wingData = wingData) annotation(
+        Placement(visible = true, transformation(origin = {16, 37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.AlternativePropulsion.WingSail wingSail4(InitialSailAngle = 40, wingData = wingData) annotation(
+        Placement(visible = true, transformation(origin = {106, 37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos2(animation = false, r = {40, 0, 18}) annotation(
+        Placement(visible = true, transformation(origin = {32, 22}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos1(animation = false, r = {20, 0, 18}) annotation(
+        Placement(visible = true, transformation(origin = {2, 22}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      Modelica.Blocks.Sources.RealExpression realExpression(y = 40) annotation(
+        Placement(visible = true, transformation(origin = {-23, 52}, extent = {{-5, -6}, {5, 6}}, rotation = 0)));
+      ShipSIM.Components.AlternativePropulsion.WingSail wingSail3(InitialSailAngle = 40, wingData = wingData) annotation(
+        Placement(visible = true, transformation(origin = {76, 37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.Ship.HidrodynamicZRP hidrodynamicZRP(AnimationForces = false, P_d = -727379968, R_d = 1000000000, Z_d = 1000000000) annotation(
+        Placement(visible = true, transformation(origin = {44, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.AntiHeelingSystem.AntiHeeling antiheeling(B = shipModelTh.B, V_tk = 100, b = 4) annotation(
+        Placement(visible = true, transformation(origin = {107, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Sources.RealExpression Heel_Signal(y = shipModelTh.Heel * 180 / Modelica.Constants.pi) annotation(
+        Placement(visible = true, transformation(origin = {78.5, -13.5}, extent = {{-10.5, -8.5}, {10.5, 8.5}}, rotation = 0)));
+    ShipSIM.Components.AntiHeelingSystem.Tank tk_br(CoG_trans = -8, V = 100)  annotation(
+        Placement(visible = true, transformation(origin = {75, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    ShipSIM.Components.AntiHeelingSystem.Tank tk_er(CoG_trans = 8, V = 100)  annotation(
+        Placement(visible = true, transformation(origin = {94, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    equation
+    connect(Water_Depth.y, shipModelTh.Water_depth) annotation(
+        Line(points = {{31.5, -7}, {28, -7}, {28, -12}, {20, -12}}, color = {0, 0, 127}));
+    connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{0, -36}, {-6, -36}, {-6, -12}, {0, -12}}, color = {95, 95, 95}));
+    connect(ShipAxis.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{-20, 13}, {-6, 13}, {-6, -12}, {0, -12}}, color = {95, 95, 95}));
+    connect(fixedShape.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{-20, 0}, {-6, 0}, {-6, -12}, {0, -12}}, color = {95, 95, 95}));
+    connect(fixedTranslation.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{-18, -24}, {-6, -24}, {-6, -12}, {0, -12}}, color = {95, 95, 95}));
+    connect(Rudder_pos.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{-26, -13}, {-12, -13}, {-12, -12}, {0, -12}}, color = {95, 95, 95}));
+    connect(Rudder_pos.frame_b, rudder.frame_a) annotation(
+        Line(points = {{-36, -13}, {-72, -13}, {-72, -21}}, color = {95, 95, 95}));
+    connect(shipModelTh.shipData, hidrodynamicXYY.shipData) annotation(
+        Line(points = {{20.4, -18.6}, {26.4, -18.6}, {26.4, -28.6}, {20.4, -28.6}}));
+    connect(shipModelTh.frame_a, shipWind.frame_a) annotation(
+        Line(points = {{0, -12}, {-2, -12}, {-2, -60}, {0, -60}}, color = {95, 95, 95}));
+    connect(fixedTranslation.frame_b, propeller4Q.frame_a) annotation(
+        Line(points = {{-30, -24}, {-46, -24}}, color = {95, 95, 95}));
+    connect(propeller4Q.flange, speed.flange) annotation(
+        Line(points = {{-46, -28}, {-42, -28}, {-42, -45}, {-32, -45}}));
+    connect(propeller4Q.Propeller_flow_diameter, rudder.Propeller_flow_diameter) annotation(
+        Line(points = {{-66, -24}, {-63.55, -24}, {-63.55, -25}, {-67.1, -25}}, color = {0, 0, 127}));
+    connect(propeller4Q.Propeller_speed, rudder.Propeller_speed) annotation(
+        Line(points = {{-66, -28}, {-67.1, -28}}, color = {0, 0, 127}));
+      connect(Rudder_order.y, rudder.Rudder_Order) annotation(
+        Line(points = {{-92, -19.5}, {-81.15, -19.5}, {-81.15, -21.5}}, color = {0, 0, 127}));
+    connect(ShaftSpeed.y, speed.w_ref) annotation(
+        Line(points = {{-38.8, -59}, {-10.8, -59}, {-10.8, -45}, {-16.8, -45}}, color = {0, 0, 127}));
+    connect(realExpression.y, wingSail4.Sail_Order) annotation(
+        Line(points = {{-17.5, 52}, {89.5, 52}, {89.5, 31}, {96.5, 31}}, color = {0, 0, 127}));
+    connect(realExpression.y, wingSail2.Sail_Order) annotation(
+        Line(points = {{-17.5, 52}, {30.5, 52}, {30.5, 31}, {36.5, 31}}, color = {0, 0, 127}));
+    connect(realExpression.y, wingSail3.Sail_Order) annotation(
+        Line(points = {{-17.5, 52}, {59.5, 52}, {59.5, 31}, {66.5, 31}}, color = {0, 0, 127}));
+    connect(realExpression.y, wingSail1.Sail_Order) annotation(
+        Line(points = {{-17.5, 52}, {-12.5, 52}, {-12.5, 31}, {6.5, 31}}, color = {0, 0, 127}));
+    connect(wingSail1.frame_a, SailPos1.frame_b) annotation(
+        Line(points = {{16, 27}, {16, 22}, {8, 22}}, color = {95, 95, 95}));
+    connect(wingSail2.frame_a, SailPos2.frame_b) annotation(
+        Line(points = {{46, 27}, {45, 27}, {45, 22}, {38, 22}}));
+    connect(wingSail3.frame_a, SailPos3.frame_b) annotation(
+        Line(points = {{76, 27}, {76, 22}, {68, 22}}, color = {95, 95, 95}));
+    connect(wingSail4.frame_a, SailPos4.frame_b) annotation(
+        Line(points = {{106, 27}, {106, 22}, {98, 22}}, color = {95, 95, 95}));
+    connect(shipModelTh.frame_a, SailPos1.frame_a) annotation(
+        Line(points = {{0, -12}, {-6, -12}, {-6, 22}, {-4, 22}}, color = {95, 95, 95}));
+    connect(shipModelTh.frame_a, SailPos2.frame_a) annotation(
+        Line(points = {{0, -12}, {-6, -12}, {-6, 17}, {21, 17}, {21, 22}, {26, 22}}, color = {95, 95, 95}));
+    connect(shipModelTh.frame_a, SailPos3.frame_a) annotation(
+        Line(points = {{0, -12}, {-6, -12}, {-6, 15}, {50, 15}, {50, 22}, {56, 22}}, color = {95, 95, 95}));
+    connect(shipModelTh.frame_a, SailPos4.frame_a) annotation(
+        Line(points = {{0, -12}, {-6, -12}, {-6, 11}, {80, 11}, {80, 22}, {86, 22}}, color = {95, 95, 95}));
+    connect(shipModelTh.frame_a, hidrodynamicZRP.frame_a) annotation(
+        Line(points = {{0, -12}, {-2, -12}, {-2, -24}, {29, -24}, {29, -26}, {34, -26}}, color = {95, 95, 95}));
+    connect(shipModelTh.shipData, hidrodynamicZRP.shipData) annotation(
+        Line(points = {{20.4, -18.6}, {31.4, -18.6}, {31.4, -11.6}, {57.4, -11.6}, {57.4, -18.6}, {54.4, -18.6}}));
+    connect(antiheeling.frame_a, shipModelTh.frame_a) annotation(
+        Line(points = {{107.2, -4.2}, {107.2, 6.8}, {0.2, 6.8}, {0.2, -12.2}}, color = {95, 95, 95}));
+    connect(Heel_Signal.y, antiheeling.ship_heel) annotation(
+        Line(points = {{90, -13.5}, {97, -13.5}, {97, -14}}, color = {0, 0, 127}));
+    connect(antiheeling.ah_output, tk_br.ah_input) annotation(
+        Line(points = {{117.2, -14}, {119.2, -14}, {119.2, -55}, {75.2, -55}, {75.2, -46}}, color = {0, 0, 127}, thickness = 0.5));
+    connect(antiheeling.ah_output, tk_er.ah_input) annotation(
+        Line(points = {{117.2, -14}, {119.2, -14}, {119.2, -55}, {94.2, -55}, {94.2, -46}}, color = {0, 0, 127}, thickness = 0.5));
+      annotation(
+        experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
+        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulstion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 10º to -10º makes the logic of a zig-zag test</div></body></html>"),
+        Diagram(graphics = {Rectangle(origin = {28, -33}, lineColor = {0, 255, 0}, extent = {{-32, 39}, {32, -39}}), Text(origin = {33, -49}, lineColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-48, -39}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {33, -49}, lineColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-29, -65}, lineColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-30, 8}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {-41, -3}, lineColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {92, -33}, lineColor = {170, 85, 0}, extent = {{-29, 39}, {29, -39}}), Text(origin = {80.5, -66}, lineColor = {170, 85, 0}, extent = {{-10.5, 3}, {10.5, -3}}, textString = "Anti-Heeling")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
+        Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
+    end FourWingSailsAH;
+      
+      
     end Sailing;
 
     package Electrical
@@ -2650,6 +2802,162 @@ end Crane;
       annotation(
         Icon(graphics = {Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}}), Line(origin = {6.2593, 48}, points = {{53.7407, -58}, {53.7407, -93}, {-66.2593, -93}, {-66.2593, -58}}), Line(origin = {1, 50}, points = {{-61, -45}, {-61, -10}, {-26, -10}}), Rectangle(origin = {20.31, 82.86}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-45.31, -57.86}, {4.69, -27.86}}), Line(origin = {7, 50}, points = {{18, -10}, {53, -10}, {53, -45}}), Line(origin = {-2, 55}, points = {{-83, -50}, {-33, -50}}), Line(origin = {8, 48}, points = {{32, -58}, {72, -58}}), Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}})}));
     end Electrical;
+    
+      package AntiHeelingSystem
+      
+  
+      model AntiHeeling "Ship Antiheeling System"
+        parameter Modelica.SIunits.Length B = 24.3 "Ship Design Beam" annotation(
+          Dialog(group = "Tanks Properties"));
+        parameter Modelica.SIunits.Length b = 6.35 "Antiheeling Tanks Beam" annotation(
+          Dialog(group = "Tanks Properties"));
+        parameter Real V_tk(unit = "m^3") = 211.47 "Volume of each Anti-Heeling Tank" annotation(
+          Dialog(group = "Tanks Properties"));
+        parameter Modelica.SIunits.Density rho = 1.025 "Antiheeling Tanks Liguid Density" annotation(
+          Dialog(group = "Tanks Properties"));
+        parameter Real Q(unit = "m^3/h") = 200 annotation(
+          Dialog(group = "Pump Properties"));
+        parameter Real max_angle(unit="deg") = 0.1 "Maximum Admissible Heel" annotation (Dialog( group = "On/Off Controller Properties"));  
+        Real v_max(unit = "m^3") "Maximum Volume to overflow through tanks";
+        Modelica.Blocks.Interfaces.RealInput ship_heel "Ship model heel" annotation(
+          Placement(visible = true, transformation(origin = {-106, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 0}, extent = {{-12, -12}, {12, 12}}, rotation = 0)));
+        Modelica.Blocks.Interfaces.RealOutput ah_output[2] annotation(
+          Placement(visible = true, transformation(origin = {102, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 0}, extent = {{-12, -12}, {12, 12}}, rotation = 0)));
+        Real M_adr(unit = "t*m") "Righting moment from A/H system";
+        Real pump_flow(unit = "m^3/h") "Flow rate from pump";
+        Real comp_rate(unit="t*m/min") "Compensation rate of anti-heeling system moment";
+        Modelica.Blocks.Logical.TriggeredTrapezoid triggeredTrapezoid(amplitude = Q, offset = 0.001, rising = 10) annotation(
+          Placement(visible = true, transformation(origin = {60, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Logical.Not not1 annotation(
+          Placement(visible = true, transformation(origin = {26, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Logical.OnOffController onOffController(bandwidth = max_angle)  annotation(
+          Placement(visible = true, transformation(origin = {-14, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Sources.RealExpression realExpression(y = max_angle / 2 + 0.001) annotation(
+          Placement(visible = true, transformation(origin = {-70, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Blocks.Sources.RealExpression realExpression1(y = abs(ship_heel)) annotation(
+          Placement(visible = true, transformation(origin = {-72, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation(
+          Placement(visible = true, transformation(origin = {2, 98}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {2, 98}, extent = {{-16, -16}, {16, 16}}, rotation = -90)));
+  Modelica.Mechanics.MultiBody.Forces.WorldTorque torque(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)  annotation(
+          Placement(visible = true, transformation(origin = {-16, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //  Real indicator_pendiente;
+        //  Real der_m_esc;
+        Real M_tks(unit = "t*m") "Moment produced by tanks";
+        Real M_max(unit = "t*m") "Max. Moment to compensate between tanks";
+      equation
+  //  der_m_esc = der(ship_data[1]);
+        v_max = V_tk * 0.40;
+  //  if der_m_esc == 0 then
+  //    indicator_pendiente = 1;
+  //  elseif ship_data[1] >= 0 and der_m_esc > 0 then
+  //    indicator_pendiente = 1;
+  //  elseif ship_data[1] <= 0 and der_m_esc < 0 then
+  //    indicator_pendiente = 1;
+  //  else
+  //    indicator_pendiente = -1;
+  //  end if;
+        M_max = rho * v_max * (B - b);
+        
+        der(M_tks) = sign(ship_heel) * 1 * pump_flow / 3600 * rho * (B - b);
+          comp_rate = Q * (B - b) * rho /60;
+       
+        if abs(M_tks) > M_max then
+          M_adr = M_max*sign(ship_heel);
+        else
+          M_adr = M_tks;
+        end if;
+        ah_output = {ship_heel, pump_flow};
+        if time < 500 then
+      pump_flow = 0;
+      else
+      pump_flow = triggeredTrapezoid.y;
+      end if;
+  // Momento
+        torque.torque = {-M_adr * Modelica.Constants.g_n * 1000, 0, 0};
+        
+        connect(not1.y, triggeredTrapezoid.u) annotation(
+          Line(points = {{37, -34}, {48, -34}}, color = {255, 0, 255}));
+        connect(onOffController.y, not1.u) annotation(
+          Line(points = {{-3, -34}, {13, -34}}, color = {255, 0, 255}));
+        connect(realExpression.y, onOffController.reference) annotation(
+          Line(points = {{-59, -16}, {-43, -16}, {-43, -28}, {-27, -28}}, color = {0, 0, 127}));
+        connect(realExpression1.y, onOffController.u) annotation(
+          Line(points = {{-61, -44}, {-27, -44}, {-27, -40}}, color = {0, 0, 127}));
+  connect(torque.frame_b, frame_a) annotation(
+          Line(points = {{-6, 60}, {2, 60}, {2, 98}}, color = {95, 95, 95}));
+      initial equation
+        M_tks = 0;
+        annotation(
+          uses(Modelica(version = "4.0.0")),
+          Icon(graphics = {Line(origin = {0.0529281, 0.240565}, points = {{-60, 60}, {-60, -40}, {-40, -60}, {40, -60}, {60, -40}, {60, 60}, {-60, 60}}), Line(origin = {-49.9471, 10.5843}, points = {{-10, -50}, {10, -50}, {10, 50}}), Line(origin = {50.0529, 10.2406}, points = {{-10, 50}, {-10, -50}, {10, -50}}), Rectangle(origin = {-50, -5}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-10, -35}, {10, 35}}), Rectangle(origin = {50, -20}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-10, -20}, {10, 20}}), Rectangle(origin = {0, -53}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-40, 3}, {40, -3}}), Polygon(origin = {-50, -50}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, points = {{-10, 10}, {10, -10}, {10, 10}, {10, 10}, {-10, 10}}), Line(origin = {-50, -50}, points = {{-10, 10}, {10, -10}}), Polygon(origin = {50, -50}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, points = {{-10, 10}, {10, 10}, {-10, -10}, {-10, 10}}), Line(origin = {50, -50}, points = {{-10, -10}, {10, 10}}), Line(origin = {-40, -50}, points = {{0, 110}, {0, -10}}), Line(origin = {39.925, -49.4777}, points = {{0, 110}, {0, -10}})}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
+  Documentation(info = "<html><head></head><body><!--StartFragment-->This anti-heeling model works by the action of a modified On/Off controller monitoring the ship's heel angle.<div><br></div><div>If the ship is been acted by a heeling moment which provides a heel angle greater than the maximum set angle, then the controller will start the anti-heeling system to provoke a compensing moment to return the ship to the 0 degrees of heel.</div><div><br></div><div>The model has parametrized the tanks properties and the pump rate flow.</div><div><br></div><div><div class=\"htmlDoc\"><div style=\"font-family: 'MS Shell Dlg 2';\"><u>Limitations:</u></div><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div><div style=\"font-family: 'MS Shell Dlg 2';\">Only modellized the effect of the anti-heeling system on the ship stabillity.</div><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div><div><font face=\"MS Shell Dlg 2\">[IS2008]<span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>International Marine Organization, \"International Code on Intact Stability 2008\", IMO 2020</font></div><div><font face=\"MS Shell Dlg 2\">[NCarnerero]<span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>Noé Carnerero Durán, \"Simulación del comportamiento de tanques anti-escora a partir de herramientas de modelado acausal\", Proyecto Fin de Carrera, Grado en Arquitectura Naval, July 2023, https://oa.upm.es/75126/</font></div></div><div><br></div><div style=\"font-family: -webkit-standard;\"><br></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\">For quick changes on the heel angle sign, the controller won't detect the change on the water flow until the heel angle changes of sign, these shuold be corrected by the apply of an Integrer controller in the system.</span></div><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><u>Further development:</u></div></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><u><br></u></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\">Optimizing the controlling system with an Integrer part.</div><!--EndFragment--></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0 [NCarnerero] (22/10/2023): Initial release</span></body></html>"));
+      end AntiHeeling;
+      
+      model Tank "Tank model for antiheeling system"
+      parameter Modelica.SIunits.Length CoG_trans = 8.77 "Trasversal Position of CoG tank";
+      parameter Real V(unit = "m^3") = 211.47 "Volume of each Anti-Heeling Tank";
+      parameter Modelica.SIunits.Length H = 5 "Antihheling Tanks Height";
+      parameter Real rho(unit = "t/m^3") = 1.025"Antiheeling Tanks Liguid Density";
+      Real Q(unit = "m^3/h") "Pump flow rate";
+      Real tank_pressure(unit = "bar")"Tank Pressure at lowest point";
+      Real volume(unit = "m^3")"Tank Volume";
+      Real fill_level(unit = "%")"Tank fill percentage";
+      Real initial_volume(unit = "m^3") "Initial volume in A/H tank";
+      Modelica.Blocks.Interfaces.RealInput ah_input[2] annotation(
+        Placement(visible = true, transformation(origin = {0, 16}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, -82}, extent = {{-12, -12}, {12, 12}}, rotation = -90)));
+      Real M_input(unit = "t*m") "Heeling Moment external to ship";
+    protected
+      Real indi_pos "-1 -> board +1 -> starboard";
+      Real indi_moment;
+      Real inter_volume;
+      Real der_m_esc;
+    //      Real indicator_pendiente;
+    equation
+      ah_input[1] = M_input;
+      ah_input[2] = Q;
+      der_m_esc = der(M_input);
+      initial_volume = 0.45 * V;
+  //if der_m_esc == 0 then
+  //  indicator_pendiente = 1;
+  //elseif M_input >= 0 and der_m_esc > 0 then
+  //  indicator_pendiente = 1;
+  //elseif M_input <= 0 and der_m_esc < 0 then
+  //  indicator_pendiente = 1;
+  //else
+  //  indicator_pendiente = -1;
+  //end if;
+      if M_input > 0 then
+        indi_moment = 1;
+      else
+        indi_moment = -1;
+      end if;
+      if CoG_trans < 0 then
+        indi_pos = -1;
+      else
+        indi_pos = 1;
+      end if;
+      der(inter_volume) = -sign(indi_pos) * sign(M_input) * Q / 3600;
+      if inter_volume > 0.85 * V then
+        volume = 0.85 * V;
+      elseif inter_volume < 0.05 * V then
+        volume = 0.05 * V;
+      else
+        volume = inter_volume;
+      end if;
+      fill_level = volume / V * 100;
+      tank_pressure = volume / V * H * rho * 9.81 / 100;
+    initial equation
+      inter_volume = initial_volume;
+      annotation(
+        Icon(graphics = {Rectangle(extent = {{-60, 80}, {60, -80}}), Line(origin = {0, 0.88}, points = {{-60, -1.85633}, {-40, 4.14367}, {-20, -3.85633}, {0, 2.14367}, {20, -3.85633}, {40, 2.14367}, {60, -1.85633}, {60, -5.85633}}, color = {0, 0, 255}), Text(origin = {1, 43}, extent = {{-35, 17}, {35, -17}}, textString = "%name")}),
+          Documentation(info = "<html><head></head><body><!--StartFragment-->This is a simple tank model used as an extension of the anti-heeling model.<div><br></div><div>By introducing it's transversal location and height, and connecting it with the anti-heeling system model the user con visualize the real volume and fill level of the tank during the functioning of the anti-heeling system.</div><div><br></div><div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><div class=\"htmlDoc\"><div><u>Limitations:</u></div><div><br></div><div>Tank model symplified as a simple prismatic geometry, so the fill of each tank is linear.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div><div><font face=\"MS Shell Dlg 2\">[IS2008]<span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>International Marine Organization, \"International Code on Intact Stability 2008\", IMO 2020</font></div><div><font face=\"MS Shell Dlg 2\">[NCarnerero]<span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>Noé Carnerero Durán, \"Simulación del comportamiento de tanques anti-escora a partir de herramientas de modelado acausal\", Proyecto Fin de Carrera, Grado en Arquitectura Naval, July 2023, https://oa.upm.es/75126/</font></div></div><div style=\"font-family: -webkit-standard;\"><br></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-family: -webkit-standard;\">N/A</div><div style=\"font-family: -webkit-standard;\"><br></div></div><div class=\"htmlDoc\"><u>Further development:</u></div></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div></div><!--EndFragment--></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0 [NCarnerero] (22/10/2023): Initial release</span></body></html>"));
+    end Tank;
+      annotation(
+        Icon(graphics = {Line(origin = {-46.86, 0}, points = {{-21, 0}, {21, 0}}, thickness = 0.5), Line(origin = {-48.92, 19.2}, points = {{-38, -69.5404}, {2, 30.4596}, {42, -69.5404}, {42, -69.5404}}, thickness = 0.5), Line(origin = {46.73, -0.32}, points = {{-30, 0}, {30, 0}}, thickness = 0.5), Line(origin = {76.14, -0.95}, points = {{-10, -50}, {10, 50}}, thickness = 0.5), Line(origin = {17.03, -0.3}, points = {{-10, -50}, {10, 50}, {10, 50}}, thickness = 0.5)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})));
+    end AntiHeelingSystem;
+    
+    
+    
     annotation(
       Icon(graphics = {Polygon(origin = {-36, 14}, rotation = -170, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-5, 45}, {-10, 10}, {-45, 5}, {-45, -5}, {-10, -10}, {-5, -45}, {5, -45}, {10, -10}, {45, -5}, {45, 5}, {10, 10}, {5, 45}, {-5, 45}}), Polygon(origin = {-36, 14}, rotation = -35, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-5, 45}, {-10, 10}, {-45, 5}, {-45, -5}, {-10, -10}, {-5, -45}, {5, -45}, {10, -10}, {45, -5}, {45, 5}, {10, 10}, {5, 45}, {-5, 45}}), Ellipse(origin = {-37, 17}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-27, 27}, {27, -27}}), Polygon(origin = {40, -22}, rotation = 10, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-5, 45}, {-10, 10}, {-45, 5}, {-45, -5}, {-10, -10}, {-5, -45}, {5, -45}, {10, -10}, {45, -5}, {45, 5}, {10, 10}, {5, 45}, {-5, 45}}), Polygon(origin = {40, -22}, rotation = 55, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-5, 45}, {-10, 10}, {-45, 5}, {-45, -5}, {-10, -10}, {-5, -45}, {5, -45}, {10, -10}, {45, -5}, {45, 5}, {10, 10}, {5, 45}, {-5, 45}}), Ellipse(origin = {39, -21}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-27, 27}, {27, -27}}), Ellipse(origin = {-36, 16}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-8, 8}, {8, -8}}), Ellipse(origin = {38, -20}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-8, 8}, {8, -8}})}));
   end Components;
@@ -4723,10 +5031,10 @@ end Cable;
   end Outdated;
   annotation(
     preferredView = "info",
-    version = "1.4.1",
+    version = "1.5.0",
     versionBuild = 0,
-    versionDate = "2023-10-14",
-    dateModified = "2023-10-14",
+    versionDate = "2023-10-22",
+    dateModified = "2023-10-22",
     revisionId = "$Format:%h %ci$",
     Icon(graphics = {Text(origin = {33, -54}, textColor = {80, 80, 80}, extent = {{-67, 54}, {67, -54}}, textString = "SS", fontName = "Franklin Gothic Demi", textStyle = {TextStyle.Bold}), Line(origin = {0, 20}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-30, 40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-70, 10}, {64, 10}, {50, -10}, {-70, -10}, {-70, 10}}), Line(origin = {10, 15}, points = {{10, 15}, {-11, -15}}), Rectangle(origin = {-16, 65}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-5, 15}, {0, -15}}), Line(origin = {0, 10}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-25, 10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-9.5, 6}, {-9.5, -6}, {9.5, -6}, {9.5, 6}, {3.5, -2}, {1.5, -2}, {1.5, 5}, {-1.5, 5}, {-1.5, -2}, {-3.5, -2}, {-9.5, 6}})}, coordinateSystem(grid = {1, 1})),
     uses(Modelica(version = "3.2.3")),
