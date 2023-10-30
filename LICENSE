@@ -1,29 +1,3 @@
-All files in this directory and in all subdirectories, as well as the entire ShipSIM package, are released under the 3-Clause BSD license explained on this document.
-
------------------------------------------
-
-"Attribution Notice" for the use of this package on other works:
-
-This product uses Modelica ShipSIM package
-
-Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
-Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
-
-ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
-
-----------------------------------------
-
-"Derivative Work Attribution Notice" for the use of this package (modified) on other works:
-
-This product contains Derivative Work from Modelica ShipSIM package
-
-Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
-Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
-
-ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
-
------------------------------------------
-
 BSD 3-Clause License
 
 Copyright (c) 2023, Basilio Puente Varela, Maria Dolores Fernández Ballesteros
