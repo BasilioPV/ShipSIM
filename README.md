@@ -16,16 +16,35 @@ This library remains under heavy development and exhaustive validation is needed
 
 The following image shows the library contents:
 
-<img width="209" alt="image" src="https://user-images.githubusercontent.com/93596576/223804344-4c1d46ad-d03e-4043-b70c-ad3ffef0ef08.png">
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/791820f2-42f1-4c3b-9fc0-16c30f52aeb9)
+
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/d022fb91-bbfa-479a-8ac0-6c8b4f0f7589)
+
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/fa157e03-078a-4c53-9c94-380e8b8f1297)
+
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/ca00dbec-7b1a-409f-b757-03b72be8d1bd)
+
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/44ed24ce-4aa6-408c-b8c8-d7694d786c0b)
+
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/025b3ac8-d08e-4c53-9239-e9ce41e5a745)
+
 
 
 Here is an example of a zig-zag simulation:
 
-<img width="1354" alt="image" src="https://user-images.githubusercontent.com/93596576/218189709-293a5fc4-c258-4db5-b252-487faa901283.png">
+![image](https://github.com/BasilioPV/ShipSIM/assets/93596576/c6f76686-a125-4d11-bb1f-43d8b1aae143)
+
+
 
 # License
 
 ShipSIM package
+
+All files in this directory and in all subdirectories, as well as the entire ShipSIM package, are released under the 3-Clause BSD license explained on this document.
+
+All works that use this package shall include the "Attribution notice" shown in ShipSIM.UsersGuide.License. This includes any report that uses this library to provide the results.
+
+IMPORTANT NOTE: Some components have a special license. Please read carefully the documentation of each component.
 
 Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
 Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
@@ -33,7 +52,7 @@ Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
 ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
 
 # Contact
-web: http://www.ShipTwin.com
+See contact section of the library.
 
 Basilio Puente Varela
 https://es.linkedin.com/in/basiliopuentevarela
