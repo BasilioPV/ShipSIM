@@ -982,7 +982,7 @@ MSc Thesis 2022<br></td>
           Line(points = {{9, -50}, {-41, -50}, {-41, -22}}, color = {95, 95, 95}));
         connect(crane.frame_b, Weight.frame_a) annotation(
           Line(points = {{-51, -14}, {-51, -14.5}, {-80, -14.5}}, color = {95, 95, 95}));
-        connect(timeTable_CABLE.y, crane.CableLenght) annotation(
+        connect(timeTable_CABLE.y, crane.CableLength) annotation(
           Line(points = {{-58, 11}, {-51, 11}, {-51, -10}}, color = {0, 0, 127}));
         connect(timeTable_BOOM.y, crane.BoomSetAngle) annotation(
           Line(points = {{-14, 0}, {-31, 0}, {-31, -6}}, color = {0, 0, 127}));
@@ -1080,7 +1080,7 @@ MSc Thesis 2022<br></td>
         extends Modelica.Icons.Example;
         Modelica.Blocks.Sources.RealExpression realExpression(y = (90 - 23.529)*Modelica.Constants.pi/180) annotation(
           Placement(transformation(origin = {-107, 55}, extent = {{-25, 25}, {25, -25}})));
-        Components.Others.Solar.SolarIrradiation solarIrradiation(Use_Real_Irradiance = false, startDay = 1, startMonth = 1, startYear = 2018, TimeZone = 0, fileName = "W:/Documentos Baul/Publico/Modelica/Modelos Propios/Panel solar/Datos2018-2020.txt", tableName = "datos", Calculation_on_Panel = true) annotation(
+        Components.Others.Solar.SolarIrradiation solarIrradiation(Use_Real_Irradiance = false, startDay = 1, startMonth = 1, startYear = 2018, TimeZone = 0, fileName = "modelica://ShipSIM/Resources/Data/DatosSol2018-2020.txt", tableName = "datos", Calculation_on_Panel = true) annotation(
           Placement(transformation(origin = {-36, -12}, extent = {{-10, -10}, {10, 10}})));
         inner Modelica.Mechanics.MultiBody.World world(label2 = "z", n = {0, 0, -1}) annotation(
           Placement(transformation(origin = {16, 60}, extent = {{-10, -10}, {10, 10}})));
@@ -1684,6 +1684,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       end HidrodynamicXYY;
 
       model HidrodynamicZRP "Hydrodinamic ship forces model"
+        extends Modelica.Icons.UnderConstruction;
         parameter Modelica.SIunits.Length Lpp = 100 "Length between perpendiculars [m]" annotation(
           Dialog(group = "Hidrostatics Properties"));
         //Added Mass parameters
@@ -1761,7 +1762,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           Line(points = {{-32, -20}, {-30, -20}, {-30, -60}, {-22, -60}}, color = {95, 95, 95}));
         annotation(
           Icon(graphics = {Rectangle(origin = {-0.01, 0}, borderPattern = BorderPattern.Engraved, extent = {{-99.99, 100}, {99.99, -100}}, radius = 15), Text(origin = {-65, -68}, extent = {{-17, 14}, {17, -14}}, textString = "Th"), Rectangle(origin = {-65, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Rectangle(origin = {-60, 66}, extent = {{-24, 18}, {24, -18}}, radius = 5), Polygon(origin = {-70, 93}, lineThickness = 0.5, points = {{0, 3}, {-4, -5}, {4, -5}, {0, 3}}), Text(origin = {-56, 94}, extent = {{-8, 10}, {8, -10}}, textString = "m"), Text(origin = {-75, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "X"), Text(origin = {-5, 92}, extent = {{-5, 8}, {5, -8}}, textString = "D"), Rectangle(origin = {-6, 66}, extent = {{-24, 18}, {24, -18}}, radius = 5), Rectangle(origin = {-65, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Text(origin = {-65, -68}, extent = {{-17, 14}, {17, -14}}, textString = "Th"), Rectangle(origin = {-65, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Rectangle(origin = {-19, -69}, extent = {{-19, 15}, {19, -15}}, radius = 5), Text(origin = {-65, -68}, extent = {{-17, 14}, {17, -14}}, textString = "Th"), Line(origin = {-19.08, -71.19}, points = {{-16.916, 3.19338}, {17.084, 3.19338}}), Text(origin = {-17, -76}, rotation = 90, extent = {{-5, -16}, {5, 0}}, textString = "8"), Line(origin = {-17.1554, -72.7022}, points = {{-16.916, 3.19338}, {-6.916, 3.19338}}), Line(origin = {-15.2309, -74.0769}, points = {{-16.916, 3.19338}, {-10.916, 3.19338}}), Text(origin = {78, -47}, extent = {{-70, 25}, {70, -25}}, textString = "Hydrodyn.
-    Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-47, 74}, extent = {{-5, 10}, {5, -10}}, textString = "Z"), Text(origin = {-75, 58}, extent = {{-5, 10}, {5, -10}}, textString = "R"), Text(origin = {-61, 58}, extent = {{-5, 10}, {5, -10}}, textString = "P"), Text(origin = {-47, 58}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-21, 58}, extent = {{-5, 10}, {5, -10}}, textString = "R"), Text(origin = {-21, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "X"), Text(origin = {7, 74}, extent = {{-5, 10}, {5, -10}}, textString = "Z"), Text(origin = {7, 58}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-7, 58}, extent = {{-5, 10}, {5, -10}}, textString = "P"), Text(origin = {-7, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Rectangle(origin = {0, 6}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-44, 28}, {44, -28}}, radius = 10), Line(origin = {70.02, 6.07}, points = {{-25, 0}, {-8, 10}, {8, -10}, {25, 0}}, smooth = Smooth.Bezier), Line(origin = {-69.34, 5.68}, points = {{-25, 0}, {-8, -10}, {8, 10}, {25, 0}}, smooth = Smooth.Bezier), Line(points = {{100, 100}, {-100, -100}}, color = {255, 0, 0}, thickness = 1.25)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
+    Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-47, 74}, extent = {{-5, 10}, {5, -10}}, textString = "Z"), Text(origin = {-75, 58}, extent = {{-5, 10}, {5, -10}}, textString = "R"), Text(origin = {-61, 58}, extent = {{-5, 10}, {5, -10}}, textString = "P"), Text(origin = {-47, 58}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-21, 58}, extent = {{-5, 10}, {5, -10}}, textString = "R"), Text(origin = {-21, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "X"), Text(origin = {7, 74}, extent = {{-5, 10}, {5, -10}}, textString = "Z"), Text(origin = {7, 58}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Text(origin = {-7, 58}, extent = {{-5, 10}, {5, -10}}, textString = "P"), Text(origin = {-7, 74}, textColor = {200, 200, 200}, extent = {{-5, 10}, {5, -10}}, textString = "Y"), Rectangle(origin = {0, 6}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-44, 28}, {44, -28}}, radius = 10), Line(origin = {70.02, 6.07}, points = {{-25, 0}, {-8, 10}, {8, -10}, {25, 0}}, smooth = Smooth.Bezier), Line(origin = {-69.34, 5.68}, points = {{-25, 0}, {-8, -10}, {8, 10}, {25, 0}}, smooth = Smooth.Bezier)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
           Documentation(info = "<html><head></head><body><div class=\"htmlDoc\"><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div><div style=\"font-family: 'MS Shell Dlg 2';\"><u>Limitations:</u></div><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><br></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div><u>Further development:</u></div></div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0 (xx/xx/2023): Initial release</span></div></body></html>"));
       end HidrodynamicZRP;
 
@@ -2820,7 +2821,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           Placement(visible = true, transformation(origin = {-116, -50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-95, -61}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
         ShipSIM.SubComponents.Cable cable(RotureStrenght = CableRotureStrenght, k = Cable_k) annotation(
           Placement(visible = true, transformation(origin = {44, 14}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-        Modelica.Blocks.Interfaces.RealInput CableLenght "Cable length from boom extreme to frame_b Vs time" annotation(
+        Modelica.Blocks.Interfaces.RealInput CableLength "Cable length from boom extreme to frame_b Vs time" annotation(
           Placement(visible = true, transformation(origin = {108, 14}, extent = {{20, -20}, {-20, 20}}, rotation = 0), iconTransformation(origin = {103, 21}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(
           Placement(visible = true, transformation(origin = {100, -14}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {100, -20}, extent = {{-16, -16}, {16, 16}}, rotation = 0)));
@@ -2853,7 +2854,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
           Line(points = {{-116, -50}, {-100, -50}, {-100, -48}, {-84, -48}}, color = {0, 0, 127}));
         connect(BoomSetAngle, slewRateLimiterBoom.u) annotation(
           Line(points = {{-120, 6}, {-84, 6}}, color = {0, 0, 127}));
-        connect(cable.SetLenght, CableLenght) annotation(
+        connect(cable.SetLenght, CableLength) annotation(
           Line(points = {{54, 14}, {108, 14}}, color = {0, 0, 127}));
         connect(Boom.frame_b, cable.frame_a) annotation(
           Line(points = {{22, 32}, {44, 32}, {44, 24}}, color = {95, 95, 95}));
@@ -2867,6 +2868,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       end Crane;
 
       model SimpleDieselEngine
+        extends Modelica.Icons.UnderConstruction;
         Modelica.Blocks.Nonlinear.SlewRateLimiter slewRateLimiter annotation(
           Placement(visible = true, transformation(origin = {-126, 60}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
         Modelica.Blocks.Nonlinear.Limiter RPM_limiter(uMax = 2200, uMin = 0) annotation(
@@ -2972,7 +2974,7 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         annotation(
           uses(Modelica(version = "3.2.3")),
           experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
-          Icon(coordinateSystem(extent = {{-150, -100}, {150, 100}}), graphics = {Rectangle(origin = {0, -10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-120, 70}, {120, -70}}), Rectangle(origin = {-136, -40}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-4, 30}, {4, -30}}), Rectangle(origin = {-126, -40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-6, 6}, {6, -6}}), Rectangle(origin = {0, -40}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-120, 40}, {120, -40}}), Line(origin = {-80, 30}, points = {{0, 30}, {0, -30}}), Line(origin = {-39.865, 29.6864}, points = {{0, 30}, {0, -30}}), Line(origin = {0.27004, 29.6864}, points = {{0, 30}, {0, -30}}), Line(origin = {40.0915, 30}, points = {{0, 30}, {0, -30}}), Line(origin = {80.2265, 30}, points = {{0, 30}, {0, -30}}), Ellipse(origin = {-120, 60}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-20, 20}, {20, -20}}), Line(points = {{100, 100}, {-100, -100}}, color = {255, 0, 0}, thickness = 1.25)}),
+          Icon(coordinateSystem(extent = {{-150, -100}, {150, 100}}), graphics = {Rectangle(origin = {0, -10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-120, 70}, {120, -70}}), Rectangle(origin = {-136, -40}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-4, 30}, {4, -30}}), Rectangle(origin = {-126, -40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-6, 6}, {6, -6}}), Rectangle(origin = {0, -40}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-120, 40}, {120, -40}}), Line(origin = {-80, 30}, points = {{0, 30}, {0, -30}}), Line(origin = {-39.865, 29.6864}, points = {{0, 30}, {0, -30}}), Line(origin = {0.27004, 29.6864}, points = {{0, 30}, {0, -30}}), Line(origin = {40.0915, 30}, points = {{0, 30}, {0, -30}}), Line(origin = {80.2265, 30}, points = {{0, 30}, {0, -30}}), Ellipse(origin = {-120, 60}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-20, 20}, {20, -20}})}),
           Diagram(coordinateSystem(extent = {{-150, -100}, {150, 100}})),
           Documentation(info = "<html><head></head><body><div><br></div><div><div class=\"htmlDoc\"><div style=\"font-family: 'MS Shell Dlg 2';\"><u>Limitations:</u></div><div style=\"font-family: 'MS Shell Dlg 2';\"><br></div><div><div><u>References:</u></div><div><br></div></div><div><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><u>Further development:</u></div></div></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0 (xx/xx/2023): Initial release</span></body></html>"));
       end SimpleDieselEngine;
@@ -6899,10 +6901,10 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
   end Outdated;
   annotation(
     preferredView = "info",
-    version = "1.7.0",
+    version = "1.x.x",
     versionBuild = 0,
-    versionDate = "2024-03-30",
-    dateModified = "2024-03-30",
+    versionDate = "2024-xx-xx",
+    dateModified = "2024-xx-xx",
     revisionId = "$Format:%h %ci$",
     Icon(graphics = {Text(origin = {33, -54}, textColor = {80, 80, 80}, extent = {{-67, 54}, {67, -54}}, textString = "SS", fontName = "Franklin Gothic Demi", textStyle = {TextStyle.Bold}), Line(origin = {0, 20}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-30, 40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-70, 10}, {64, 10}, {50, -10}, {-70, -10}, {-70, 10}}), Line(origin = {10, 15}, points = {{10, 15}, {-11, -15}}), Rectangle(origin = {-16, 65}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-5, 15}, {0, -15}}), Line(origin = {0, 10}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-25, 10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-9.5, 6}, {-9.5, -6}, {9.5, -6}, {9.5, 6}, {3.5, -2}, {1.5, -2}, {1.5, 5}, {-1.5, 5}, {-1.5, -2}, {-3.5, -2}, {-9.5, 6}})}, coordinateSystem(grid = {1, 1})),
     uses(Modelica(version = "3.2.3")),
