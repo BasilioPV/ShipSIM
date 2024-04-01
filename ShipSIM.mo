@@ -248,7 +248,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {28, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -341,7 +341,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {28, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -419,7 +419,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {73, 47}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {19, 84}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {18, 71}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {-19, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -549,7 +549,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {85, 7}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {50, 56}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {49, 43}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {51, 19}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -632,7 +632,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {12, -37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {-23, 12}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {-24, -1}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {-22, -25}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -752,7 +752,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {10, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {-25, 13}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {-26, 0}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
           Placement(visible = true, transformation(origin = {-24, -24}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -941,7 +941,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
           Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+        Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
           Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 2000, defaultNm_to_m = 20000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
           Placement(visible = true, transformation(origin = {-84, 42}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
@@ -1145,7 +1145,7 @@ MSc Thesis 2022<br></td>
         Placement(visible = true, transformation(origin = {62, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
         Placement(visible = true, transformation(origin = {27, 43}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
         Placement(visible = true, transformation(origin = {26, 30}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
         Placement(visible = true, transformation(origin = {28, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
@@ -1165,7 +1165,7 @@ MSc Thesis 2022<br></td>
         Placement(visible = true, transformation(origin = {62, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       ShipSIM.Components.Ship.ShipModelTh shipModelTh1(CoG = {50.43, 0, 9}, ini_Vel = {7, 0, 0}) annotation(
         Placement(visible = true, transformation(origin = {54, -84}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape1(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape1(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
         Placement(visible = true, transformation(origin = {18, -72}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
       Modelica.Mechanics.MultiBody.Visualizers.FixedFrame fixedFrame(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
         Placement(visible = true, transformation(origin = {19, -59}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
@@ -1193,7 +1193,7 @@ MSc Thesis 2022<br></td>
         Placement(visible = true, transformation(origin = {13, -227}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
       ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY2 annotation(
         Placement(visible = true, transformation(origin = {48, -218}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape2(animation = true, height = 10, length = 100, shapeType = "file://W:/Documentos Baul/Publico/Modelica/Modelos Propios/ShipSIM/SimpleShipModel/Ship.dxf", width = 20) annotation(
+      Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape2(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
         Placement(visible = true, transformation(origin = {12, -182}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
       ShipSIM.Components.Ship.ShipModelTh shipModelTh2(CoG = {50.43, 0, 9}, ini_Vel = {7, 0, 0}) annotation(
         Placement(visible = true, transformation(origin = {48, -194}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
