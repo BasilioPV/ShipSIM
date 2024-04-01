@@ -235,10 +235,10 @@ MSc Thesis 2022<br></td>
   end UsersGuide;
 
   package Examples "Sample simulations of the library"
-    extends Modelica.Icons.Example;
+    extends Modelica.Icons.ExamplesPackage;
 
     package Maneuvering
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model Test_ZigZag_1Q
         extends Modelica.Icons.Example;
@@ -622,7 +622,7 @@ MSc Thesis 2022<br></td>
     end Maneuvering;
 
     package Sailing
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model FourWingSails
         extends Modelica.Icons.Example;
@@ -882,7 +882,7 @@ MSc Thesis 2022<br></td>
     end Sailing;
 
     package Electrical
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model Consumers
         extends Modelica.Icons.Example;
@@ -902,7 +902,7 @@ MSc Thesis 2022<br></td>
     end Electrical;
 
     package Engines
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model SimpleDieselEngineTest
         extends Modelica.Icons.Example;
@@ -931,7 +931,7 @@ MSc Thesis 2022<br></td>
     end Engines;
 
     package Operations
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model CraneOperation
         extends Modelica.Icons.Example;
@@ -998,7 +998,7 @@ MSc Thesis 2022<br></td>
     end Operations;
 
     package DataProcessing
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model RainFlowTesting
         extends Modelica.Icons.Example;
@@ -1024,7 +1024,7 @@ MSc Thesis 2022<br></td>
     end DataProcessing;
 
     package HeatTransfer
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model CeramicDiskResistor_Test
         extends Modelica.Icons.Example;
@@ -1074,7 +1074,7 @@ MSc Thesis 2022<br></td>
     end HeatTransfer;
 
     package SunIrradiation
-      extends Modelica.Icons.Example;
+      extends Modelica.Icons.ExamplesPackage;
 
       model TestIrradiation
         extends Modelica.Icons.Example;
@@ -1135,7 +1135,7 @@ MSc Thesis 2022<br></td>
   end Examples;
 
   package Validations
-    extends Modelica.Icons.Example;
+    extends Modelica.Icons.ExamplesPackage;
 
     model Test_Propeller_POD
       extends Modelica.Icons.Example;
