@@ -2552,14 +2552,14 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
 //Determine attack angle
           Beta_inter = (Water_Speed_XY[1]*(-Modelica.Math.cos(Alpha)) + Water_Speed_XY[2]*(-Modelica.Math.sin(Alpha)))/WaterSpeed;
 // Avoid errors reaching +-1
-          if Beta_inter <= (-0.99999999) then
+          if noEvent(Beta_inter <= (-0.99999999)) then
             Beta = Modelica.Math.acos(-1);
-          elseif Beta_inter >= 0.99999999 then
+          elseif noEvent(Beta_inter >= 0.99999999) then
             Beta = Modelica.Math.acos(1);
           else
             Beta = Modelica.Math.acos(Beta_inter);
           end if;
-          if Water_Speed_XY[1]*(-Modelica.Math.sin(Alpha)) - Water_Speed_XY[2]*(-Modelica.Math.cos(Alpha)) >= 0 then
+          if noEvent(Water_Speed_XY[1]*(-Modelica.Math.sin(Alpha)) - Water_Speed_XY[2]*(-Modelica.Math.cos(Alpha)) >= 0) then
             Sign = -1;
           else
             Sign = 1;
