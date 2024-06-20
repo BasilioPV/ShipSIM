@@ -30,7 +30,7 @@ package ShipSIM "Ship Simulation Library"
       extends Modelica.Icons.ReleaseNotes;
       annotation(
         DocumentationClass = true,
-        Documentation(info = "<html><head></head><body><div><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\">Get the latest version of ShipSIM at:</p><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\"><a href=\"https://github.com/BasilioPV/ShipSIM\" style=\"font-family: -webkit-standard;\">https://github.com/BasilioPV/ShipSIM</a></p><div><b>Version 1.7.0 (30-03-2024):</b></div><div>Added more NACA00xx profile data</div></div><div>Added DynamicSelect for diagram animation</div><div>Added component name on assert messages</div><div>Added plate forced convection</div><div>Added moist air components</div><div><br></div><div><b>Version 1.6.0 (23-12-2023):</b></div><div>Added the following sections and models:</div><div>- Data processing:</div><div>Novel components for extract peaks of a signal and process them using a innovative real time rainflow counter developed exclusively for this library.</div><div>- Environmental Heat Transfer: Model that agrupates all the environment variables for heat transfer</div><div>- Solar components: Irradiation, sun screens, multibody plane, complete wall heat transfer</div><div>- Heat transfer:</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Convection factors for cylinder, internal boundary, external boundary.</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Temperature dataset from external file</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Plate and cylinder discrete element models for transient heat analysis</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Simple air exchanger model</div><div>- Other useful functions (min/max, day of the year, angle between vectors, etc...)</div><div>- Added a Debugging package to store those model with unknown issues to be solved.</div><div>- Rudder model now depends on the same wingData as wing sails. Cl,Cd,Cm NACA0018 function has large inconsistencies and it is removed from ShipSIM library. IMPORTANT: this component is not compatible with older versions.</div><div><br></div><div><b>Version 1.5.0 (22-10-2023):</b></div><div>Added Antiheeling system</div><div><b><br></b></div><div><b>Version 1.4.1 (14-10-2023):</b></div><div>Added cable and crane model</div><div>GitHub issues #4 solved</div><div>This release correspond to the course \"Inicialización a la simulación con Modelica\" of the authors of this library.</div><div><br></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
+        Documentation(info = "<html><head></head><body><div><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\">Get the latest version of ShipSIM at:</p><p style=\"font-size: 10pt; font-family: Arial, sans-serif;\"><a href=\"https://github.com/BasilioPV/ShipSIM\" style=\"font-family: -webkit-standard;\">https://github.com/BasilioPV/ShipSIM</a></p><div><b>Version 1.7.1 (20-06-2024):</b></div><div>Minor changes.</div><div><b><br></b></div><div><b>Version 1.7.0 (30-03-2024):</b></div><div>Added more NACA00xx profile data</div></div><div>Added DynamicSelect for diagram animation</div><div>Added component name on assert messages</div><div>Added plate forced convection</div><div>Added moist air components</div><div><br></div><div><b>Version 1.6.0 (23-12-2023):</b></div><div>Added the following sections and models:</div><div>- Data processing:</div><div>Novel components for extract peaks of a signal and process them using a innovative real time rainflow counter developed exclusively for this library.</div><div>- Environmental Heat Transfer: Model that agrupates all the environment variables for heat transfer</div><div>- Solar components: Irradiation, sun screens, multibody plane, complete wall heat transfer</div><div>- Heat transfer:</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Convection factors for cylinder, internal boundary, external boundary.</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Temperature dataset from external file</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Plate and cylinder discrete element models for transient heat analysis</div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>- Simple air exchanger model</div><div>- Other useful functions (min/max, day of the year, angle between vectors, etc...)</div><div>- Added a Debugging package to store those model with unknown issues to be solved.</div><div>- Rudder model now depends on the same wingData as wing sails. Cl,Cd,Cm NACA0018 function has large inconsistencies and it is removed from ShipSIM library. IMPORTANT: this component is not compatible with older versions.</div><div><br></div><div><b>Version 1.5.0 (22-10-2023):</b></div><div>Added Antiheeling system</div><div><b><br></b></div><div><b>Version 1.4.1 (14-10-2023):</b></div><div>Added cable and crane model</div><div>GitHub issues #4 solved</div><div>This release correspond to the course \"Inicialización a la simulación con Modelica\" of the authors of this library.</div><div><br></div><div><b>Version 1.3.0 (31-05-2023):</b></div><div>Added WingSail model</div><div>Added cavitation warning for 4Q propeller models</div><div>Implemented propeller-rudder interaction on 1stQ on Propeller4Q&nbsp;</div><div>Added animation forces selector for several components</div><div>Added electrical consumers components and EPLA sample</div><div><b><br></b></div><div><b>Version 1.2.0 (22-04-2023):</b></div><div>Added POD4Q model</div><div>Added (not complete) Propeller4Q model</div><div>GitHub issues #2 to #3 solved</div><div>Minor bugs fixed</div><div>Added propeller visualization</div><div><b><br></b></div><div><b>Version 1.1.0 (08-03-2023):</b></div><div>Included assert documentation on models</div><div>Added wind and current effects</div><div>Added ship wind model</div><div>Change to BSD 3-Clause license</div><div>Translate internal comments to English</div><div><b><br></b></div><div><b>Version 1.0.0 (14-02-2023):</b></div><div>First official release of the library on GitHub (BasilioPV/ShipSIM)</div><div>Released under Modelica License 2 with additional clause 16</div><b><div><b><br></b></div>Version 0.0.0 (July 2022):</b><div>First publication on GitHub (BasilioPV/ShipSIM)</div><div><br></div><div><i>Note: the last digit on version number (e.g. 1.0.<u>x</u>) represents an official release when this number is zero, and an internal release otherwise.</i></div><div><br></div><div><b>-----------------------------------------</b></div><div><b>Roadmap:</b></div><div><ul><li>Include waves (major implementation)</li><li>Create electric propulsion motor</li><li>Create diesel engine simple model</li></ul><div><br></div></div></body></html>"));
     end ReleaseNotes;
 
     package References "References"
@@ -555,7 +555,7 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {51, 19}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
         inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 200, defaultNm_to_m = 2000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
           Placement(visible = true, transformation(origin = {-61, 55}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
-        ShipSIM.Components.Propulsion.Rudder rudder(wingData = NACA0018_Data) annotation(
+        ShipSIM.Components.Propulsion.Rudder rudder(wingData = NACA0018_Data, InitialRudderAngle = 0) annotation(
           Placement(visible = true, transformation(origin = {-1, 16}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
         Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_pos(animation = false, r = {-2, 0, 4.5}) annotation(
           Placement(visible = true, transformation(origin = {44, 30}, extent = {{5, 5}, {-5, -5}}, rotation = 0)));
@@ -577,6 +577,8 @@ MSc Thesis 2022<br></td>
           Placement(visible = true, transformation(origin = {-77, -22}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
         Modelica.Blocks.Math.Gain gain(k = 2*Modelica.Constants.pi/60) annotation(
           Placement(visible = true, transformation(origin = {-27.5, -21.5}, extent = {{-5.5, -5.5}, {5.5, 5.5}}, rotation = 0)));
+  Modelica.Blocks.Continuous.LimPID PD_Course(controllerType = Modelica.Blocks.Types.SimpleController.PD, yMax = 35, initType = Modelica.Blocks.Types.InitPID.InitialOutput, xd_start = 0, y_start = 0)  annotation(
+          Placement(transformation(origin = {-62, 22}, extent = {{-10, -10}, {10, 10}})));
       equation
         connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
           Line(points = {{75, 7}, {69, 7}, {69, 31}, {75, 31}}, color = {95, 95, 95}));
@@ -612,8 +614,15 @@ MSc Thesis 2022<br></td>
           Line(points = {{-21, -21}, {43, -21}}, color = {0, 0, 127}));
         connect(RPMtimeTable.y, gain.u) annotation(
           Line(points = {{-71, -22}, {-34, -22}, {-34, -21}}, color = {0, 0, 127}));
+  connect(Ref1.y, PD_Course.u_s) annotation(
+          Line(points = {{-80, 22}, {-74, 22}}, color = {0, 0, 127}));
+  connect(Ref1.y, PD_Course.u_m) annotation(
+          Line(points = {{-80, 22}, {-79, 22}, {-79, 1}, {-62, 1}, {-62, 10}}, color = {0, 0, 127}));
       protected
-        annotation(
+        public
+  Modelica.Blocks.Sources.RealExpression Ref1 annotation(
+          Placement(transformation(origin = {-84, 22}, extent = {{-4, -5}, {4, 5}})));
+  annotation(
           experiment(StartTime = 0, StopTime = 5000, Tolerance = 1e-06, Interval = 0.2),
           Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 20º to -20º makes the logic of a zig-zag test</div></body></html>"),
           Diagram(graphics = {Rectangle(origin = {96, 9}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {108, -6}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {27, 2}, lineColor = {255, 0, 0}, extent = {{-40, 33}, {40, -33}}), Text(origin = {108, -6}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {1, -26}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {45, 51}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {34, 40}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {-52, -16}, lineColor = {85, 0, 255}, extent = {{-37, 53}, {37, -53}}), Text(origin = {-47, -5}, textColor = {85, 0, 255}, extent = {{-8, 2}, {8, -2}}, textString = "AutoPilot")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
@@ -3313,6 +3322,20 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
       annotation(
         Icon(graphics = {Line(origin = {-46.86, 0}, points = {{-21, 0}, {21, 0}}, thickness = 0.5), Line(origin = {-48.92, 19.2}, points = {{-38, -69.5404}, {2, 30.4596}, {42, -69.5404}, {42, -69.5404}}, thickness = 0.5), Line(origin = {46.73, -0.32}, points = {{-30, 0}, {30, 0}}, thickness = 0.5), Line(origin = {76.14, -0.95}, points = {{-10, -50}, {10, 50}}, thickness = 0.5), Line(origin = {17.03, -0.3}, points = {{-10, -50}, {10, 50}, {10, 50}}, thickness = 0.5)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})));
     end AntiHeelingSystem;
+    
+    package AutoPilot "Components relative to autopilot system"
+    
+      model SimpleAutoPilot "Simple Autopilot model"
+  Interfaces.ShipDataInput shipDataInput annotation(
+          Placement(transformation(origin = {100, -28}, extent = {{-10, -8}, {10, 8}}), iconTransformation(origin = {100, -28}, extent = {{-10, -8}, {10, 8}})));
+      equation
+      
+      end SimpleAutoPilot;
+      
+    
+    
+    
+    end AutoPilot;
 
     package DataProcessing "Components relative to data processing"
     
@@ -6349,15 +6372,43 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
         input Real A[3] "A vector";
         input Real B[3] "B vector";
         output Modelica.SIunits.Angle Ang "angle between vectors";
+      protected
+        Real product;
       algorithm
         if (length(A) > 0) and (length(B) > 0) then
-          Ang := acos(normalize(A)*normalize(B));
+          product :=normalize(A)*normalize(B);
+          product :=ShipSIM.Functions.Others.min_max(product,-0.999999999999,0.999999999999);
+          Ang := acos(product);
         else
           Ang := 0;
         end if;
         annotation(
           Documentation(revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(09/12/2023): Initial release</span></body></html>", info = "<html><head></head><body>This function outputs the angle between vectors in radians.</body></html>"));
       end angle_btw_vectors;
+      
+      function signed_angle_btw_vectors_2D "Signed angle between vectors 2D, Positive counterclockwise from A to B"
+        extends Modelica.Icons.Function;
+        import Modelica.Math.Vectors.length;
+        import Modelica.Math.Vectors.normalize;
+        input Real A[2] "A vector";
+        input Real B[2] "B vector";
+        output Modelica.SIunits.Angle Ang "angle between vectors";
+      protected
+        Real productA;
+        Real productB;
+      algorithm
+        if (length(A) > 0) and (length(B) > 0) then
+          productA := B[2]*A[1]-B[1]*A[2];
+          productB := B[1]*A[1]+B[2]*A[2];
+          Ang := atan2(productA,productB);
+        else
+          Ang := 0;
+        end if;
+        annotation(
+          Documentation(revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(20/05/2024): Initial release</span></body></html>", info = "<html><head></head><body>This function outputs the signed angle between 2D vectors in radians. Positive counterclockwise from A to B.</body></html>"));
+      end signed_angle_btw_vectors_2D;
+      
+      
     end Others;
   end Functions;
 
@@ -6901,10 +6952,10 @@ Forces", horizontalAlignment = TextAlignment.Left), Text(origin = {-61, 74}, ext
   end Outdated;
   annotation(
     preferredView = "info",
-    version = "1.x.x",
+    version = "1.7.1",
     versionBuild = 0,
-    versionDate = "2024-xx-xx",
-    dateModified = "2024-xx-xx",
+    versionDate = "2024-06-20",
+    dateModified = "2024-06-20",
     revisionId = "$Format:%h %ci$",
     Icon(graphics = {Text(origin = {33, -54}, textColor = {80, 80, 80}, extent = {{-67, 54}, {67, -54}}, textString = "SS", fontName = "Franklin Gothic Demi", textStyle = {TextStyle.Bold}), Line(origin = {0, 20}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-30, 40}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-70, 10}, {64, 10}, {50, -10}, {-70, -10}, {-70, 10}}), Line(origin = {10, 15}, points = {{10, 15}, {-11, -15}}), Rectangle(origin = {-16, 65}, fillColor = {80, 80, 80}, fillPattern = FillPattern.Solid, extent = {{-5, 15}, {0, -15}}), Line(origin = {0, 10}, points = {{100, -20}, {50, 10}, {0, -20}, {-50, -50}, {-100, -20}}, smooth = Smooth.Bezier), Polygon(origin = {-25, 10}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{-9.5, 6}, {-9.5, -6}, {9.5, -6}, {9.5, 6}, {3.5, -2}, {1.5, -2}, {1.5, 5}, {-1.5, 5}, {-1.5, -2}, {-3.5, -2}, {-9.5, 6}})}, coordinateSystem(grid = {1, 1})),
     uses(Modelica(version = "3.2.3")),
