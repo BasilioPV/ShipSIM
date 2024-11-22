@@ -47,7 +47,7 @@ All works that use this package shall include the "Attribution notice" shown in 
 IMPORTANT NOTE: Some components have a special license. Please read carefully the documentation of each component.
 
 Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
-Copyright © 2021-2023, Basilio Puente, M Dolores Fernandez.
+Copyright © 2021-2024, Basilio Puente, M Dolores Fernandez.
 
 ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
 
