@@ -40,6 +40,8 @@ Here is an example of a zig-zag simulation:
 
 ShipSIM package
 
+ATTENTION: Attribution to this library is mandatory! see ShipSIM.UsersGuide.License
+
 All files in this directory and in all subdirectories, as well as the entire ShipSIM package, are released under the 3-Clause BSD license explained on this document.
 
 All works that use this package shall include the "Attribution notice" shown in ShipSIM.UsersGuide.License. This includes any report that uses this library to provide the results.
