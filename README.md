@@ -1,0 +1,3 @@
+# ShipSIM
+
+Modelica ShipSIM library
