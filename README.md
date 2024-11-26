@@ -2,7 +2,7 @@
 
 
 # ShipSIM
-Modelica library for Naval Architecture simulations..
+Modelica library for Naval Architecture simulations.
 
 ShipSIM package has the aim to provide Modelica models relative to Naval Architecture, specially to perform 6 DoF simulations, propulsion systems, electrical plant, engines, etc... to enable designers a true Model-Based Engineering (MBE) based on open source solutions.
 
