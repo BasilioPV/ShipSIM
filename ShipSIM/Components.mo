@@ -1683,6 +1683,9 @@ package Components "Library components"
   package Electrical "Components relative to ship electrical equipment"
     model OnOffConsumer "Consumer using an on-off switch"
       extends ShipSIM.Components.Electrical.Internal.RandomStart;
+      
+      parameter Boolean getIntegrators = false "=true, calculate average values"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
       parameter Real StartTable[:, 2] = {{0, 1}, {1, 0.4}, {2, 0.8}, {3, 1}, {4, 1.5}, {5, 1}} "Table Time Vs Power for starting period" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real CycleTable[:, 2] = {{0, 1}, {1, 0.9}, {2, 1.1}, {3, 0.9}, {4, 1.1}, {5, 0.9}, {6, 1.1}, {7, 0.9}, {8, 1}} "Table Time Vs Power for operating period" annotation(
@@ -1691,10 +1694,11 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-      //Real SimultaneousFactor "Percentage of time that the consumer is working";
-      //Real AveragePower "Average power";
+    
       Modelica.Blocks.Interfaces.RealOutput y "Actual power" annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+      ShipSIM.Components.Electrical.Internal.Integrators Integrators if getIntegrators;
+      
     protected
       Modelica.Blocks.Tables.CombiTable1D StartInterpolation(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, table = StartTable) annotation(
         Placement(visible = true, transformation(origin = {-58, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -1702,8 +1706,7 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Logical.Timer timer annotation(
         Placement(visible = true, transformation(origin = {-58, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      //Modelica.Blocks.Continuous.Integrator integrator annotation(Placement(transformation(origin = {26, 24}, extent = {{-10, -10}, {10, 10}})));
-      //Modelica.Blocks.Continuous.Integrator integrator1 annotation(Placement(transformation(origin = {58, -32}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
+    
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
       Real Tinternal(start = 0) "Cycle time";
@@ -1713,23 +1716,26 @@ package Components "Library components"
       CycleInterpolation.u[1] = Tinternal;
       if Work then
         y = (if (timer.y < Tstart) then StartInterpolation.y[1] else CycleInterpolation.y[1])*NominalPower*Kr;
-        //integrator.u = 1;
       else
         y = 0;
-        //integrator.u = 0;
       end if;
-      //SimultaneousFactor = if (time > 0) then integrator.y/time else 0;
-      //AveragePower = if (time > 0) then integrator1.y/time else 0;
+    
       timer.u = Work;
-      //connect(y, integrator1.u) annotation(Line(points = {{102, 0}, {72, 0}, {72, -32}, {70, -32}}, color = {0, 0, 127}));
+      
+      connect(y,Integrators.u);
+      connect(Integrators.Work,Work);
+      
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Rectangle(origin = {-14, 12}, rotation = 35, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, borderPattern = BorderPattern.Raised, extent = {{-4, 23}, {4, -23}}), Ellipse(origin = {-6, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-11, 12}, {11, -12}}), Rectangle(rotation = 90, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-39, 6}, {39, -6}})}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-        Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div><br></div><div>This component will provide an output while the cycle is in ON.</div><div><br></div><div>This component provides a real output using \"On\" \"Off\" random cycles with the following characteristics:</div><div><br></div><div>- <b>NominalPower</b>: Nominal output signal, to be multiplied by the StartTable/CycleTable and Kr</div><div>- <b>StartTable</b>: Non-dimensional table of the signal at start period. Only used when trggers from OFF to ON.</div><div>- <b>CycleTable</b>: Non-dimensional table of the signal at cycle period. Used and repeated after the end of StartTable.</div><div>- <b>Kr</b>: Percentage of the NominalPower used for the signal (gain)</div><div><br></div><div>For the random ON/OFF cycles, the following parameters apply:</div><div><br></div><div>- <b>Seed</b>: Seed to feed the random nuber generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>- <b>Kt</b> and <b>Kt_dev</b>: Percentage of \"On\" time and their typical deviation</div><div>- <b>StartsHour</b> and <b>StartsHour_dev</b>: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div>Internally we can find the following variables:</div><div><br></div><div>- <b>SimultaneousFactor</b>: Percentage of time in \"ON\" status.</div><div>- <b>AveragePower</b>: Average value of the output signal.&nbsp;</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><u><br></u></div><div><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">&nbsp;(14/05/2023): Initial release</span></body></html>"));
+        Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div><br></div><div>This component will provide an output while the cycle is in ON.</div><div><br></div><div>This component provides a real output using \"On\" \"Off\" random cycles with the following characteristics:</div><div><br></div><div>- <b>NominalPower</b>: Nominal output signal, to be multiplied by the StartTable/CycleTable and Kr</div><div>- <b>StartTable</b>: Non-dimensional table of the signal at start period. Only used when trggers from OFF to ON.</div><div>- <b>CycleTable</b>: Non-dimensional table of the signal at cycle period. Used and repeated after the end of StartTable.</div><div>- <b>Kr</b>: Percentage of the NominalPower used for the signal (gain)</div><div><br></div><div>For the random ON/OFF cycles, the following parameters apply:</div><div><br></div><div>- <b>Seed</b>: Seed to feed the random nuber generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>- <b>Kt</b> and <b>Kt_dev</b>: Percentage of \"On\" time and their typical deviation</div><div>- <b>StartsHour</b> and <b>StartsHour_dev</b>: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div>Internally we can find the following variables:</div><div><br></div><div>- <b>SimultaneousFactor</b>: Percentage of time in \"ON\" status.</div><div>- <b>AveragePower</b>: Average value of the output signal.&nbsp;</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><u><br></u></div><div><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.2 [BPuente] (23/11/2024): Optional average values, off by default to increase simulation speed.</span></div><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">&nbsp;(14/05/2023): Initial release</span></body></html>"));
     end OnOffConsumer;
 
     model TriggerConsumer "Consumer using a trigger switch"
       extends ShipSIM.Components.Electrical.Internal.RandomStart;
+      parameter Boolean getIntegrators = false "=true, calculate average values"
+      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+      
       parameter Real StartTable[:, 2] = {{0, 0}, {1, 0.4}, {2, 0.8}, {3, 1}, {4, 1.5}, {5, 1}} "Table Time Vs Power for starting period" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real CycleTable[:, 2] = {{0, 1}, {1, 0.9}, {2, 1.1}, {3, 0.9}, {4, 1.1}, {5, 0.9}, {6, 1.1}, {7, 0.9}, {8, 0}} "Table Time Vs Power for operating period, shall end in zero" annotation(
@@ -1738,13 +1744,13 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-      //Real SimultaneousFactor "Percentage of time that the consumer is working";
-      //Real AveragePower "Average power";
-      Boolean Working;
+    
       Modelica.Blocks.Interfaces.RealOutput y annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
-      //Modelica.Blocks.Continuous.Integrator integrator1 annotation(Placement(visible = true, transformation(origin = {62, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      ShipSIM.Components.Electrical.Internal.Integrators Integrators if getIntegrators;
+    
     protected
+      Modelica.Blocks.Interfaces.BooleanOutput Working;
       Modelica.Blocks.Sources.BooleanExpression booleanExpression(y = true) annotation(
         Placement(visible = true, transformation(origin = {-78, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Logical.Less less annotation(
@@ -1761,23 +1767,24 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Tables.CombiTable1D CycleInterpolation(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, table = CycleTable) annotation(
         Placement(visible = true, transformation(origin = {-58, -68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      //Modelica.Blocks.Continuous.Integrator integrator annotation(Placement(visible = true, transformation(origin = {-20, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
+    
     equation
       StartInterpolation.u[1] = add.y;
       CycleInterpolation.u[1] = add.y - Tstart;
       if Working then
         y = (if (add.y < Tstart) then StartInterpolation.y[1] else CycleInterpolation.y[1])*NominalPower*Kr;
-        //integrator.u = 1;
       else
         y = 0;
-        //integrator.u = 0;
       end if;
       less.u2 = Tstart + Tcycle;
       Working = less.y;
-      //SimultaneousFactor = if time > 0 then integrator.y/time else 0;
-      //AveragePower = if time > 0 then integrator1.y/time else 0;
+      
+      connect(y,Integrators.u);
+      connect(Integrators.Work,Working);
+      
       logicalSwitch.u3 = Work;
       connect(logicalSwitch.y, triggeredSampler.trigger) annotation(
         Line(points = {{-38, 61}, {-38, 62}, {-22, 62}, {-22, 65}}, color = {255, 0, 255}));
@@ -1786,18 +1793,18 @@ package Components "Library components"
       connect(timesignal.y, add.u1) annotation(
         Line(points = {{-55, 78}, {-47, 78}, {-47, 96}, {-1, 96}, {-1, 90}}, color = {0, 0, 127}));
       connect(less.y, logicalSwitch.u2) annotation(
-        Line(points = {{1, 56}, {-5, 56}, {-5, 46}, {-19, 46}, {-19, 38}, {-38, 38}}, color = {255, 0, 255}));
+        Line(points = {{1, 56}, {-5, 56}, {-5, 46}, {-23, 46}, {-23, 32}, {-38.5, 32}, {-38.5, 38}, {-38, 38}}, color = {255, 0, 255}));
       connect(logicalSwitch.u1, booleanExpression.y) annotation(
         Line(points = {{-46, 38}, {-46, 16}, {-67, 16}}, color = {255, 0, 255}));
       connect(triggeredSampler.y, add.u2) annotation(
         Line(points = {{-11, 78}, {-1, 78}}, color = {0, 0, 127}));
       connect(timesignal.y, triggeredSampler.u) annotation(
         Line(points = {{-55, 78}, {-35, 78}}, color = {0, 0, 127}));
-      //connect(y, integrator1.u) annotation(Line(points = {{102, 0}, {40, 0}, {40, -26}, {50, -26}}, color = {0, 0, 127}));
+    
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Line(origin = {8, 0}, points = {{0, 0}}), Rectangle(origin = {8, 18}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 26}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 10}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}, endAngle = 180, closure = EllipseClosure.Chord), Polygon(origin = {8, 10}, points = {{-24, 30}, {54, 30}, {28, -24}, {-52, -24}, {-46, -12}, {-24, 30}}), Rectangle(origin = {-4, -19}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-40, 5}, {40, -5}}), Polygon(origin = {52, 16}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{10, 24}, {10, 14}, {-16, -40}, {-16, -30}, {-16, -30}, {10, 24}})}),
-        Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div><br></div><div>This component will provide a complete StartTable+CycleTable sequence when a change from OFF to ON occurs (trigger event). After trigger, the complete cycle is executed, irrelevant to the ON/OFF internal signals produced.</div><div>When the cycle finishes, a next cycle will trigger when a OFF-&gt;ON event raises. &nbsp;</div><div><br></div><div>This component provides a real output using \"On\" \"Off\" random cycles with the following characteristics:</div><div><br></div><div>-&nbsp;<b>NominalPower</b>: Nominal output signal, to be multiplied by the StartTable/CycleTable and Kr</div><div>-&nbsp;<b>StartTable</b>: Non-dimensional table of the signal at start period. Only used when trggers from OFF to ON.</div><div>-&nbsp;<b>CycleTable</b>: Non-dimensional table of the signal at cycle period. Used and repeated after the end of StartTable.</div><div>-&nbsp;<b>Kr</b>: Percentage of the NominalPower used for the signal (gain)</div><div><br></div><div>For the random ON/OFF cycles, the following parameters apply:</div><div><br></div><div>-&nbsp;<b>Seed</b>: Seed to feed the random nuber generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>-&nbsp;<b>Kt</b>&nbsp;and&nbsp;<b>Kt_dev</b>: Percentage of \"On\" time and their typical deviation</div><div>-&nbsp;<b>StartsHour</b>&nbsp;and&nbsp;<b>StartsHour_dev</b>: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div>Internally we can find the following variables:</div><div><br></div><div>-&nbsp;<b>SimultaneousFactor</b>: Percentage of time in \"ON\" status.</div><div>-&nbsp;<b>AveragePower</b>: Average value of the output signal.&nbsp;</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><u><br></u></div><div><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">&nbsp;(14/05/2023): Initial release</span></body></html>"));
+        Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div><br></div><div>This component will provide a complete StartTable+CycleTable sequence when a change from OFF to ON occurs (trigger event). After trigger, the complete cycle is executed, irrelevant to the ON/OFF internal signals produced.</div><div>When the cycle finishes, a next cycle will trigger when a OFF-&gt;ON event raises. &nbsp;</div><div><br></div><div>This component provides a real output using \"On\" \"Off\" random cycles with the following characteristics:</div><div><br></div><div>-&nbsp;<b>NominalPower</b>: Nominal output signal, to be multiplied by the StartTable/CycleTable and Kr</div><div>-&nbsp;<b>StartTable</b>: Non-dimensional table of the signal at start period. Only used when trggers from OFF to ON.</div><div>-&nbsp;<b>CycleTable</b>: Non-dimensional table of the signal at cycle period. Used and repeated after the end of StartTable.</div><div>-&nbsp;<b>Kr</b>: Percentage of the NominalPower used for the signal (gain)</div><div><br></div><div>For the random ON/OFF cycles, the following parameters apply:</div><div><br></div><div>-&nbsp;<b>Seed</b>: Seed to feed the random nuber generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>-&nbsp;<b>Kt</b>&nbsp;and&nbsp;<b>Kt_dev</b>: Percentage of \"On\" time and their typical deviation</div><div>-&nbsp;<b>StartsHour</b>&nbsp;and&nbsp;<b>StartsHour_dev</b>: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div>Internally we can find the following variables:</div><div><br></div><div>-&nbsp;<b>SimultaneousFactor</b>: Percentage of time in \"ON\" status.</div><div>-&nbsp;<b>AveragePower</b>: Average value of the output signal.&nbsp;</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><br></div><div>Always starts on.</div><div><u><br></u></div><div><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.2 [BPuente] (23/11/2024): Optional average values, off by default to increase simulation speed.</span></div><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">&nbsp;(14/05/2023): Initial release</span></body></html>"));
     end TriggerConsumer;
 
     model StartGenerator
@@ -1825,7 +1832,7 @@ package Components "Library components"
           Dialog(tab = "Factors", group = "Start Factors"));
         parameter Real StartsHour_dev = 2 "Typical deviation of number of starts on a hour" annotation(
           Dialog(tab = "Factors", group = "Start Factors"));
-        discrete Boolean Work;
+        Modelica.Blocks.Interfaces.BooleanOutput Work;
         final parameter Real MeanWorkingTime = Kt*3600/StartsHour;
         final parameter Real MeanStopTime = (1 - Kt)*3600/StartsHour;
         discrete Real NextStep;
@@ -1863,6 +1870,36 @@ package Components "Library components"
           experiment(StartTime = 0, StopTime = 5000, Tolerance = 1e-06, Interval = 0.2),
           Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div>This component provides a random start and stop cycles using the following parameters:</div><div>- Seed: Seed to feed the random number generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>- Kt and Kt_dev: Percentage of \"On\" time and their typical deviation</div><div>- StartsHour and StartsHour_dev: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><u><br></u></div><div><u>Further development</u>:</div><div><br></div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-size: 12px;\">(14/05/2023): Initial release</span></body></html>"));
       end RandomStart;
+      
+      model Integrators
+    Real SimultaneousFactor "Percentage of time that the consumer is working";
+        Real AveragePower "Average power";
+      
+    Modelica.Blocks.Interfaces.BooleanInput Work annotation(
+          Placement(transformation(origin = {-106, 60}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-96, 60}, extent = {{-20, -20}, {20, 20}})));
+    Modelica.Blocks.Interfaces.RealInput u annotation(
+          Placement(transformation(origin = {-106, -20}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-96, -20}, extent = {{-20, -20}, {20, 20}})));
+        protected
+        Modelica.Blocks.Continuous.Integrator integratorWork annotation(
+          Placement(transformation(origin = {26, 24}, extent = {{-10, -10}, {10, 10}})));
+        Modelica.Blocks.Continuous.Integrator integratorAvg annotation(
+          Placement(transformation(origin = {22, -14}, extent = {{10, -10}, {-10, 10}})));
+       
+      equation
+        integratorAvg.u = u;
+        if Work then
+          integratorWork.u = 1;
+        else
+          integratorWork.u = 0;
+        end if;
+        SimultaneousFactor = if (time > 0) then integratorWork.y/time else 0;
+        AveragePower = if (time > 0) then integratorAvg.y/time else 0;
+        
+      annotation(
+          Documentation(info = "<html><head></head><body><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">This component provides average values of signal \"u\" and working time (percent).</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Limitations</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>References</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Know issues</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u><br></u></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(23/11/2024): Initial release</span></body></html>"));
+end Integrators;
+      
+      
     end Internal;
     annotation(
       Icon(graphics = {Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}}), Line(origin = {6.2593, 48}, points = {{53.7407, -58}, {53.7407, -93}, {-66.2593, -93}, {-66.2593, -58}}), Line(origin = {1, 50}, points = {{-61, -45}, {-61, -10}, {-26, -10}}), Rectangle(origin = {20.31, 82.86}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-45.31, -57.86}, {4.69, -27.86}}), Line(origin = {7, 50}, points = {{18, -10}, {53, -10}, {53, -45}}), Line(origin = {-2, 55}, points = {{-83, -50}, {-33, -50}}), Line(origin = {8, 48}, points = {{32, -58}, {72, -58}}), Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}})}));
