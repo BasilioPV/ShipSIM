@@ -1691,8 +1691,8 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-      Real SimultaneousFactor "Percentage of time that the consumer is working";
-      Real AveragePower "Average power";
+      //Real SimultaneousFactor "Percentage of time that the consumer is working";
+      //Real AveragePower "Average power";
       Modelica.Blocks.Interfaces.RealOutput y "Actual power" annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
     protected
@@ -1702,10 +1702,8 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Logical.Timer timer annotation(
         Placement(visible = true, transformation(origin = {-58, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Blocks.Continuous.Integrator integrator annotation(
-        Placement(transformation(origin = {26, 24}, extent = {{-10, -10}, {10, 10}})));
-      Modelica.Blocks.Continuous.Integrator integrator1 annotation(
-        Placement(transformation(origin = {58, -32}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
+      //Modelica.Blocks.Continuous.Integrator integrator annotation(Placement(transformation(origin = {26, 24}, extent = {{-10, -10}, {10, 10}})));
+      //Modelica.Blocks.Continuous.Integrator integrator1 annotation(Placement(transformation(origin = {58, -32}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
       Real Tinternal(start = 0) "Cycle time";
@@ -1715,16 +1713,15 @@ package Components "Library components"
       CycleInterpolation.u[1] = Tinternal;
       if Work then
         y = (if (timer.y < Tstart) then StartInterpolation.y[1] else CycleInterpolation.y[1])*NominalPower*Kr;
-        integrator.u = 1;
+        //integrator.u = 1;
       else
         y = 0;
-        integrator.u = 0;
+        //integrator.u = 0;
       end if;
-      SimultaneousFactor = if (time > 0) then integrator.y/time else 0;
-      AveragePower = if (time > 0) then integrator1.y/time else 0;
+      //SimultaneousFactor = if (time > 0) then integrator.y/time else 0;
+      //AveragePower = if (time > 0) then integrator1.y/time else 0;
       timer.u = Work;
-      connect(y, integrator1.u) annotation(
-        Line(points = {{102, 0}, {72, 0}, {72, -32}, {70, -32}}, color = {0, 0, 127}));
+      //connect(y, integrator1.u) annotation(Line(points = {{102, 0}, {72, 0}, {72, -32}, {70, -32}}, color = {0, 0, 127}));
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Rectangle(origin = {-14, 12}, rotation = 35, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, borderPattern = BorderPattern.Raised, extent = {{-4, 23}, {4, -23}}), Ellipse(origin = {-6, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-11, 12}, {11, -12}}), Rectangle(rotation = 90, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-39, 6}, {39, -6}})}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
@@ -1741,13 +1738,12 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-      Real SimultaneousFactor "Percentage of time that the consumer is working";
-      Real AveragePower "Average power";
+      //Real SimultaneousFactor "Percentage of time that the consumer is working";
+      //Real AveragePower "Average power";
       Boolean Working;
       Modelica.Blocks.Interfaces.RealOutput y annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
-      Modelica.Blocks.Continuous.Integrator integrator1 annotation(
-        Placement(visible = true, transformation(origin = {62, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //Modelica.Blocks.Continuous.Integrator integrator1 annotation(Placement(visible = true, transformation(origin = {62, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     protected
       Modelica.Blocks.Sources.BooleanExpression booleanExpression(y = true) annotation(
         Placement(visible = true, transformation(origin = {-78, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -1765,8 +1761,7 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Tables.CombiTable1D CycleInterpolation(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, table = CycleTable) annotation(
         Placement(visible = true, transformation(origin = {-58, -68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Blocks.Continuous.Integrator integrator annotation(
-        Placement(visible = true, transformation(origin = {-20, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //Modelica.Blocks.Continuous.Integrator integrator annotation(Placement(visible = true, transformation(origin = {-20, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
     equation
@@ -1774,15 +1769,15 @@ package Components "Library components"
       CycleInterpolation.u[1] = add.y - Tstart;
       if Working then
         y = (if (add.y < Tstart) then StartInterpolation.y[1] else CycleInterpolation.y[1])*NominalPower*Kr;
-        integrator.u = 1;
+        //integrator.u = 1;
       else
         y = 0;
-        integrator.u = 0;
+        //integrator.u = 0;
       end if;
       less.u2 = Tstart + Tcycle;
       Working = less.y;
-      SimultaneousFactor = if time > 0 then integrator.y/time else 0;
-      AveragePower = if time > 0 then integrator1.y/time else 0;
+      //SimultaneousFactor = if time > 0 then integrator.y/time else 0;
+      //AveragePower = if time > 0 then integrator1.y/time else 0;
       logicalSwitch.u3 = Work;
       connect(logicalSwitch.y, triggeredSampler.trigger) annotation(
         Line(points = {{-38, 61}, {-38, 62}, {-22, 62}, {-22, 65}}, color = {255, 0, 255}));
@@ -1798,8 +1793,7 @@ package Components "Library components"
         Line(points = {{-11, 78}, {-1, 78}}, color = {0, 0, 127}));
       connect(timesignal.y, triggeredSampler.u) annotation(
         Line(points = {{-55, 78}, {-35, 78}}, color = {0, 0, 127}));
-      connect(y, integrator1.u) annotation(
-        Line(points = {{102, 0}, {40, 0}, {40, -26}, {50, -26}}, color = {0, 0, 127}));
+      //connect(y, integrator1.u) annotation(Line(points = {{102, 0}, {40, 0}, {40, -26}, {50, -26}}, color = {0, 0, 127}));
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Line(origin = {8, 0}, points = {{0, 0}}), Rectangle(origin = {8, 18}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 26}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 10}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}, endAngle = 180, closure = EllipseClosure.Chord), Polygon(origin = {8, 10}, points = {{-24, 30}, {54, 30}, {28, -24}, {-52, -24}, {-46, -12}, {-24, 30}}), Rectangle(origin = {-4, -19}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-40, 5}, {40, -5}}), Polygon(origin = {52, 16}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{10, 24}, {10, 14}, {-16, -40}, {-16, -30}, {-16, -30}, {10, 24}})}),
