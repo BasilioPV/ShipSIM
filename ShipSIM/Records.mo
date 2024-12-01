@@ -14,7 +14,8 @@ within ShipSIM;
         parameter Real Cb;
         parameter Real Cl[:, :];
         parameter Real Cd[:, :];
-        parameter Real Cm[:, :];
+        parameter Real Cm[:, :];annotation(
+        Documentation(revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial pre-release</span></body></html>"));
       end ShipDataTable;
     end ShipData;
 

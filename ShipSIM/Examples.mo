@@ -108,7 +108,7 @@ package Examples "Sample simulations of the library"
         Placement(transformation(origin = {-45, 45}, extent = {{-17, -5}, {17, 5}})));
       annotation(
         experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 20º to -20º makes the logic of a zig-zag test</div></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 20º to -20º makes the logic of a zig-zag test</div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {4, -9}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {23, -35}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {-68, 1}, lineColor = {85, 0, 255}, extent = {{-30, 23}, {30, -23}}), Text(origin = {-70, -18}, textColor = {85, 0, 255}, extent = {{-8, 2}, {8, -2}}, textString = "Control")}, coordinateSystem(extent = {{-125, -150}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end Test_ZigZag_1Q;
@@ -186,7 +186,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-41, -53}, {-23, -53}, {-23, -52}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 400, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a variable speed shaft, provides the propulsion system model</div><div>- Control: An initial order of 35º rudder to start the crash stop</div></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a variable speed shaft, provides the propulsion system model</div><div>- Control: An initial order of 35º rudder to start the crash stop</div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {4, -9}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {23, -35}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end Test_CrashStop_4Q;
@@ -316,7 +316,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-61, -2}, {-64, -2}, {-64, -1}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>This example provides a crash avoidance for three propeller ship<br></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a crash avoidance for three propeller ship<br></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {84, 49}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {96, 34}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-11, -15}, lineColor = {255, 0, 0}, extent = {{-70, 75}, {70, -75}}), Text(origin = {96, 34}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-37.5, -36}, textColor = {255, 0, 0}, extent = {{-25, 2}, {25, -2}}, textString = "Propulsion model"), Rectangle(origin = {14, 79}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {3, 68}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -100}, {125, 100}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -100}, {125, 100}}, grid = {1, 1})));
     end Test_CrashAvoidance;
@@ -410,7 +410,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-87, 10}, {-93, 10}, {-93, 26}, {-79, 26}, {-79, 41}, {-83, 41}}, color = {95, 95, 95}));
       annotation(
         experiment(StartTime = 0, StopTime = 4000, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a variable speed shaft, provides the propulsion system model</div><div>- Control: An autopilot was included with a list of waypoints where position and speed are defined.</div></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a variable speed shaft, provides the propulsion system model</div><div>- Control: An autopilot was included with a list of waypoints where position and speed are defined.</div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {4, -9}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {23, -35}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end Test_Autopilot_4Q;
@@ -534,7 +534,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-64, -33}, {-67, -33}, {-67, -32}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Wingsails</div><div><br></div></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Wingsails</div><div><br></div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {33, -34}, lineColor = {0, 255, 0}, extent = {{-35, 39}, {35, -39}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-46, -40}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-27, -66}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-28, 7}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {-39, -4}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end FourWingSails;
@@ -670,7 +670,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-66, -32}, {-71, -32}, {-71, -30}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">This example provides a basic construction of a maneuvering model where the following items are placed:</span><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Wingsails</div><div>- Antiheeling tank system</div></body></html>"),
+        Documentation(info = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">This example provides a basic construction of a maneuvering model where the following items are placed:</span><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">- Wingsails</div><div>- Antiheeling tank system</div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {28, -33}, lineColor = {0, 255, 0}, extent = {{-32, 39}, {32, -39}}), Text(origin = {33, -49}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-48, -39}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {33, -49}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-29, -65}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-30, 8}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {-41, -3}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {92, -33}, lineColor = {170, 85, 0}, extent = {{-29, 39}, {29, -39}}), Text(origin = {80.5, -66}, textColor = {170, 85, 0}, extent = {{-10.5, 3}, {10.5, -3}}, textString = "Anti-Heeling")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end FourWingSailsAH;
@@ -693,7 +693,7 @@ package Examples "Sample simulations of the library"
     protected
       annotation(
         experiment(StartTime = 0, StopTime = 50000, Tolerance = 1e-06, Interval = 0.2),
-        Documentation(info = "<html><head></head><body>Example of electric load balance simulation.</body></html>"));
+        Documentation(info = "<html><head></head><body>Example of electric load balance simulation.</body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"));
     end Consumers;
   end Electrical;
 
@@ -722,7 +722,8 @@ package Examples "Sample simulations of the library"
       connect(simpleDieselEngine.RPM_demand, realExpression.y) annotation(
         Line(points = {{-32, 32}, {-40, 32}, {-40, 20}, {-52, 20}}, color = {0, 0, 127}));
       annotation(
-        experiment(StartTime = 0, StopTime = 400, Tolerance = 1e-6, Interval = 0.01));
+        experiment(StartTime = 0, StopTime = 400, Tolerance = 1e-6, Interval = 0.01),
+  Documentation(revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"));
     end SimpleDieselEngineTest;
   end Engines;
 
@@ -787,7 +788,7 @@ package Examples "Sample simulations of the library"
     protected
       annotation(
         experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-06, Interval = 0.1),
-        Documentation(info = "<html><head></head><body>This example provides a basic operation of crane at sea.<br></body></html>"),
+        Documentation(info = "<html><head></head><body>This example provides a basic operation of crane at sea.<br></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/07/2023): Initial release</span></body></html>"),
         Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end CraneOperation;
@@ -815,7 +816,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-26, 6}, {-16, 6}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.1),
-        Documentation(info = "<html><head></head><body>Sample of the rainflow counting module</body></html>"));
+        Documentation(info = "<html><head></head><body>Sample of the rainflow counting module</body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(09/12/2023): Initial release</span></body></html>"));
     end RainFlowTesting;
   end DataProcessing;
 
@@ -865,7 +866,7 @@ package Examples "Sample simulations of the library"
         uses(Modelica(version = "3.2.3"), ShipSIM(version = "1.6.0")),
         experiment(StartTime = 0, StopTime = 18000, Tolerance = 1e-06, Interval = 1),
         Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-        Documentation(info = "<html><head></head><body>Validation of heat transients of a cylinder.</body></html>"));
+        Documentation(info = "<html><head></head><body>Validation of heat transients of a cylinder.</body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(19/11/2023): Initial release</span></body></html>"));
     end CeramicDiskResistor_Test;
   end HeatTransfer;
 
@@ -925,7 +926,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-80, 56}, {-68, 56}, {-68, -98}, {8, -98}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 946938, Tolerance = 1e-06, Interval = 60),
-        Documentation(info = "<html><head></head><body>Test of sun irradiation over a plate (Modelica.Mechanics.Multibody compatible)</body></html>"));
+        Documentation(info = "<html><head></head><body>Test of sun irradiation over a plate (Modelica.Mechanics.Multibody compatible)</body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2023): Initial release</span></body></html>"));
     end TestIrradiation;
   end SunIrradiation;
 end Examples;
