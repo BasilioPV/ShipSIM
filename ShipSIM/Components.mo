@@ -1343,7 +1343,7 @@ package Components "Library components"
         uses(Modelica(version = "3.2.3")),
         Diagram,
         Icon(graphics = {Polygon(origin = {-9, -4}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}}), Polygon(origin = {24, 44}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Line(origin = {-42, 93.03}, points = {{-58, 0}, {48, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 14), Line(origin = {-33.74, 75.06}, points = {{-58, 0}, {48, 0}}, color = {200, 200, 200}, arrow = {Arrow.Filled, Arrow.None}, arrowSize = 14), Line(origin = {61.3685, 19.9921}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6441, -0.142118}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.5786, -20.1318}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 40.05}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {62.0283, -59.9355}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.7244, -40.1816}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 59.804}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Rectangle(origin = {-69, -61}, lineColor = {64, 64, 64}, fillColor = {255, 215, 136}, fillPattern = FillPattern.Solid, extent = {{-25, -19}, {25, 19}}, radius = 10), Line(origin = {-69.1667, -54.2886}, points = {{-25, 0}, {25, 0}}), Line(origin = {-69.2244, -60}, points = {{0, 18}, {0, -20}}), Line(origin = {-69.1667, -68}, points = {{-25, 0}, {25, 0}}), Rectangle(origin = {-69, -61}, lineColor = {64, 64, 64}, fillColor = {255, 215, 136}, fillPattern = FillPattern.Solid, extent = {{-25, -19}, {25, 19}}, radius = 10), Line(origin = {-69.2244, -60}, points = {{0, 18}, {0, -20}}), Line(origin = {-69.1667, -68}, points = {{-25, 0}, {25, 0}}), Line(origin = {-69.1667, -54.2886}, points = {{-25, 0}, {25, 0}}), Text(origin = {0, -114}, extent = {{-98, 10}, {98, -10}}, textString = "%wingData"), Text(origin = {-90, 30}, extent = {{-30, 10}, {30, -10}}, textString = DynamicSelect("Angle", (String(Rudder_position, "+.1f") + " º")), horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
-        Documentation(revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 2.1&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(15/03/2024): Added DynamicSelect for diagram animation</span></div><div>Rev. 2.0&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(17/12/2023): Changed Cl,Cd,Cm factor from function to wingData table interpolation. There are big mistakes in previous Cl,Cd,Cm function. Included aspect ratio correction and wake factor input to correct water speed</div><div>Rev. 1.3&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 1.2&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>&nbsp;(06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 [BPuente] (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0&nbsp;</span>[ACorts]<span style=\"font-family: -webkit-standard;\">&nbsp;(26/09/2022): Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model, based on a Cl,Cd,Cm record data, with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">The Cl and Cd are corrected by rudder aspect ratio.</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered. Not considered rudder aspect ratio correction. Propeller water rotation influence on rudder is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Acorts]</td><td>Antonio Corts, \"Gemelo digital de timón y servo usando Modelica\", MSc Thesis 2022</td></tr></tbody></table><br></div></div><div style=\"font-family: -webkit-standard;\"></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Jialun2016]</td><td>Jialun Liu, Frans Quadvlieg, Robert Hekkenberg, \"Impacts of the rudder profile on manoeuvring performance of ships\", Delft University of Technology, 2016,&nbsp;<a href=\"https://doi.org/10.1016/j.oceaneng.2016.07.064\">DOI:https://doi.org/10.1016/j.oceaneng.2016.07.064</a></td></tr></tbody></table></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Correct rudder forces due to open ends of the profile. Enhance limitations.</div><div><br></div><div><div><u>Copyright:</u></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Rev. 0.0: Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Following revisions released with the same ShipSIM library license.</span></div></div></div></body></html>"));
+        Documentation(revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 2.1&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(15/03/2024): Added DynamicSelect for diagram animation</span></div><div>Rev. 2.0&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(17/12/2023): Changed Cl,Cd,Cm factor from function to wingData table interpolation. There are big mistakes in previous Cl,Cd,Cm function. Included aspect ratio correction and wake factor input to correct water speed</div><div>Rev. 1.3&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 1.2&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>&nbsp;(06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 [BPuente] (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0&nbsp;</span>[BPuente]<span style=\"font-family: -webkit-standard;\">&nbsp;(26/07/2022): First release</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model, based on a Cl,Cd,Cm record data, with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">The Cl and Cd are corrected by rudder aspect ratio.</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered. Not considered rudder aspect ratio correction. Propeller water rotation influence on rudder is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"></div></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Jialun2016]</td><td>Jialun Liu, Frans Quadvlieg, Robert Hekkenberg, \"Impacts of the rudder profile on manoeuvring performance of ships\", Delft University of Technology, 2016,&nbsp;<a href=\"https://doi.org/10.1016/j.oceaneng.2016.07.064\">DOI:https://doi.org/10.1016/j.oceaneng.2016.07.064</a></td></tr></tbody></table></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Correct rudder forces due to open ends of the profile. Enhance limitations.</div><div><br></div><div><br></div></div></div></body></html>"));
     end Rudder;
     annotation(
       Icon(graphics = {Rectangle(origin = {76, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.CrossDiag, extent = {{12, 6}, {-12, -6}}), Polygon(origin = {45, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{15, 12}, {15, 26}, {5, 48}, {-7, 60}, {-13, 58}, {-15, 52}, {-15, 34}, {-1, 12}, {-1, -12}, {-15, -34}, {-15, -52}, {-13, -58}, {-7, -60}, {5, -48}, {15, -26}, {15, 12}}, smooth = Smooth.Bezier), Polygon(origin = {48, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, points = {{16, 12}, {16, -12}, {-6, -12}, {-12, -8}, {-16, -4}, {-16, 4}, {-12, 8}, {-6, 12}, {16, 12}}), Polygon(origin = {2, 40}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Polygon(origin = {-31, -8}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}})}));
@@ -1683,9 +1683,10 @@ package Components "Library components"
   package Electrical "Components relative to ship electrical equipment"
     model OnOffConsumer "Consumer using an on-off switch"
       extends ShipSIM.Components.Electrical.Internal.RandomStart;
-      
-      parameter Boolean getIntegrators = false "=true, calculate average values"
-      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
+      parameter Boolean getIntegrators = false "=true, calculate average values" annotation(
+        Evaluate = true,
+        HideResult = true,
+        choices(checkBox = true));
       parameter Real StartTable[:, 2] = {{0, 1}, {1, 0.4}, {2, 0.8}, {3, 1}, {4, 1.5}, {5, 1}} "Table Time Vs Power for starting period" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real CycleTable[:, 2] = {{0, 1}, {1, 0.9}, {2, 1.1}, {3, 0.9}, {4, 1.1}, {5, 0.9}, {6, 1.1}, {7, 0.9}, {8, 1}} "Table Time Vs Power for operating period" annotation(
@@ -1694,11 +1695,9 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-    
       Modelica.Blocks.Interfaces.RealOutput y "Actual power" annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
       ShipSIM.Components.Electrical.Internal.Integrators Integrators if getIntegrators;
-      
     protected
       Modelica.Blocks.Tables.CombiTable1D StartInterpolation(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, table = StartTable) annotation(
         Placement(visible = true, transformation(origin = {-58, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -1706,7 +1705,6 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Logical.Timer timer annotation(
         Placement(visible = true, transformation(origin = {-58, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
       Real Tinternal(start = 0) "Cycle time";
@@ -1719,12 +1717,9 @@ package Components "Library components"
       else
         y = 0;
       end if;
-    
       timer.u = Work;
-      
-      connect(y,Integrators.u);
-      connect(Integrators.Work,Work);
-      
+      connect(y, Integrators.u);
+      connect(Integrators.Work, Work);
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Rectangle(origin = {-14, 12}, rotation = 35, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, borderPattern = BorderPattern.Raised, extent = {{-4, 23}, {4, -23}}), Ellipse(origin = {-6, 0}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-11, 12}, {11, -12}}), Rectangle(rotation = 90, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-39, 6}, {39, -6}})}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
@@ -1733,9 +1728,10 @@ package Components "Library components"
 
     model TriggerConsumer "Consumer using a trigger switch"
       extends ShipSIM.Components.Electrical.Internal.RandomStart;
-      parameter Boolean getIntegrators = false "=true, calculate average values"
-      annotation(Evaluate=true, HideResult=true, choices(checkBox=true));
-      
+      parameter Boolean getIntegrators = false "=true, calculate average values" annotation(
+        Evaluate = true,
+        HideResult = true,
+        choices(checkBox = true));
       parameter Real StartTable[:, 2] = {{0, 0}, {1, 0.4}, {2, 0.8}, {3, 1}, {4, 1.5}, {5, 1}} "Table Time Vs Power for starting period" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real CycleTable[:, 2] = {{0, 1}, {1, 0.9}, {2, 1.1}, {3, 0.9}, {4, 1.1}, {5, 0.9}, {6, 1.1}, {7, 0.9}, {8, 0}} "Table Time Vs Power for operating period, shall end in zero" annotation(
@@ -1744,11 +1740,9 @@ package Components "Library components"
         Dialog(tab = "Factors", group = "Power Factors"));
       parameter Real Kr = 0.85 "Percentage of nominal power used (0-1]" annotation(
         Dialog(tab = "Factors", group = "Power Factors"));
-    
       Modelica.Blocks.Interfaces.RealOutput y annotation(
         Placement(visible = true, transformation(origin = {102, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {102, 2.22045e-16}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
       ShipSIM.Components.Electrical.Internal.Integrators Integrators if getIntegrators;
-    
     protected
       Modelica.Blocks.Interfaces.BooleanOutput Working;
       Modelica.Blocks.Sources.BooleanExpression booleanExpression(y = true) annotation(
@@ -1767,10 +1761,8 @@ package Components "Library components"
         Placement(visible = true, transformation(origin = {-58, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Tables.CombiTable1D CycleInterpolation(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, table = CycleTable) annotation(
         Placement(visible = true, transformation(origin = {-58, -68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    
       parameter Real Tstart = StartTable[size(StartTable, 1), 1];
       parameter Real Tcycle = CycleTable[size(CycleTable, 1), 1];
-    
     equation
       StartInterpolation.u[1] = add.y;
       CycleInterpolation.u[1] = add.y - Tstart;
@@ -1781,10 +1773,8 @@ package Components "Library components"
       end if;
       less.u2 = Tstart + Tcycle;
       Working = less.y;
-      
-      connect(y,Integrators.u);
-      connect(Integrators.Work,Working);
-      
+      connect(y, Integrators.u);
+      connect(Integrators.Work, Working);
       logicalSwitch.u3 = Work;
       connect(logicalSwitch.y, triggeredSampler.trigger) annotation(
         Line(points = {{-38, 61}, {-38, 62}, {-22, 62}, {-22, 65}}, color = {255, 0, 255}));
@@ -1800,7 +1790,6 @@ package Components "Library components"
         Line(points = {{-11, 78}, {-1, 78}}, color = {0, 0, 127}));
       connect(timesignal.y, triggeredSampler.u) annotation(
         Line(points = {{-55, 78}, {-35, 78}}, color = {0, 0, 127}));
-    
       annotation(
         uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Line(origin = {8, 0}, points = {{0, 0}}), Rectangle(origin = {8, 18}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 26}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}), Ellipse(origin = {8, 10}, fillColor = {200, 200, 200}, pattern = LinePattern.None, fillPattern = FillPattern.Solid, extent = {{-15, 8}, {15, -8}}, endAngle = 180, closure = EllipseClosure.Chord), Polygon(origin = {8, 10}, points = {{-24, 30}, {54, 30}, {28, -24}, {-52, -24}, {-46, -12}, {-24, 30}}), Rectangle(origin = {-4, -19}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-40, 5}, {40, -5}}), Polygon(origin = {52, 16}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{10, 24}, {10, 14}, {-16, -40}, {-16, -30}, {-16, -30}, {10, 24}})}),
@@ -1870,21 +1859,19 @@ package Components "Library components"
           experiment(StartTime = 0, StopTime = 5000, Tolerance = 1e-06, Interval = 0.2),
           Documentation(info = "<html><head></head><body><div><u>Working Principles</u>:</div><div>This component provides a random start and stop cycles using the following parameters:</div><div>- Seed: Seed to feed the random number generator. If two components have the same parameters and also the same seed (not being zero), then produce the same result</div><div>- Kt and Kt_dev: Percentage of \"On\" time and their typical deviation</div><div>- StartsHour and StartsHour_dev: Number of \"On\" starts on an hour with their typical deviation.</div><div><br></div><div><u>Limitations</u>:</div><div>Since \"On\" time cannot be negative, the output is truncated to +-3*typical deviation, and the minimum cannot be below zero.&nbsp;</div><div>On this cases, if we put a mean value of Kt=3 with a Kt_dev=2, then the distribution is truncated to (0,9], producing a mean value that does not match with 3.</div><div><br></div><div><u>References</u>:</div><div><br></div><div><u>Know issues</u>:</div><div><u><br></u></div><div><u>Further development</u>:</div><div><br></div></body></html>", revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.1 [BPuente] (16/11/2024): Bugfix release</span></div><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-size: 12px;\">(14/05/2023): Initial release</span></body></html>"));
       end RandomStart;
-      
+
       model Integrators
-    Real SimultaneousFactor "Percentage of time that the consumer is working";
+        Real SimultaneousFactor "Percentage of time that the consumer is working";
         Real AveragePower "Average power";
-      
-    Modelica.Blocks.Interfaces.BooleanInput Work annotation(
+        Modelica.Blocks.Interfaces.BooleanInput Work annotation(
           Placement(transformation(origin = {-106, 60}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-96, 60}, extent = {{-20, -20}, {20, 20}})));
-    Modelica.Blocks.Interfaces.RealInput u annotation(
+        Modelica.Blocks.Interfaces.RealInput u annotation(
           Placement(transformation(origin = {-106, -20}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-96, -20}, extent = {{-20, -20}, {20, 20}})));
-        protected
+      protected
         Modelica.Blocks.Continuous.Integrator integratorWork annotation(
           Placement(transformation(origin = {26, 24}, extent = {{-10, -10}, {10, 10}})));
         Modelica.Blocks.Continuous.Integrator integratorAvg annotation(
           Placement(transformation(origin = {22, -14}, extent = {{10, -10}, {-10, 10}})));
-       
       equation
         integratorAvg.u = u;
         if Work then
@@ -1894,12 +1881,9 @@ package Components "Library components"
         end if;
         SimultaneousFactor = if (time > 0) then integratorWork.y/time else 0;
         AveragePower = if (time > 0) then integratorAvg.y/time else 0;
-        
-      annotation(
+        annotation(
           Documentation(info = "<html><head></head><body><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">This component provides average values of signal \"u\" and working time (percent).</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Limitations</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>References</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><br></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Know issues</u>:</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u><br></u></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><u>Further development</u>:</div></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(23/11/2024): Initial release</span></body></html>"));
-end Integrators;
-      
-      
+      end Integrators;
     end Internal;
     annotation(
       Icon(graphics = {Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}}), Line(origin = {6.2593, 48}, points = {{53.7407, -58}, {53.7407, -93}, {-66.2593, -93}, {-66.2593, -58}}), Line(origin = {1, 50}, points = {{-61, -45}, {-61, -10}, {-26, -10}}), Rectangle(origin = {20.31, 82.86}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, extent = {{-45.31, -57.86}, {4.69, -27.86}}), Line(origin = {7, 50}, points = {{18, -10}, {53, -10}, {53, -45}}), Line(origin = {-2, 55}, points = {{-83, -50}, {-33, -50}}), Line(origin = {8, 48}, points = {{32, -58}, {72, -58}}), Line(origin = {-3, 45}, points = {{-72, -55}, {-42, -55}}), Line(origin = {9, 54}, points = {{31, -49}, {71, -49}})}));

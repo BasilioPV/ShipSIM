@@ -218,16 +218,13 @@ MSc Thesis 2022<br></td>
     <p>
     <strong><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>Maria Dolores Fernandez Ballesteros</strong><br><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>15624 Ares (A Coruña)<br><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>Spain<br><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>email:&nbsp;<a href=\"mailto:lolifernandezballesteros@gmail.com\">lolifernandezballesteros@gmail.com</a><br><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>web:&nbsp;<a href=\"https://modelica-spain.org\">https://modelica-spain.org</a></p><p><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>LinkedIn:&nbsp;<a href=\"https://es.linkedin.com/in/maría-dolores-fernández-ballesteros-22815443\">https://es.linkedin.com/in/maría-dolores-fernández-ballesteros-22815443</a></p><p><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>ORCID:&nbsp;0000-0002-1501-8890</p><p><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>[DFernandez]</p>
     
-    <h4>Contributors to this library (without copyright rights):</h4><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span><b>Individuals (in chronological order):</b></div>
+    <h4>Contributors to this library (without copyright rights):</h4><div>The following contributors release their material with a permissive license that enables their inclusion on this library without any copyright rights.</div><div><br></div><div><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span><b>Individuals (in chronological order):</b></div>
     
     <ul>
-    <li>Antonio Corts de la Peña [ACorts] (Rudder component)</li><li>Noé Carnerero Durán [NCarnerero] (Anti-heeling system)</li><li>Mayco Erano [MErano] (NACA profile data)</li>
-    </ul>
-    
-    <h4><span class=\"Apple-tab-span\" style=\"white-space:pre\">	</span>Institutions:</h4><div><ul><li><a href=\"http://www.tphispania.com/\">Techno Pro Hispania S.L.</a></li></ul></div><h4>Acknowledgements:</h4>
+    <li>Antonio Corts de la Peña [ACorts] (Rudder component - <i>obsolete</i>)</li><li>Noé Carnerero Durán [NCarnerero] (Anti-heeling system)</li><li>Mayco Erano [MErano] (NACA profile data)</li></ul><h4>Acknowledgements:</h4>
     
     <p>
-    The authors would like to thank following entities for your contribution to spread both Modelica language as well this package:</p><p></p><ul><li><a href=\"https://www.udc.es/\">Universidade da Coruña</a></li><li><a href=\"https://www.upm.es/\">Universidad Politécnica de Madrid</a></li></ul><p></p>
+    The authors would like to thank following entities for your contribution to spread both Modelica language as well this package:</p><p></p><ul><li><a href=\"http://www.tphispania.com/\">Techno Pro Hispania S.L.</a></li><li><a href=\"https://www.udc.es/\">Universidade da Coruña</a></li><li><a href=\"https://www.upm.es/\">Universidad Politécnica de Madrid</a></li></ul><p></p>
     </body></html>"));
     end Contact;
 end UsersGuide;
