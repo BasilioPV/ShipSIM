@@ -2375,6 +2375,18 @@ package Components "Library components"
 
 </div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><br></div></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"></span></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\">This algorithm was developed by Basilio Puente Varela,&nbsp;</span><span style=\"font-family: Arial, sans-serif; font-size: 13.333333015441895px;\">©</span><span style=\"font-family: 'MS Shell Dlg 2';\">&nbsp;all rights are reserved. Contact for permission on other uses.</span></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-size: 12px; font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\">N/A</span></div><div style=\"font-size: 12px;\"><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><u>Further development:</u></div></div></body></html>", revisions = "<html><head></head><body><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(09/12/2023): Initial release</span></body></html>"));
     end RainflowCounter;
+    
+    model FatigueCounter
+  Modelica.Blocks.Interfaces.RealVectorInput OngoingRainflowMatrix[:,:] annotation(
+        Placement(transformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}})));
+    equation
+    
+    annotation(
+        Icon(graphics = {Rectangle(lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, -100}, {100, 100}})}));
+end FatigueCounter;
+    
+    
+    
     annotation(
       Icon(graphics = {Line(points = {{-90, 0}, {68, 0}}, color = {192, 192, 192}), Polygon(lineColor = {192, 192, 192}, fillColor = {192, 192, 192}, fillPattern = FillPattern.Solid, points = {{-80, 90}, {-88, 68}, {-72, 68}, {-80, 90}}), Polygon(lineColor = {192, 192, 192}, fillColor = {192, 192, 192}, fillPattern = FillPattern.Solid, points = {{90, 0}, {68, 8}, {68, -8}, {90, 0}}), Line(points = {{-80, 68}, {-80, -80}}, color = {192, 192, 192}), Line(origin = {-6.06203, 10.1294}, points = {{-65.938, -18.1294}, {-27.938, 37.8706}, {-19.938, 15.8706}, {0.0620331, 37.8706}, {4.06203, 1.87057}, {18.062, 21.8706}, {30.062, -38.1294}, {60.062, 27.8706}, {66.062, 9.87057}})}));
   end DataProcessing;
