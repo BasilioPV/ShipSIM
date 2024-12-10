@@ -383,7 +383,7 @@ package Components "Library components"
     end HidrodynamicXYY;
 
     model HidrodynamicZRP "Hydrodinamic ship forces model"
-      extends Modelica.Icons.UnderConstruction;
+      //extends Modelica.Icons.UnderConstruction;
       parameter Modelica.SIunits.Length Lpp = 100 "Length between perpendiculars [m]" annotation(
         Dialog(group = "Hidrostatics Properties"));
       //Added Mass parameters

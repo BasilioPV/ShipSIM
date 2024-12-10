@@ -422,120 +422,120 @@ package Examples "Sample simulations of the library"
     model FourWingSails
       extends Modelica.Icons.Example;
       ShipSIM.Components.Ship.ShipModelTh shipModelTh(CoG = {50.43, 0, 9}, ini_Vel = {7, 0, 0}) annotation(
-        Placement(visible = true, transformation(origin = {12, -13}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {40, -6}, extent = {{-10, -10}, {10, 10}})));
       ShipSIM.Components.Ship.HidrodynamicXYY hidrodynamicXYY annotation(
-        Placement(visible = true, transformation(origin = {12, -37}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {40, -34}, extent = {{-10, -10}, {10, 10}})));
       Modelica.Mechanics.MultiBody.Visualizers.FixedFrame ShipAxis(color_y = {0, 180, 0}, color_z = {255, 0, 0}, diameter = 0.5, length = 30) annotation(
-        Placement(visible = true, transformation(origin = {-23, 12}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
+        Placement(transformation(origin = {-49, 21}, extent = {{5, -5}, {-5, 5}})));
       Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(animation = true, height = 10, length = 100, shapeType = "modelica://ShipSIM/Resources/Data/Ship.dxf", width = 20) annotation(
-        Placement(visible = true, transformation(origin = {-24, -1}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {-50, 1}, extent = {{6, -6}, {-6, 6}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(animation = false, r = {1, 0, 2}) annotation(
-        Placement(visible = true, transformation(origin = {-22, -25}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {4, -26}, extent = {{6, -6}, {-6, 6}})));
       inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 20000, defaultNm_to_m = 200000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
-        Placement(visible = true, transformation(origin = {-83, 53}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {85, 17}, extent = {{-5, -5}, {5, 5}})));
       ShipSIM.Components.Propulsion.Rudder rudder(InitialRudderAngle = 0, wingData = wingDataRudder) annotation(
-        Placement(transformation(origin = {-75, -29}, extent = {{-8, -8}, {8, 8}})));
+        Placement(transformation(origin = {-49, -30}, extent = {{-8, -8}, {8, 8}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_pos(animation = false, r = {-2, 0, 4.5}) annotation(
-        Placement(visible = true, transformation(origin = {-29, -14}, extent = {{5, 5}, {-5, -5}}, rotation = 0)));
+        Placement(transformation(origin = {-3, -15}, extent = {{5, 5}, {-5, -5}})));
       Modelica.Mechanics.Rotational.Sources.Speed speed(phi(displayUnit = "rad")) annotation(
-        Placement(visible = true, transformation(origin = {-23, -46}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
+        Placement(transformation(origin = {3, -47}, extent = {{7, -7}, {-7, 7}})));
       Modelica.Blocks.Sources.RealExpression Rudder_order(y = -0.05) annotation(
-        Placement(visible = true, transformation(origin = {-111.5, -19.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}}, rotation = 0)));
+        Placement(transformation(origin = {-93.5, -23.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}})));
       inner ShipSIM.Components.Environment environment(WindDirection = 0, WindSpeed = 15) annotation(
-        Placement(visible = true, transformation(origin = {-105.5, 54.5}, extent = {{-11.5, -11.5}, {11.5, 11.5}}, rotation = 0)));
+        Placement(transformation(origin = {-52.5, 47.5}, extent = {{-8.5, -8.5}, {8.5, 8.5}})));
       ShipSIM.Components.Ship.ShipWind shipWind annotation(
-        Placement(visible = true, transformation(origin = {12, -61}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {40, -59}, extent = {{-10, -10}, {10, 10}})));
       ShipSIM.Components.Propulsion.Propeller4Q propeller4Q(PropModel = ShipSIM.Types.Propeller4Q.B4_100_1) annotation(
-        Placement(visible = true, transformation(origin = {-54, -29}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {-28, -30}, extent = {{-10, -10}, {10, 10}})));
       Modelica.Blocks.Sources.RealExpression ShaftSpeed(y = 100*(2*3.141592/60)) annotation(
-        Placement(visible = true, transformation(origin = {-61, -60}, extent = {{-22, -8}, {22, 8}}, rotation = 0)));
+        Placement(transformation(origin = {-35, -61}, extent = {{-22, -8}, {22, 8}})));
       parameter ShipSIM.Records.WingProfile.NACA0015 wingData annotation(
-        Placement(visible = true, transformation(origin = {-1, 61}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
+        Placement(transformation(origin = {-12, 5}, extent = {{-5, -5}, {5, 5}})));
       ShipSIM.Components.AlternativePropulsion.WingSail wingSail2(InitialSailAngle = 40, wingData = wingData) annotation(
-        Placement(visible = true, transformation(origin = {48, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {20, 50}, extent = {{-10, -10}, {10, 10}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos3(animation = false, r = {60, 0, 18}) annotation(
-        Placement(visible = true, transformation(origin = {64, 21}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {38, 23}, extent = {{-6, -6}, {6, 6}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos4(animation = false, r = {80, 0, 18}) annotation(
-        Placement(visible = true, transformation(origin = {94, 21}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {65, 23}, extent = {{-6, -6}, {6, 6}})));
       ShipSIM.Components.AlternativePropulsion.WingSail wingSail1(InitialSailAngle = 40, wingData = wingData) annotation(
-        Placement(visible = true, transformation(origin = {18, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}})));
       ShipSIM.Components.AlternativePropulsion.WingSail wingSail4(InitialSailAngle = 40, wingData = wingData) annotation(
-        Placement(visible = true, transformation(origin = {108, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {77, 50}, extent = {{-10, -10}, {10, 10}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos2(animation = false, r = {40, 0, 18}) annotation(
-        Placement(visible = true, transformation(origin = {34, 21}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {8, 23}, extent = {{-6, -6}, {6, 6}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation SailPos1(animation = false, r = {20, 0, 18}) annotation(
-        Placement(visible = true, transformation(origin = {4, 21}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+        Placement(transformation(origin = {-20, 23}, extent = {{-6, -6}, {6, 6}})));
       Modelica.Blocks.Sources.RealExpression realExpression(y = 40) annotation(
-        Placement(visible = true, transformation(origin = {-21, 51}, extent = {{-5, -6}, {5, 6}}, rotation = 0)));
+        Placement(transformation(origin = {-49, 65}, extent = {{-5, -6}, {5, 6}})));
       ShipSIM.Components.AlternativePropulsion.WingSail wingSail3(InitialSailAngle = 40, wingData = wingData) annotation(
-        Placement(visible = true, transformation(origin = {78, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}})));
       ShipSIM.Components.Ship.HidrodynamicZRP hidrodynamicZRP(AnimationForces = false, P_d = 1000000000000, R_d = 1000000000, Z_d = 1000000000) annotation(
-        Placement(visible = true, transformation(origin = {46, -27}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {74, -20}, extent = {{-10, -10}, {10, 10}})));
       parameter Records.WingProfile.NACA0015 wingDataRudder annotation(
-        Placement(visible = true, transformation(origin = {-112, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Placement(transformation(origin = {9, 5}, extent = {{-5, -5}, {5, 5}})));
     equation
       connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
-        Line(points = {{2, -37}, {-4, -37}, {-4, -13}, {2, -13}}, color = {95, 95, 95}));
+        Line(points = {{30, -34}, {28, -34}, {28, -6}, {30, -6}}, color = {95, 95, 95}));
       connect(ShipAxis.frame_a, shipModelTh.frame_a) annotation(
-        Line(points = {{-18, 12}, {-4, 12}, {-4, -13}, {2, -13}}, color = {95, 95, 95}));
+        Line(points = {{-44, 21}, {-30, 21}, {-30, -6}, {30, -6}}, color = {95, 95, 95}));
       connect(fixedShape.frame_a, shipModelTh.frame_a) annotation(
-        Line(points = {{-18, -1}, {-4, -1}, {-4, -13}, {2, -13}}, color = {95, 95, 95}));
+        Line(points = {{-44, 1}, {-30, 1}, {-30, -6}, {30, -6}}, color = {95, 95, 95}));
       connect(fixedTranslation.frame_a, shipModelTh.frame_a) annotation(
-        Line(points = {{-16, -25}, {-4, -25}, {-4, -13}, {2, -13}}, color = {95, 95, 95}));
+        Line(points = {{10, -26}, {10, -6}, {30, -6}}, color = {95, 95, 95}));
       connect(Rudder_pos.frame_a, shipModelTh.frame_a) annotation(
-        Line(points = {{-24, -14}, {-10, -14}, {-10, -13}, {2, -13}}, color = {95, 95, 95}));
+        Line(points = {{2, -15}, {2, -6}, {30, -6}}, color = {95, 95, 95}));
       connect(Rudder_pos.frame_b, rudder.frame_a) annotation(
-        Line(points = {{-34, -14}, {-72, -14}, {-72, -21}, {-73, -21}}, color = {95, 95, 95}));
+        Line(points = {{-8, -15}, {-46, -15}, {-46, -22}, {-47, -22}}, color = {95, 95, 95}));
       connect(shipModelTh.shipData, hidrodynamicXYY.shipData) annotation(
-        Line(points = {{22.4, -19.6}, {28.4, -19.6}, {28.4, -29.6}, {22.4, -29.6}}));
+        Line(points = {{50.4, -12.6}, {56.4, -12.6}, {56.4, -27}, {50, -27}}));
       connect(shipModelTh.frame_a, shipWind.frame_a) annotation(
-        Line(points = {{2, -13}, {0, -13}, {0, -61}, {2, -61}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {28, -6}, {28, -59}, {30, -59}}, color = {95, 95, 95}));
       connect(fixedTranslation.frame_b, propeller4Q.frame_a) annotation(
-        Line(points = {{-28, -25}, {-44, -25}}, color = {95, 95, 95}));
+        Line(points = {{-2, -26}, {-18, -26}}, color = {95, 95, 95}));
       connect(propeller4Q.flange, speed.flange) annotation(
-        Line(points = {{-44, -29}, {-40, -29}, {-40, -46}, {-30, -46}}));
+        Line(points = {{-18, -30}, {-14, -30}, {-14, -47}, {-4, -47}}));
       connect(propeller4Q.Propeller_flow_diameter, rudder.Propeller_flow_diameter) annotation(
-        Line(points = {{-64.1, -25}, {-65.55, -25}, {-65.55, -26}, {-67, -26}}, color = {0, 0, 127}));
+        Line(points = {{-38.1, -26}, {-39.55, -26}, {-39.55, -27}, {-41, -27}}, color = {0, 0, 127}));
       connect(propeller4Q.Propeller_speed, rudder.Propeller_speed) annotation(
-        Line(points = {{-64.1, -29}, {-67, -29}}, color = {0, 0, 127}));
+        Line(points = {{-38.1, -30}, {-41, -30}}, color = {0, 0, 127}));
       connect(Rudder_order.y, rudder.Rudder_Order) annotation(
-        Line(points = {{-102.15, -19.5}, {-102.15, -22}, {-83, -22}}, color = {0, 0, 127}));
+        Line(points = {{-84.15, -23.5}, {-84.15, -23}, {-57.15, -23}}, color = {0, 0, 127}));
       connect(ShaftSpeed.y, speed.w_ref) annotation(
-        Line(points = {{-36.8, -60}, {-8.8, -60}, {-8.8, -46}, {-14.8, -46}}, color = {0, 0, 127}));
+        Line(points = {{-10.8, -61}, {17.2, -61}, {17.2, -47}, {11.2, -47}}, color = {0, 0, 127}));
       connect(realExpression.y, wingSail4.Sail_Order) annotation(
-        Line(points = {{-15.5, 51}, {91.5, 51}, {91.5, 30}, {98.5, 30}}, color = {0, 0, 127}));
+        Line(points = {{-43.5, 65}, {63.5, 65}, {63.5, 44}, {67.5, 44}}, color = {0, 0, 127}));
       connect(realExpression.y, wingSail2.Sail_Order) annotation(
-        Line(points = {{-15.5, 51}, {32.5, 51}, {32.5, 30}, {38.5, 30}}, color = {0, 0, 127}));
+        Line(points = {{-43.5, 65}, {4.5, 65}, {4.5, 44}, {10.5, 44}}, color = {0, 0, 127}));
       connect(realExpression.y, wingSail3.Sail_Order) annotation(
-        Line(points = {{-15.5, 51}, {61.5, 51}, {61.5, 30}, {68.5, 30}}, color = {0, 0, 127}));
+        Line(points = {{-43.5, 65}, {33.5, 65}, {33.5, 44}, {40.5, 44}}, color = {0, 0, 127}));
       connect(realExpression.y, wingSail1.Sail_Order) annotation(
-        Line(points = {{-15.5, 51}, {-10.5, 51}, {-10.5, 30}, {8.5, 30}}, color = {0, 0, 127}));
+        Line(points = {{-43.5, 65}, {-38.5, 65}, {-38.5, 44}, {-19.5, 44}}, color = {0, 0, 127}));
       connect(wingSail1.frame_a, SailPos1.frame_b) annotation(
-        Line(points = {{18, 26}, {18, 21}, {10, 21}}, color = {95, 95, 95}));
+        Line(points = {{-10, 40}, {-10, 23}, {-14, 23}}, color = {95, 95, 95}));
       connect(wingSail2.frame_a, SailPos2.frame_b) annotation(
-        Line(points = {{48, 26}, {47, 26}, {47, 21}, {40, 21}}));
+        Line(points = {{20, 40}, {20, 23}, {14, 23}}));
       connect(wingSail3.frame_a, SailPos3.frame_b) annotation(
-        Line(points = {{78, 26}, {78, 21}, {70, 21}}, color = {95, 95, 95}));
+        Line(points = {{50, 40}, {50, 23}, {44, 23}}, color = {95, 95, 95}));
       connect(wingSail4.frame_a, SailPos4.frame_b) annotation(
-        Line(points = {{108, 26}, {108, 21}, {100, 21}}, color = {95, 95, 95}));
+        Line(points = {{77, 40}, {77, 23}, {71, 23}}, color = {95, 95, 95}));
       connect(shipModelTh.frame_a, SailPos1.frame_a) annotation(
-        Line(points = {{2, -13}, {-4, -13}, {-4, 21}, {-2, 21}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {-30, -6}, {-30, 23}, {-26, 23}}, color = {95, 95, 95}));
       connect(shipModelTh.frame_a, SailPos2.frame_a) annotation(
-        Line(points = {{2, -13}, {-4, -13}, {-4, 16}, {23, 16}, {23, 21}, {28, 21}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {-30, -6}, {-30, 18}, {-3, 18}, {-3, 23}, {2, 23}}, color = {95, 95, 95}));
       connect(shipModelTh.frame_a, SailPos3.frame_a) annotation(
-        Line(points = {{2, -13}, {-4, -13}, {-4, 14}, {52, 14}, {52, 21}, {58, 21}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {-30, -6}, {-30, 16}, {26, 16}, {26, 23}, {32, 23}}, color = {95, 95, 95}));
       connect(shipModelTh.frame_a, SailPos4.frame_a) annotation(
-        Line(points = {{2, -13}, {-4, -13}, {-4, 10}, {82, 10}, {82, 21}, {88, 21}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {-30, -6}, {-30, 14}, {56, 14}, {56, 23}, {59, 23}}, color = {95, 95, 95}));
       connect(shipModelTh.frame_a, hidrodynamicZRP.frame_a) annotation(
-        Line(points = {{2, -13}, {0, -13}, {0, -25}, {31, -25}, {31, -27}, {36, -27}}, color = {95, 95, 95}));
+        Line(points = {{30, -6}, {28, -6}, {28, -18}, {59, -18}, {59, -20}, {64, -20}}, color = {95, 95, 95}));
       connect(shipModelTh.shipData, hidrodynamicZRP.shipData) annotation(
-        Line(points = {{22, -20}, {34, -20}, {34, -13}, {61, -13}, {61, -20}, {56, -20}}));
+        Line(points = {{50.4, -12.6}, {62.4, -12.6}, {62.4, -5.6}, {89.4, -5.6}, {89.4, -12.6}, {84.4, -12.6}}));
       connect(propeller4Q.Wake_Fraction, rudder.Wake_Fraction) annotation(
-        Line(points = {{-64, -33}, {-67, -33}, {-67, -32}}, color = {0, 0, 127}));
+        Line(points = {{-38, -34}, {-41, -34}, {-41, -33}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
         Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Wingsails</div><div><br></div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
-        Diagram(graphics = {Rectangle(origin = {33, -34}, lineColor = {0, 255, 0}, extent = {{-35, 39}, {35, -39}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {-46, -40}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {35, -50}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-27, -66}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-28, 7}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {-39, -4}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
+        Diagram(graphics = {Rectangle(origin = {58, -32}, lineColor = {0, 170, 255}, pattern = LinePattern.Dash, extent = {{-34, 40}, {34, -40}}), Rectangle(origin = {-21, -41}, lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-41, 31}, {41, -31}}), Text(origin = {64, -40}, textColor = {0, 170, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {-1, -67}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {-49, 12}, lineColor = {255, 0, 255}, pattern = LinePattern.Dash, extent = {{-13, 18}, {13, -18}}), Text(origin = {-48, 11}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer")}, coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end FourWingSails;
 
@@ -723,7 +723,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{-32, 32}, {-40, 32}, {-40, 20}, {-52, 20}}, color = {0, 0, 127}));
       annotation(
         experiment(StartTime = 0, StopTime = 400, Tolerance = 1e-6, Interval = 0.01),
-  Documentation(revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"));
+        Documentation(revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"));
     end SimpleDieselEngineTest;
   end Engines;
 
