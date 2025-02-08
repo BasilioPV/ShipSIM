@@ -245,11 +245,11 @@ package Components "Library components"
       parameter Modelica.SIunits.Length Xg = 0.364 "Distance from Lpp/2 to CoG, positive fwd [m]" annotation(
         Dialog(group = "Hidrostatics Properties"));
       //Added Mass parameters
-      parameter Real mx = 1/100*(0.398 + 11.97*Cb*(1 + 3.73*Draft/B) + 2.89*Cb*(Lpp/B)*(1 + 1.13*Draft/B) + 0.175*Cb*(1 + 0.54*Draft/B)*(Lpp/B)^2 - 1.107*(Lpp/B)*(Draft/B)) "Added Mass parameter X direction *(around 5%)" annotation(
+      parameter Real mx = 1/(Modelica.Constants.pi*(Lpp^2/(B*Draft*Cb*environment.SeaDensity))^0.5-14) "Added Mass parameter X direction *(around 5%) [% of displacement] (Brix, 1993)" annotation(
         Dialog(tab = "Added Mass Parameters", group = "Added Mass"));
-      parameter Real my = (0.882 - 0.54*Cb*(1 - 1.6*Draft/B) - 0.156*(1 - 0.673*Cb)*Lpp/B + 0.826*(Draft/B)*(Lpp/B)*(1 - 0.678*Draft/B) - 0.638*Cb*(Draft/B)*(Lpp/B)*(1 - 0.669*Draft/B)) "Added Mass parameter Y direction" annotation(
+      parameter Real my = (0.882 - 0.54*Cb*(1 - 1.6*Draft/B) - 0.156*(1 - 0.673*Cb)*Lpp/B + 0.826*(Draft/B)*(Lpp/B)*(1 - 0.678*Draft/B) - 0.638*Cb*(Draft/B)*(Lpp/B)*(1 - 0.669*Draft/B)) "Added Mass parameter Y direction [% of displacement] (Zhou et. al., 1983)" annotation(
         Dialog(tab = "Added Mass Parameters", group = "Added Mass"));
-      parameter Real Jz = (Lpp/100*(33 - 76.85*Cb*(1 - 0.784*Cb) + 3.43*(Lpp/B)*(1 - 0.63*Cb)))^2 "Added Mass parameter Yaw direction" annotation(
+      parameter Real Jz = (Lpp/100*(33 - 76.85*Cb*(1 - 0.784*Cb) + 3.43*(Lpp/B)*(1 - 0.63*Cb)))^2 "Added Mass parameter Yaw direction [% of displacement] (Zhou et. al., 1983)" annotation(
         Dialog(tab = "Added Mass Parameters", group = "Added Mass"));
       //ERROR: on MANSIN use 1/100 instead of Lpp/100 !!"
       //Damping parameters
