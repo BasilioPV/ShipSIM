@@ -82,13 +82,13 @@ package Components "Library components"
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
       parameter Real Cb = 0.693 "Block Coefficient [-]" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
-      parameter Real Disp_Table[:, 2] = {{-2.5884e4, 0}, {1.2623e6, 1}, {4.0336e4, 2}} "Displacement Vs Mean draft curve [kg] (take care of water density)" annotation(
+      parameter Real Disp_Table[:, 2] = {{1.2514e6, 1}, {4.1292e4, 2}} "Displacement Vs Mean draft curve [kg] (take care of water density)" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
       parameter Real LCB_Table[:, 2] = {{4.9049e1, 0}, {1.7677, 1}, {-1.2278, 2}, {4.5593e-1, 3}, {-8.6574e-2, 4}, {7.7545e-3, 5}, {-2.6145e-4, 6}} "LCB Vs Mean Draft curve [m]" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
       parameter Real TCB_Table[:, 2] = {{0, 0}} "TCB Vs Mean Draft curve [m]" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
-      parameter Real VCB_Table[:, 2] = {{1.463e-2, 0}, {5.0289e-1, 1}, {3.7673e-3, 2}} "VCB Vs Mean Draft curve [m]" annotation(
+      parameter Real VCB_Table[:, 2] = {{5.0905e-1, 1}, {3.2271e-3, 2}} "VCB Vs Mean Draft curve [m]" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
       parameter Real BMt_Table[:, 2] = {{2.63608e1, -8.78016e-1}} "BMt Vs Mean Draft curve [m]" annotation(
         Dialog(tab = "Hidrostatics", group = "Hidrostatics Properties"));
