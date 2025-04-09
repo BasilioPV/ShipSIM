@@ -1151,8 +1151,8 @@ package Components "Library components"
 
     model Rudder "Rudder model"
       import Modelica.SIunits.Conversions.to_deg;
-      parameter Real C(unit = "m") = 2 "Rudder chord [m]";
-      parameter Real s(unit = "m") = 3.5 "Rudder span [m]";
+      parameter Modelica.SIunits.Length C = 2 "Rudder chord [m]";
+      parameter Modelica.SIunits.Length s = 3.5 "Rudder span [m]";
       parameter Real InitialRudderAngle(unit = "deg") = 0 "Initial rudder position [deg, +Port]";
       parameter Real CenterOfForces[3](each unit = "m") = {0.05*C, 0, -s/2 - 0.1*s} "Center of rudder forces from frame_a [m] {x,y,z}";
       parameter Real MaxRudderAngle(unit = "deg") = 35 "Maximum rudder angle [deg]";

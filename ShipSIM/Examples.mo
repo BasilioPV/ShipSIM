@@ -205,7 +205,7 @@ package Examples "Sample simulations of the library"
         Placement(visible = true, transformation(origin = {28, 6}, extent = {{6, -6}, {-6, 6}}, rotation = 0)));
       inner Modelica.Mechanics.MultiBody.World world(animateWorld = true, defaultN_to_m = 20000, defaultNm_to_m = 200000, enableAnimation = true, label2 = "z", n = {0, 0, -1}, nominalLength = 50) annotation(
         Placement(transformation(origin = {-34, 36}, extent = {{-6, -6}, {6, 6}})));
-      ShipSIM.Components.Propulsion.Rudder rudder(InitialRudderAngle = 0, wingData = NACA0015_Data) annotation(
+      ShipSIM.Components.Propulsion.Rudder rudder1(InitialRudderAngle = 0, wingData = NACA0015_Data) annotation(
         Placement(transformation(origin = {-15, 3}, extent = {{-8, -8}, {8, 8}})));
       Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_pos(animation = false, r = {-2, 0, 4.5}) annotation(
         Placement(visible = true, transformation(origin = {21, 17}, extent = {{5, 5}, {-5, -5}}, rotation = 0)));
@@ -236,7 +236,7 @@ package Examples "Sample simulations of the library"
         Line(points = {{34, 6}, {46, 6}, {46, 18}, {52, 18}}, color = {95, 95, 95}));
       connect(Rudder_pos.frame_a, shipModelTh.frame_a) annotation(
         Line(points = {{26, 17}, {40, 17}, {40, 18}, {52, 18}}, color = {95, 95, 95}));
-      connect(Rudder_pos.frame_b, rudder.frame_a) annotation(
+      connect(Rudder_pos.frame_b, rudder1.frame_a) annotation(
         Line(points = {{16, 17}, {-13, 17}, {-13, 11}}, color = {95, 95, 95}));
       connect(shipModelTh.shipData, hidrodynamicXYY.shipData) annotation(
         Line(points = {{72, 11}, {78, 11}, {78, 1}, {72, 1}}));
@@ -246,15 +246,15 @@ package Examples "Sample simulations of the library"
         Line(points = {{22, 6}, {16, 6}}, color = {95, 95, 95}));
       connect(propeller4Q.flange, speed.flange) annotation(
         Line(points = {{16, 2.5}, {16, -15}, {20, -15}}));
-      connect(propeller4Q.Propeller_flow_diameter, rudder.Propeller_flow_diameter) annotation(
+      connect(propeller4Q.Propeller_flow_diameter, rudder1.Propeller_flow_diameter) annotation(
         Line(points = {{-3.095, 6.3}, {-7.095, 6.3}}, color = {0, 0, 127}));
-      connect(propeller4Q.Propeller_speed, rudder.Propeller_speed) annotation(
+      connect(propeller4Q.Propeller_speed, rudder1.Propeller_speed) annotation(
         Line(points = {{-3.095, 2.5}, {-5.595, 2.5}, {-5.595, 3}, {-7.095, 3}}, color = {0, 0, 127}));
-      connect(Rudder_order.y, rudder.Rudder_Order) annotation(
+      connect(Rudder_order.y, rudder1.Rudder_Order) annotation(
         Line(points = {{-28.5, 10}, {-23, 10}}, color = {0, 0, 127}));
       connect(Convert_to_rad.y, speed.w_ref) annotation(
         Line(points = {{21, -52.5}, {40, -52.5}, {40, -15}, {35, -15}}, color = {0, 0, 127}));
-      connect(propeller4Q.Wake_Fraction, rudder.Wake_Fraction) annotation(
+      connect(propeller4Q.Wake_Fraction, rudder1.Wake_Fraction) annotation(
         Line(points = {{-3, -1.3}, {-5, -1.3}, {-5, -0.3}, {-7, -0.3}}, color = {0, 0, 127}));
       connect(Propeller_speed.y, Convert_to_rad.u) annotation(
         Line(points = {{-12, -52.5}, {8, -52.5}}, color = {0, 0, 127}));
