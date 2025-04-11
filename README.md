@@ -41,18 +41,16 @@ Here is an example of a zig-zag simulation:
 
 ShipSIM package
 
-ATTENTION: Attribution to this library is mandatory! see ShipSIM.UsersGuide.License
-
-All files in this directory and in all subdirectories, as well as the entire ShipSIM package (except for some components released with other license, see each component. Component license prevails over the package license), are released under the 4-Clause BSD license explained on this document.
+All files in this directory and in all subdirectories, as well as the entire ShipSIM package (except for some components released with other license, see each component. Component license prevails over the package license), are released under the 3-Clause BSD license explained on this document.
 
 All works that use this package shall include the "Attribution notice" shown in ShipSIM.UsersGuide.License. This includes any report that uses this library to provide the results.
 
 IMPORTANT NOTE: Some components have a special license. Please read carefully the documentation of each component.
 
-Licensed by Basilio Puente and M Dolores Fernandez under the 4-Clause BSD license.
-Copyright © 2021-2024, Basilio Puente, M Dolores Fernandez.
+Licensed by Basilio Puente and M Dolores Fernandez under the 3-Clause BSD license.
+Copyright © 2021-2025, Basilio Puente, M Dolores Fernandez.
 
-ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 4-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
+ShipSIM Modelica package is free software and the use is completely at your own risk; it can be redistributed and/or modified under the terms of the 3-Clause BSD license. For license conditions (including the disclaimer of warranty) see ShipSIM.UsersGuide.License
 
 # Contact
 See contact section of the library.
