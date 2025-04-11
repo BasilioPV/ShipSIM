@@ -360,6 +360,196 @@ package Obsolete "Obsolete components - NOT FOR USE!"
       Icon(graphics = {Text(origin = {-5, -88}, extent = {{67, 4}, {-67, -4}}, textString = "NACA 0018"), Polygon(origin = {-9, -4}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}}), Polygon(origin = {24, 44}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Line(origin = {-42, 93.03}, points = {{-58, 0}, {48, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 14), Line(origin = {-33.74, 75.06}, points = {{-58, 0}, {48, 0}}, color = {200, 200, 200}, arrow = {Arrow.Filled, Arrow.None}, arrowSize = 14), Line(origin = {61.3685, 19.9921}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6441, -0.142118}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.5786, -20.1318}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 40.05}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {62.0283, -59.9355}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.7244, -40.1816}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 59.804}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8)}),
       Documentation(revisions = "<html><head></head><body><div>Rev. 1.3&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 1.2&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>&nbsp;(06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 [BPuente] (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0&nbsp;</span>[ACorts]<span style=\"font-family: -webkit-standard;\">&nbsp;(26/09/2022): Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model</span><span style=\"font-family: 'MS Shell Dlg 2';\">, based on a Cl,Cd,Cm function,</span><span style=\"font-family: 'MS Shell Dlg 2';\">&nbsp;with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"><u><br></u></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Acorts]</td><td>Antonio Corts, \"Gemelo digital de timón y servo usando Modelica\", MSc Thesis 2022</td></tr></tbody></table></div></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Correct rudder forces due to open ends of the profile.</div><div><br></div><div><div><u>Copyright:</u></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Rev. 0.0: Released under CC-BY by Antonio Corts de la Peña, MSc Thesis&nbsp;</span><span style=\"font-family: -webkit-standard;\">\"Gemelo digital de timón y servo usando Modelica\", 2022</span></div></div><div><span style=\"font-family: -webkit-standard;\"><br></span></div><div><span style=\"font-family: -webkit-standard;\">Following revisions released with the same ShipSIM library license.</span></div></div></div></body></html>"));
   end RudderFun;
+   model Rudder_OLD "Rudder model"
+      import Modelica.SIunits.Conversions.to_deg;
+      parameter Modelica.SIunits.Length C = 2 "Rudder chord [m]";
+      parameter Modelica.SIunits.Length s = 3.5 "Rudder span [m]";
+      parameter Real InitialRudderAngle(unit = "deg") = 0 "Initial rudder position [deg, +Port]";
+      parameter Real CenterOfForces[3](each unit = "m") = {0.05*C, 0, -s/2 - 0.1*s} "Center of rudder forces from frame_a [m] {x,y,z}";
+      parameter Real MaxRudderAngle(unit = "deg") = 35 "Maximum rudder angle [deg]";
+      parameter Real MaxRudderAngularSpeed(unit = "deg/s") = 2.5 "Maximum rudder angular speed [deg/s]";
+      parameter Boolean AnimationForces = true "Show force vectors on 3D animation" annotation(
+        Dialog(tab = "Visualization", group = "3D Animation"));
+      //Module data
+      parameter ShipSIM.Records.WingProfile.WingData wingData annotation(
+        Placement(visible = true, transformation(origin = {82, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //Visualizers
+      Modelica.Mechanics.MultiBody.Visualizers.FixedFrame fixedFrame(animation = true, length = 2) annotation(
+        Placement(visible = true, transformation(origin = {-10, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Visualizers.FixedShape RudderVisualizer(animation = true, height = s, length = C, r_shape = {-0.75*C + CenterOfForces[1], 0, 0}, width = 0.18*C) annotation(
+        Placement(visible = true, transformation(origin = {-12, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //Components
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation Forces_pos(animation = false, r = CenterOfForces) annotation(
+        Placement(visible = true, transformation(origin = {0, 16}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+      Modelica.Blocks.Nonlinear.Limiter RudderAngleLimiter(limitsAtInit = true, strict = true, uMax = MaxRudderAngle) annotation(
+        Placement(visible = true, transformation(origin = {-72, 76}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+      Modelica.Blocks.Nonlinear.SlewRateLimiter RudderSpeedLimiter(Rising = MaxRudderAngularSpeed, initType = Modelica.Blocks.Types.Init.InitialState, strict = true, y_start = InitialRudderAngle) annotation(
+        Placement(visible = true, transformation(origin = {-28, 76}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Sources.Position Rudder_angle(exact = true, useSupport = true) annotation(
+        Placement(visible = true, transformation(origin = {42, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Joints.Revolute Servo(animation = false, n = {0, 0, 1}, phi(fixed = false, start = 0), useAxisFlange = true) annotation(
+        Placement(visible = true, transformation(origin = {40, 46}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+      Modelica.Blocks.Math.Gain Deg_to_Rad(k = -Modelica.Constants.pi/180) annotation(
+        Placement(visible = true, transformation(origin = {10, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation(
+        Placement(visible = true, transformation(origin = {100, 46}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {28, 100}, extent = {{-16, -16}, {16, 16}}, rotation = 90)));
+      input Modelica.Blocks.Interfaces.RealInput Rudder_Order "Rudder angle current order" annotation(
+        Placement(visible = true, transformation(origin = {-103, 75}, extent = {{-9, -9}, {9, 9}}, rotation = 0), iconTransformation(origin = {-99, 93}, extent = {{-9, -9}, {9, 9}}, rotation = 0)));
+      output Modelica.Blocks.Interfaces.RealOutput Rudder_position "Current rudder angle position" annotation(
+        Placement(visible = true, transformation(origin = {-92, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-103, 75}, extent = {{9, -9}, {-9, 9}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Forces.WorldForce F_Drag(animation = AnimationForces, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_resolve) annotation(
+        Placement(visible = true, transformation(origin = {-56, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Forces.WorldForce F_Lift(animation = AnimationForces, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_resolve) annotation(
+        Placement(visible = true, transformation(origin = {-56, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Mechanics.MultiBody.Forces.WorldTorque M_Moment(animation = AnimationForces, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_resolve) annotation(
+        Placement(visible = true, transformation(origin = {-56, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Tables.CombiTable2D Cl_Table(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, table = wingData.Cl) annotation(
+        Placement(visible = true, transformation(origin = {30, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Tables.CombiTable2D Cd_Table(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, table = wingData.Cd) annotation(
+        Placement(visible = true, transformation(origin = {30, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Blocks.Tables.CombiTable2D Cm_Table(extrapolation = Modelica.Blocks.Types.Extrapolation.HoldLastPoint, smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, table = wingData.Cm) annotation(
+        Placement(visible = true, transformation(origin = {30, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      //Public variables
+      Modelica.SIunits.Velocity WaterSpeed "Water speed [m/s]";
+      Modelica.SIunits.Angle Beta "Attack angle";
+      Real Sign "Sign of the attack angle";
+      Real Re "Reynolds number of the rudder";
+      Modelica.SIunits.Angle Alpha = -Rudder_angle.phi_ref "Actual rudder angle [rad]";
+      Real Cd "Drag coefficient";
+      Real Cl "Lift coefficient";
+      Real Cm "Moment coefficient";
+      Real Drag "Drag Force";
+      Real Lift "Lift Force";
+      Real Moment "Moment";
+      Real Drag_Vect[2] "Normalized vector of drag";
+      Real Lift_Vect[2] "Normalized vector of lift";
+      Real Water_Speed_XY[2];
+      Modelica.Mechanics.MultiBody.Parts.FixedTranslation Rudder_center(animation = false, r = CenterOfForces) annotation(
+        Placement(visible = true, transformation(origin = {88, 16}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
+      input Modelica.Blocks.Interfaces.RealInput Propeller_speed "Speed of water flow inside the Propeller_flow_diameter [m/s]" annotation(
+        Placement(visible = true, transformation(origin = {96, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {95, 0}, extent = {{9, -9}, {-9, 9}}, rotation = 0)));
+      input Modelica.Blocks.Interfaces.RealInput Propeller_flow_diameter "Diameter of the propeller water flow reaching to rudder [m]" annotation(
+        Placement(transformation(origin = {96, -64}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {95, 40}, extent = {{-9, -9}, {9, 9}}, rotation = 180)));
+      ShipSIM.SubComponents.ApparentSpeedXY apparentSpeedXY annotation(
+        Placement(visible = true, transformation(origin = {88, -18}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+      Modelica.Blocks.Interfaces.RealInput Wake_Fraction "Wake fraction coefficient" annotation(
+        Placement(transformation(origin = {97, -87}, extent = {{-11, -11}, {11, 11}}), iconTransformation(origin = {96, -40}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
+    //protected
+      outer ShipSIM.Components.Environment environment;
+      parameter Real Surf(unit = "m2") = C*s "Proyected surface of rudder";
+      parameter Real Asp(unit = "") = s/C "Aspect Ratio of the rudder";
+      parameter Real Cn_Asp_Correction(unit = "") = 1/(1 + (2.25/Asp)) "Aspect ratio correction to Normal force = Cl*cos(th) + Cd*sen(th)";
+      //intermediate variables
+      Real Beta_inter;
+    equation
+// Connect Cl,Cd,Cm tables
+      Cl_Table.u1 = to_deg(Beta);
+      Cd_Table.u1 = to_deg(Beta);
+      Cm_Table.u1 = to_deg(Beta);
+      Cl_Table.u2 = Re;
+      Cd_Table.u2 = Re;
+      Cm_Table.u2 = Re;
+      Cd = Cd_Table.y*Cn_Asp_Correction "Corrected by aspect ratio";
+      Cl = Cl_Table.y*Cn_Asp_Correction "Corrected by aspect ratio";
+      Cm = Cm_Table.y;
+      if noEvent(WaterSpeed > 0) then
+//Determine attack angle
+        Beta_inter = (Water_Speed_XY[1]*(-Modelica.Math.cos(Alpha)) + Water_Speed_XY[2]*(-Modelica.Math.sin(Alpha)))/WaterSpeed;
+// Avoid errors reaching +-1
+        if noEvent(Beta_inter <= (-0.99999999)) then
+          Beta = Modelica.Math.acos(-1);
+        elseif noEvent(Beta_inter >= 0.99999999) then
+          Beta = Modelica.Math.acos(1);
+        else
+          Beta = Modelica.Math.acos(Beta_inter);
+        end if;
+        if noEvent(Water_Speed_XY[1]*(-Modelica.Math.sin(Alpha)) - Water_Speed_XY[2]*(-Modelica.Math.cos(Alpha)) >= 0) then
+          Sign = -1;
+        else
+          Sign = 1;
+        end if;
+//Calculate forces and moments
+        Drag = Cd*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
+        Lift = Cl*0.5*environment.SeaDensity*Surf*WaterSpeed^2;
+        Moment = Cm*0.5*environment.SeaDensity*Surf*C*WaterSpeed^2;
+//Translate forces and moments to rudder stock and apply
+        Drag_Vect = Water_Speed_XY/WaterSpeed "Normalized vector with water direction (same direction as drag)";
+        Lift_Vect = {-Drag_Vect[2], Drag_Vect[1]}*Sign "Normalized vector perpendicular to water direction, adjusted with the direction";
+        F_Drag.force = {Drag*Drag_Vect[1], Drag*Drag_Vect[2], 0};
+        F_Lift.force = {Lift*Lift_Vect[1], Lift*Lift_Vect[2], 0};
+        M_Moment.torque = {0, 0, Moment*Sign};
+      else
+//If speed is zero
+        Sign = 1;
+        Beta = 0;
+        Drag = 0;
+        Lift = 0;
+        Moment = 0;
+        Drag_Vect = {0, 0};
+        Lift_Vect = {0, 0};
+        F_Drag.force = {0, 0, 0};
+        F_Lift.force = {0, 0, 0};
+        M_Moment.torque = {0, 0, 0};
+        Beta_inter = 0;
+      end if;
+// Connect apparent speed (current)
+      apparentSpeedXY.WorldSpeed = environment.CurrentVector;
+//Determine absolute speed
+//Average water speed on X direction taking into account the propeller flow
+      if Propeller_flow_diameter >= s then
+        Water_Speed_XY[1] = -Propeller_speed;
+      else
+        Water_Speed_XY[1] = -(Propeller_speed*Propeller_flow_diameter + apparentSpeedXY.SpeedLocal[1]*(1 - Wake_Fraction)*(s - Propeller_flow_diameter))/s;
+      end if;
+      Water_Speed_XY[2] = -apparentSpeedXY.SpeedLocal[2];
+      WaterSpeed = (Water_Speed_XY[1]^2 + Water_Speed_XY[2]^2)^0.5;
+      Re = WaterSpeed*C/environment.SeaKViscosity;
+//Connections
+      connect(Rudder_angle.phi_ref, Deg_to_Rad.y) annotation(
+        Line(points = {{30, 76}, {21, 76}}, color = {0, 0, 127}));
+      connect(Rudder_angle.flange, Servo.support) annotation(
+        Line(points = {{52, 76}, {58, 76}, {58, 56}, {46, 56}}));
+      connect(Rudder_angle.support, Servo.axis) annotation(
+        Line(points = {{42, 66}, {42, 61}, {40, 61}, {40, 56}}));
+      connect(Servo.frame_b, Forces_pos.frame_a) annotation(
+        Line(points = {{30, 46}, {29, 46}, {29, 16}, {10, 16}}));
+      connect(fixedFrame.frame_a, Forces_pos.frame_b) annotation(
+        Line(points = {{-20, -16}, {-29, -16}, {-29, 16}, {-10, 16}}, color = {95, 95, 95}));
+      connect(RudderSpeedLimiter.y, Deg_to_Rad.u) annotation(
+        Line(points = {{-13, 76}, {-2, 76}}, color = {0, 0, 127}));
+      connect(RudderAngleLimiter.y, RudderSpeedLimiter.u) annotation(
+        Line(points = {{-57, 76}, {-45, 76}}, color = {0, 0, 127}));
+      connect(RudderAngleLimiter.u, Rudder_Order) annotation(
+        Line(points = {{-89, 76}, {-102, 76}}, color = {0, 0, 127}));
+      connect(RudderSpeedLimiter.y, Rudder_position) annotation(
+        Line(points = {{-13, 76}, {-8, 76}, {-8, 40}, {-92, 40}}, color = {0, 0, 127}));
+      connect(F_Lift.frame_b, Forces_pos.frame_b) annotation(
+        Line(points = {{-46, 16}, {-10, 16}}));
+      connect(F_Drag.frame_b, Forces_pos.frame_b) annotation(
+        Line(points = {{-46, -12}, {-36, -12}, {-36, 16}, {-10, 16}}, color = {95, 95, 95}));
+      connect(M_Moment.frame_b, Forces_pos.frame_b) annotation(
+        Line(points = {{-46, -44}, {-36, -44}, {-36, 16}, {-10, 16}}));
+      connect(Servo.frame_a, frame_a) annotation(
+        Line(points = {{50, 46}, {100, 46}}, color = {95, 95, 95}));
+      connect(F_Lift.frame_resolve, frame_a) annotation(
+        Line(points = {{-56, 6}, {-92, 6}, {-92, -90}, {72, -90}, {72, 46}, {100, 46}}));
+      connect(F_Drag.frame_resolve, frame_a) annotation(
+        Line(points = {{-56, -22}, {-86, -22}, {-86, -84}, {64, -84}, {64, 46}, {100, 46}}, color = {95, 95, 95}));
+      connect(M_Moment.frame_resolve, frame_a) annotation(
+        Line(points = {{-56, -34}, {-78, -34}, {-78, -76}, {54, -76}, {54, 46}, {100, 46}}, color = {95, 95, 95}));
+      connect(frame_a, Rudder_center.frame_a) annotation(
+        Line(points = {{100, 46}, {88, 46}, {88, 26}}));
+      connect(RudderVisualizer.frame_a, Forces_pos.frame_b) annotation(
+        Line(points = {{-22, -46}, {-32, -46}, {-32, 16}, {-10, 16}}, color = {95, 95, 95}));
+      connect(Rudder_center.frame_b, apparentSpeedXY.frame_a) annotation(
+        Line(points = {{88, 6}, {88, -8}}, color = {95, 95, 95}));
+      annotation(
+        uses(Modelica(version = "3.2.3")),
+        Diagram,
+        Icon(graphics = {Polygon(origin = {-9, -4}, fillColor = {200, 200, 200}, fillPattern = FillPattern.Solid, points = {{43, 10}, {37, -70}, {-23, -70}, {-43, 70}, {33, 70}, {33, 22}, {23, 22}, {23, 10}, {43, 10}}), Polygon(origin = {24, 44}, points = {{10, -38}, {-10, -38}, {-10, -26}, {0, -26}, {0, 52}, {10, 52}, {10, -38}}), Line(origin = {-42, 93.03}, points = {{-58, 0}, {48, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 14), Line(origin = {-33.74, 75.06}, points = {{-58, 0}, {48, 0}}, color = {200, 200, 200}, arrow = {Arrow.Filled, Arrow.None}, arrowSize = 14), Line(origin = {61.3685, 19.9921}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6441, -0.142118}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.5786, -20.1318}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 40.05}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {62.0283, -59.9355}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.7244, -40.1816}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Line(origin = {61.6724, 59.804}, points = {{18, 0}, {-18, 0}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 8), Rectangle(origin = {-69, -61}, lineColor = {64, 64, 64}, fillColor = {255, 215, 136}, fillPattern = FillPattern.Solid, extent = {{-25, -19}, {25, 19}}, radius = 10), Line(origin = {-69.1667, -54.2886}, points = {{-25, 0}, {25, 0}}), Line(origin = {-69.2244, -60}, points = {{0, 18}, {0, -20}}), Line(origin = {-69.1667, -68}, points = {{-25, 0}, {25, 0}}), Rectangle(origin = {-69, -61}, lineColor = {64, 64, 64}, fillColor = {255, 215, 136}, fillPattern = FillPattern.Solid, extent = {{-25, -19}, {25, 19}}, radius = 10), Line(origin = {-69.2244, -60}, points = {{0, 18}, {0, -20}}), Line(origin = {-69.1667, -68}, points = {{-25, 0}, {25, 0}}), Line(origin = {-69.1667, -54.2886}, points = {{-25, 0}, {25, 0}}), Text(origin = {0, -114}, extent = {{-98, 10}, {98, -10}}, textString = "%wingData"), Text(origin = {-90, 30}, extent = {{-30, 10}, {30, -10}}, textString = DynamicSelect("Angle", (String(Rudder_position, "+.1f") + " º")), horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-100, -100}, {100, 100}})),
+        Documentation(revisions = "<html><head></head><body><div><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Rev. 2.1&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">[BPuente]&nbsp;</span><span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">(15/03/2024): Added DynamicSelect for diagram animation</span></div><div>Rev. 2.0&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(17/12/2023): Changed Cl,Cd,Cm factor from function to wingData table interpolation. There are big mistakes in previous Cl,Cd,Cm function. Included aspect ratio correction and wake factor input to correct water speed</div><div>Rev. 1.3&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>(01/08/2023): Compatibility with Modelon&nbsp;<span style=\"font-size: 12px;\">(GitHub #4)</span></div><div>Rev. 1.2&nbsp;<span style=\"font-size: 12px;\">[BPuente]&nbsp;</span>&nbsp;(06/05/2023): Added animation forces selector.</div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.1&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(10/04/2023): Full environment support.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 1.0&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(06/03/2023): Full support with sea current.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.2&nbsp;</span>[BPuente]&nbsp;<span style=\"font-family: -webkit-standard;\">(24/02/2023): Rudder representation fixed.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.1 [BPuente] (26/01/2023): Connection with propeller speed and get speed from frame.</span></div><div style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\"><span style=\"font-family: -webkit-standard;\">Rev. 0.0&nbsp;</span>[BPuente]<span style=\"font-family: -webkit-standard;\">&nbsp;(26/07/2022): First release</span></div></body></html>", info = "<html><head></head><body><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">Ship rudder model, based on a Cl,Cd,Cm record data, with the following connections:</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- frame_a: connect to the position of the rudder servo</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_Order: Desired angle of the rudder (+ stbd)</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Rudder_position: Current angle of the rudder</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_speed: connect with propeller flow speed output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">- Propeller_flow_diameter: connect with propeller flow diameter output</span></p><p style=\"font-size: 12px;\"><span style=\"font-family: 'MS Shell Dlg 2';\">The Cl and Cd are corrected by rudder aspect ratio.</span></p><div class=\"htmlDoc\" style=\"font-family: 'MS Shell Dlg 2';\"><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><br></div><div><i><b>NOTE</b></i>:</div><div>Water speed is obtained from rudder center of forces using apparent speed and X-direction is corrected by the propeller flow.</div><div><br></div><div><u>Limitations:</u></div><div>Rudder weight and inertia is not considered. Not considered rudder aspect ratio correction. Propeller water rotation influence on rudder is not considered.</div><div><br></div><div><div style=\"font-family: -webkit-standard;\"><u>References:</u></div><div style=\"font-family: -webkit-standard;\"></div></div><div style=\"font-family: -webkit-standard;\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" style=\"font-family: 'MS Shell Dlg 2';\"><tbody><tr><td>[Jialun2016]</td><td>Jialun Liu, Frans Quadvlieg, Robert Hekkenberg, \"Impacts of the rudder profile on manoeuvring performance of ships\", Delft University of Technology, 2016,&nbsp;<a href=\"https://doi.org/10.1016/j.oceaneng.2016.07.064\">DOI:https://doi.org/10.1016/j.oceaneng.2016.07.064</a></td></tr></tbody></table></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><u>Know issues:</u></span></div><div style=\"font-family: -webkit-standard;\"><span style=\"font-family: 'MS Shell Dlg 2';\"><br></span></div><div><br></div></div><div class=\"htmlDoc\" style=\"font-size: 12px;\"><div><u>Further development:</u></div><div>Include lift reduction factor, flow straightening coefficient and increase of lift due to hull above rudder.</div><div><br></div><div><br></div></div></div></body></html>"));
+    end Rudder_OLD;
+  
   annotation(
     Documentation(info = "<html><head></head><body>Outdated components</body></html>"));
 end Obsolete;
