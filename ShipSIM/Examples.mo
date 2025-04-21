@@ -51,7 +51,7 @@ package Examples "Sample simulations of the library"
       Modelica.Blocks.Sources.RealExpression WindSpeed(y = 10*sin(time/10)) annotation(
         Placement(transformation(origin = {-45, 55}, extent = {{-17, -5}, {17, 5}})));
       Modelica.Blocks.Sources.RealExpression Direction(y = 45*sin(time/15)) annotation(
-        Placement(transformation(origin = {-69, 65}, extent = {{-10, -10}, {10, 10}})));
+        Placement(transformation(origin = {-90, 65.5}, extent = {{-9, -6.5}, {9, 6.5}})));
     equation
       connect(hidrodynamicXYY.frame_a, shipModelTh.frame_a) annotation(
         Line(points = {{52, -6}, {46, -6}, {46, 18}, {52, 18}}, color = {95, 95, 95}));
@@ -96,9 +96,9 @@ package Examples "Sample simulations of the library"
       connect(propeller.Wake_Fraction, rudder.Wake_Fraction) annotation(
         Line(points = {{-10, 0}, {-17, 0}}, color = {0, 0, 127}));
       connect(Direction.y, environment.WindDirection) annotation(
-        Line(points = {{-58, 65}, {-34, 65}, {-34, 51}, {-21, 51}}, color = {0, 0, 127}));
+        Line(points = {{-80, 65.5}, {-67, 65.5}, {-67, 51}, {-21, 51}}, color = {0, 0, 127}));
       connect(Direction.y, environment.CurrentDirection) annotation(
-        Line(points = {{-58, 65}, {-34, 65}, {-34, 41}, {-21, 41}}, color = {0, 0, 127}));
+        Line(points = {{-80, 65.5}, {-67, 65.5}, {-67, 41}, {-21, 41}}, color = {0, 0, 127}));
       connect(WindSpeed.y, environment.WindSpeed) annotation(
         Line(points = {{-26, 55}, {-21, 55}}, color = {0, 0, 127}));
       connect(CurrentSpeed.y, environment.CurrentSpeed) annotation(
@@ -109,7 +109,7 @@ package Examples "Sample simulations of the library"
       annotation(
         experiment(StartTime = 0, StopTime = 1000, Tolerance = 1e-06, Interval = 0.2),
         Documentation(info = "<html><head></head><body>This example provides a basic construction of a maneuvering model where the following items are placed:<div><br><div>- Ship model: consist on a ship model for masses, inertia and floatation plus other model for Surge, Sway and Yaw movements.</div></div><div>- Visualizer: an axis frame and a box visualizer represent the local coordinates and the ship.</div><div>- Propulsion system: a propeller and rudder models, in addition with a constant speed shaft, provides the propulsion system model</div><div>- Control: A control that checks ship course (Yaw) and change the rudder order from 20º to -20º makes the logic of a zig-zag test</div></body></html>", revisions = "<html><head></head><body><span style=\"font-size: 12px;\">Rev. 0.0&nbsp;</span><span style=\"font-size: 12px;\">[BPuente]</span><span style=\"font-size: 12px;\">&nbsp;(01/12/2024): Initial release</span></body></html>"),
-        Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Rectangle(origin = {4, -9}, lineColor = {255, 0, 0}, extent = {{-40, 31}, {40, -31}}), Text(origin = {85, -19}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {23, -35}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {-68, 1}, lineColor = {85, 0, 255}, extent = {{-30, 23}, {30, -23}}), Text(origin = {-70, -18}, textColor = {85, 0, 255}, extent = {{-8, 2}, {8, -2}}, textString = "Control")}, coordinateSystem(extent = {{-125, -150}, {125, 75}}, grid = {1, 1})),
+        Diagram(graphics = {Rectangle(origin = {73, -4}, lineColor = {0, 255, 0}, extent = {{-25, 40}, {25, -40}}), Rectangle(origin = {4, -11}, lineColor = {255, 0, 0}, extent = {{-40, 33}, {40, -33}}), Text(origin = {82, -39}, textColor = {0, 255, 0}, extent = {{-7, 3}, {7, -3}}, textString = "Ship model"), Text(origin = {25, -39}, textColor = {255, 0, 0}, extent = {{-11, 3}, {11, -3}}, textString = "Propulsion model"), Rectangle(origin = {22, 38}, lineColor = {255, 0, 255}, extent = {{-20, 14}, {20, -14}}), Text(origin = {11, 27}, textColor = {255, 0, 255}, extent = {{-7, 3}, {7, -3}}, textString = "Visualizer"), Rectangle(origin = {-68, 1}, lineColor = {85, 0, 255}, extent = {{-30, 23}, {30, -23}}), Text(origin = {-70, -18}, textColor = {85, 0, 255}, extent = {{-8, 2}, {8, -2}}, textString = "Control")}, coordinateSystem(extent = {{-125, -150}, {125, 75}}, grid = {1, 1})),
         Icon(coordinateSystem(extent = {{-125, -75}, {125, 75}}, grid = {10, 10})));
     end Test_ZigZag_1Q;
 
@@ -440,7 +440,7 @@ package Examples "Sample simulations of the library"
       Modelica.Mechanics.Rotational.Sources.Speed speed(phi(displayUnit = "rad")) annotation(
         Placement(transformation(origin = {3, -47}, extent = {{7, -7}, {-7, 7}})));
       Modelica.Blocks.Sources.RealExpression Rudder_order(y = -0.05) annotation(
-        Placement(transformation(origin = {-93.5, -23.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}})));
+        Placement(transformation(origin = {-73.5, -23.5}, extent = {{-8.5, -6.5}, {8.5, 6.5}})));
       inner ShipSIM.Components.Environment environment(WindDirection = 0, WindSpeed = 15) annotation(
         Placement(transformation(origin = {-52.5, 47.5}, extent = {{-8.5, -8.5}, {8.5, 8.5}})));
       ShipSIM.Components.Ship.ShipWind shipWind annotation(
@@ -499,7 +499,7 @@ package Examples "Sample simulations of the library"
       connect(propeller4Q.Propeller_speed, rudder.Propeller_speed) annotation(
         Line(points = {{-38.1, -30}, {-41, -30}}, color = {0, 0, 127}));
       connect(Rudder_order.y, rudder.Rudder_Order) annotation(
-        Line(points = {{-84.15, -23.5}, {-84.15, -23}, {-57.15, -23}}, color = {0, 0, 127}));
+        Line(points = {{-64, -23.5}, {-64, -23}, {-57.15, -23}}, color = {0, 0, 127}));
       connect(ShaftSpeed.y, speed.w_ref) annotation(
         Line(points = {{-10.8, -61}, {17.2, -61}, {17.2, -47}, {11.2, -47}}, color = {0, 0, 127}));
       connect(realExpression.y, wingSail4.Sail_Order) annotation(
